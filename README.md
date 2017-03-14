@@ -16,4 +16,26 @@ Then set up the project using this cookiecutter template like so:
 $ cookiecutter gh:liqd/a4CookieCutter
 ```
 
+## Next steps
+Change into your newly created project directory and execute the following commands to get started.
+
+Create virtual env, install requirements and create database with migrations:
+
+```
+$ make install
+```
+Create superuser:
+
+```
+$ ./bin/python3 manage.py createsuperuser
+```
+
+Start server
+```
+$ make server`
+
+
+
+
+
 
