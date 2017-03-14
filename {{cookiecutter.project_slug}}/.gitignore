@@ -10,7 +10,6 @@ test_db.sqlite3
 /media
 .sass-cache
 venv
-/{{cookiecutter.project_slug}}/static
 /node_modules
 /lib/python*
 /lib64
