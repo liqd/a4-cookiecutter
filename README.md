@@ -32,7 +32,8 @@ $ ./bin/python3 manage.py createsuperuser
 
 Start server
 ```
-$ make server`
+$ make server
+```
 
 
 
