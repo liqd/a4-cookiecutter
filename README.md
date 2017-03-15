@@ -1,4 +1,4 @@
-# a4CookieCutter
+# a4-cookiecutter
 
 This is a Cookiecutter template to be used for Projects that need adhocracy4 and wagtail(optional).
 
