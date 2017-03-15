@@ -13,7 +13,7 @@ After that change to the directory where you want to create a your new Django pr
 Then set up the project using this cookiecutter template like so:
 
 ```
-$ cookiecutter gh:liqd/a4CookieCutter
+$ cookiecutter gh:liqd/a4-cookiecutter
 ```
 
 ## Next steps
