@@ -18,7 +18,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
 
-{% if cookiecutter.use_wagtail == 'y' %}
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -33,10 +32,8 @@ INSTALLED_APPS = [
     'wagtail.contrib.wagtailstyleguide',
     'modelcluster',
     'taggit',
-{% endif %}
 
     'widget_tweaks',
-    'webpack_loader',
     'easy_thumbnails',
     'ckeditor',
     'ckeditor_uploader',
@@ -62,10 +59,12 @@ INSTALLED_APPS = [
     'adhocracy4.reports.apps.ReportsConfig',
     'adhocracy4.modules.apps.ModulesConfig',
     'adhocracy4.comments.apps.CommentsConfig',
-    'adhocracy4.organisations.apps.OrganisationsConfig'
+    'adhocracy4.organisations.apps.OrganisationsConfig',
+
+    'cms.apps.Config'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,11 +74,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    {% if cookiecutter.use_wagtail == 'y' %}
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    {% endif %}
-]
+)
 
 SITE_ID = 1
 
@@ -181,6 +178,7 @@ IMAGE_ALIASES = {
         'max_size': 5*10**6,
         'fileformats': ('image/png', 'image/jpeg', 'image/gif')
     },
+    'tileimage': {'min_resolution': (500, 300)},
     'heroimage': {'min_resolution': (1300, 600)},
     'logo': {'min_resolution': (200, 200), 'aspect_ratio': (1, 1)},
     'avatar': {'min_resolution': (200, 200)},
@@ -224,10 +222,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Wagtail settings
-
-{% if cookiecutter.use_wagtail == 'y' %}
 WAGTAIL_SITE_NAME = "{{cookiecutter.project_slug}}"
-{% endif %}
+
 
 # Authentification
 

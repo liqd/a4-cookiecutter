@@ -1,6 +1,6 @@
 all: help
 
-VIRTUAL_ENV ?= .
+VIRTUAL_ENV ?= venv
 SOURCE_DIRS = apps {{cookiecutter.project_slug}} tests
 
 help:
@@ -19,7 +19,7 @@ help:
 
 install:
 	npm install
-	if [ ! -f $(VIRTUAL_ENV)/bin/python3 ]; then python3 -m venv .; fi
+	if [ ! -f $(VIRTUAL_ENV)/bin/python3 ]; then python3 -m venv $(VIRTUAL_ENV); fi
 	$(VIRTUAL_ENV)/bin/python3 -m pip install --upgrade -r requirements/dev.txt
 	$(VIRTUAL_ENV)/bin/python3 manage.py migrate
 
