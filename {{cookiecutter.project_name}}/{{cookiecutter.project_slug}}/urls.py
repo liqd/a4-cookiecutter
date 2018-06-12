@@ -1,9 +1,22 @@
 from django.conf import settings
 from django.conf.urls import include, url
+from django.views.i18n import javascript_catalog
+from wagtail.wagtailcore import urls as wagtail_urls
 from django.contrib import admin
 
-urlpatterns = [url(r'^admin/', include(admin.site.urls)),
-            ]
+js_info_dict = {
+    'packages': ('adhocracy4.comments',),
+}
+
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^jsi18n/$', javascript_catalog,
+        js_info_dict, name='javascript-catalog'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'', include(wagtail_urls))
+]
 
 
 if settings.DEBUG:
