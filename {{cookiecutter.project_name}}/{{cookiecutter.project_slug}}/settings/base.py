@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'ckeditor',
     'ckeditor_uploader',
+    'background_task',
 
     'django.contrib.sites',
     'django.contrib.admin',
@@ -61,7 +62,7 @@ INSTALLED_APPS = [
     'adhocracy4.comments.apps.CommentsConfig',
     'adhocracy4.organisations.apps.OrganisationsConfig',
 
-    'cms.apps.Config'
+    'cms.home.apps.Config'
 ]
 
 MIDDLEWARE = (
