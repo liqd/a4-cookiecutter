@@ -62,7 +62,9 @@ INSTALLED_APPS = [
     'adhocracy4.comments.apps.CommentsConfig',
     'adhocracy4.organisations.apps.OrganisationsConfig',
 
-    'cms.home.apps.Config'
+    'cms.home.apps.Config',
+
+    'apps.users.apps.UserConfig',
 ]
 
 MIDDLEWARE = (
@@ -228,11 +230,13 @@ WAGTAIL_SITE_NAME = "{{cookiecutter.project_slug}}"
 
 # Authentification
 
+AUTH_USER_MODEL = '{{cookiecutter.project_app_prefix}}_users.User'
+
 LOGIN_URL = 'account_login'
 LOGOUT_URL = 'account_logout'
 LOGIN_REDIRECT_URL = '/'
 
-#ACCOUNT_ADAPTER = 'apps.users.adapters.AccountAdapter'
+#ACCOUNT_ADAPTER = '{{cookiecutter.project_app_prefix}}.apps.users.adapters.AccountAdapter'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_EMAIL_REQUIRED = True
