@@ -20,12 +20,14 @@ module.exports = {
       'react-dom',
       'react-flip-move',
     ],
+{% if cookiecutter.use_leaflet == 'y' %}
     leaflet: [
       'leaflet',
       'leaflet/dist/leaflet.css',
       'leaflet.markercluster',
       'leaflet.markercluster/dist/MarkerCluster.css',
     ],
+{% endif %}
     datepicker: [
       './{{ cookiecutter.project_slug}}/assets/js/init-picker.js',
       'datepicker/css/datepicker.min.css'
