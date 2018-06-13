@@ -1,7 +1,5 @@
 {
     "project_name": "Project Name",
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
-    "use_wagtail": "y",
-    "use_bootstrap": "n",
-    "use_leaflet": "n"
+    "use_leaflet": "y"
 }
