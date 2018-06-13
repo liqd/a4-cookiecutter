@@ -104,6 +104,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       timeago: 'timeago.js'
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js'
+    }),
     new ExtractTextPlugin({filename: '[name].css'}),
     new CopyWebpackPlugin([
       {
