@@ -1,0 +1,31 @@
+.btn--primary {
+    @extend .btn-primary;
+}
+
+.btn--secondary {
+    @extend .btn-secondary;
+}
+
+.btn--danger {
+    @extend .btn-danger;
+}
+
+.btn--light {
+    @extend .btn-light;
+}
+
+.btn--link {
+    @extend .btn-link;
+}
+
+.btn--small {
+    @extend .btn-sm;
+}
+
+.btn--huge {
+    @extend .btn-lg;
+}
+
+.btn--full {
+    @extend .btn-block;
+}

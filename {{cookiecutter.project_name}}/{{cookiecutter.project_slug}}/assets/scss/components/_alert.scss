@@ -1,0 +1,20 @@
+.alert--success {
+    @extend .alert-success;
+}
+
+.alert--error,
+.alert--danger {
+    @extend .alert-danger;
+}
+
+.alert--warning {
+    @extend .alert-warning;
+}
+
+.alert__close {
+    @extend .close;
+}
+
+.alert-top {
+    margin-bottom: 0;
+}
