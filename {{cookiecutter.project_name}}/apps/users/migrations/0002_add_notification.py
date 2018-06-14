@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('ca_users', '0001_initial'),
+        ('{{cookiecutter.project_app_prefix}}_users', '0001_initial'),
     ]
 
     operations = [

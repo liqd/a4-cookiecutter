@@ -1,0 +1,50 @@
+{% raw %}{% load i18n %}
+
+<div class="dropdown">
+
+    {% if request.user.is_authenticated %}
+
+    <button
+            type="button"
+            class="btn dropdown-toggle"
+            data-toggle="dropdown"
+            data-flip="false"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="user-actions"
+    >
+        {{ request.user.username }}
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </button>
+    <div class="dropdown-menu">
+        <form class="u-inline" action="{% url 'account_logout' %}" method="post" aria-label="{% trans 'Logout' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ redirect_field_value }}">
+            <button type="submit" class="dropdown-item">{% trans "Logout" %}</button>
+        </form>
+    </div>
+</div>
+
+    {% else %}
+
+    <button
+            type="button"
+            class="btn dropdown-toggle"
+            data-toggle="dropdown"
+            data-flip="false"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="login-register"
+    >
+        {% trans "Login" %}/{% trans "Register" %}
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="login-register">
+        <a class="dropdown-item" href="{% url 'account_login' %}?next={{ redirect_field_value|urlencode }}">{% trans "Login" %}</a>
+        <a class="dropdown-item" href="{% url 'account_signup' %}?next={{ redirect_field_value|urlencode }}">{% trans "Register" %}</a>
+    </div>
+
+    {% endif %}
+</div>
+
+{% endraw %}
