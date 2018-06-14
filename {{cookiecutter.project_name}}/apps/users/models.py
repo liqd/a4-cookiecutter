@@ -21,6 +21,11 @@ IS_STAFF_HELP = _('Designates whether the user can log into this admin site.')
 IS_ACTIVE_HELP = _('Designates whether this user should be treated as active. '
                    'Unselect this instead of deleting accounts.')
 
+GET_NOTIFICATIONS_HELP = _('Designates whether you want to receive '
+                           'notifications about content you follow. '
+                           'Unselect if you do not want to receive '
+                           'notifications.')
+
 
 class User(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     username = models.CharField(_('username'),
@@ -35,13 +40,44 @@ class User(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
                               error_messages={
                                   'unique': EMAIL_NOT_UNIQUE,
     })
+
     is_staff = models.BooleanField(_('staff status'), default=False,
                                    help_text=IS_STAFF_HELP)
+
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=IS_ACTIVE_HELP)
+
     date_joined = models.DateTimeField(editable=False, default=timezone.now)
+
+    get_notifications = models.BooleanField(
+        verbose_name=_('Send me email notifications'),
+        default=True,
+        help_text=GET_NOTIFICATIONS_HELP)
 
     objects = auth_models.UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+
+    class Meta:
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('profile', kwargs={'slug': str(self.username)})
+
+    @property
+    def organisations(self):
+        return self.organisation_set.all()
+
+    def get_short_name(self):
+        "Returns the short name for the user."
+        return self.username
+
+    def signup(self, username, email, timezone, commit=True):
+        """Update the fields required for sign-up."""
+        self.username = username
+        self.email = email
+        if commit:
+            self.save()

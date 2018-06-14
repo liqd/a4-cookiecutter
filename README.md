@@ -9,7 +9,7 @@ First you have to install Cookiecutter:
 ```
 $ pip install cookiecutter
 ```
-After that change to the directory where you want to create a your new Django project in. 
+After that change to the directory where you want to create a your new Django project in.
 Then set up the project using this cookiecutter template like so:
 
 ```
@@ -27,7 +27,7 @@ $ make install
 Create superuser:
 
 ```
-$ ./bin/python3 manage.py createsuperuser
+$ venv/bin/python3 manage.py createsuperuser
 ```
 
 Start server
