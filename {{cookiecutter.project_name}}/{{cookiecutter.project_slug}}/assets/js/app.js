@@ -5,12 +5,7 @@
 var $ = window.jQuery = window.$ = require('jquery')
 
 // load bootstrap components
-var util = require('bootstrap/js/dist/util.js')
-var dropdown = require('bootstrap/js/dist/dropdown.js')
-var modal = require('bootstrap/js/dist/modal.js')
-var tab = require('bootstrap/js/dist/tab.js')
-var collapse = require('bootstrap/js/dist/collapse.js')
-var popover = require('bootstrap/js/dist/popover.js')
+require('bootstrap')
 
 var django = require('django')
 
