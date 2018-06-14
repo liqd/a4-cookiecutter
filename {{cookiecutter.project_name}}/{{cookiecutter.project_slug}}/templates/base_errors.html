@@ -1,0 +1,15 @@
+{% raw %}{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Error' %} &mdash; {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <h1>{% block error_status %}{% endblock %}</h1>
+        {% block error_description %}{% endblock %}
+        <a href="/">{% trans 'Back to landing page' %}</a>
+    </div>
+</div>
+{% endblock %}
+{% endraw %}
