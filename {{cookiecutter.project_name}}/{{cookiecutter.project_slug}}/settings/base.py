@@ -62,7 +62,9 @@ INSTALLED_APPS = [
     'adhocracy4.comments.apps.CommentsConfig',
     'adhocracy4.organisations.apps.OrganisationsConfig',
 
-    'cms.home.apps.Config'
+    'cms.home.apps.Config',
+
+    'apps.users.apps.UserConfig',
 ]
 
 MIDDLEWARE = (
@@ -227,6 +229,8 @@ WAGTAIL_SITE_NAME = "{{cookiecutter.project_slug}}"
 
 
 # Authentification
+
+AUTH_USER_MODEL = '{{cookiecutter.project_app_prefix}}_users.User'
 
 LOGIN_URL = 'account_login'
 LOGOUT_URL = 'account_logout'
