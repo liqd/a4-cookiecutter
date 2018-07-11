@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'adhocracy4.organisations.apps.OrganisationsConfig',
 
     'cms.home.apps.Config',
-    'cms.snippet.apps.Config',
+    'cms.snippets.apps.Config',
 
     'apps.users.apps.UserConfig',
 ]
