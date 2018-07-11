@@ -12,7 +12,7 @@ class HomePage(Page):
         edit_handlers.FieldPanel('body'),
     ]
 
-    subpage_types = []
+    subpage_types = ['cms_home.SimplePage']
 
 
 class SimplePage(Page):
