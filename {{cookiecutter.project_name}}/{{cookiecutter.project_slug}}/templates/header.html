@@ -1,11 +1,25 @@
-{% raw %}{% load userindicator %}
+{% raw %}
+{% load userindicator snippet_tags %}
+{% load_site_menu "header" as header_menu_items %}
 
-<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <nav class="nav navbar-right">
-            {% userindicator %}
-        </nav>
-    </div>
-</header>
+        <a class="navbar-brand" href="/">{{ cookiecutter.project_name }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            {% for menuitem in header_menu_items %}
+            <li class="nav-item {% if request.path == menuitem.url %} active{% endif %}">
+                <a class="nav-link" href="{{ menuitem.url }}"> {{ menuitem.title }} </a>
+            </li>
+            {% endfor %}
+            </ul>
+             {% userindicator %}
+        </div>
+
+    </div>
 {% endraw %}
+</nav>
