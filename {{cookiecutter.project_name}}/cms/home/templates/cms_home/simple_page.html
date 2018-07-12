@@ -1,7 +1,11 @@
 {% raw %}
 {% extends "base.html" %}
 
+{% block title %}
+{{ page.title }}
+{% endblock %}
+
 {% block content %}
-Simple Page
+{{ page.body|safe }}
 {% endblock %}
 {% endraw %}
