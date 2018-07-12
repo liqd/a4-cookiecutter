@@ -1,11 +1,11 @@
-{% raw %}
-{% extends "base.html" %}
+{% raw %}{% extends "base.html" %}
+{% load wagtailcore_tags %}
 
 {% block title %}
 {{ page.title }}
 {% endblock %}
 
 {% block content %}
-{{ page.body|safe }}
+{{ page.body|richtext }}
 {% endblock %}
 {% endraw %}
