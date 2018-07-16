@@ -1,12 +1,12 @@
+from adhocracy4.projects.decorators import user_is_project_admin
 from ckeditor_uploader import views as ck_views
 from django.conf import settings
 from django.conf.urls import include, url
+from django.contrib import admin
+from django.views.decorators.cache import never_cache
 from django.views.i18n import javascript_catalog
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
-from adhocracy4.projects.decorators import user_is_project_admin
-from django.views.decorators.cache import never_cache
-from django.contrib import admin
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
