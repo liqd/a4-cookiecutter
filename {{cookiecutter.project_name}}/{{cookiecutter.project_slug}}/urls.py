@@ -15,6 +15,7 @@ js_info_dict = {
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^admin/', include(wagtailadmin_urls)), 
     url(r'', include(wagtail_urls)),
     url(r'^browse/', never_cache(user_is_project_admin(ck_views.browse)),
         name='ckeditor_browse'),
