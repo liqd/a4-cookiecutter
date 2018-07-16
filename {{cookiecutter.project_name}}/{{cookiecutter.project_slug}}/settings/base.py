@@ -136,11 +136,35 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%',
+        'title': _('Rich text editor'), 
         'toolbar': 'Custom',
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline'],
             ['NumberedList', 'BulletedList'],
             ['Link', 'Unlink']
+        ]
+    },
+    'image-editor': {
+        'width': '100%',
+        'title': _('Rich text editor'),
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['Image'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink']
+        ]
+    },
+    'collapsible-image-editor': {
+        'width': '100%',
+        'title': _('Rich text editor'),
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['Image'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['CollapsibleItem']
         ]
     }
 }
@@ -151,7 +175,45 @@ BLEACH_LIST = {
         'attributes': {
             'a': ['href', 'rel'],
         }
-    }
+    },
+    'collapsible-image-editor': {
+        'tags': ['p', 'strong', 'em', 'u', 'ol', 'li', 'ul', 'a', 'img',
+                 'div'],
+        'attributes': {
+            'a': ['href', 'rel'],
+            'img': ['src', 'alt', 'style'],
+            'div': ['class']
+        },
+        'styles': [
+            'float',
+            'margin',
+            'padding',
+            'width',
+            'height',
+            'margin-bottom',
+            'margin-top',
+            'margin-left',
+            'margin-right',
+        ],
+    },
+    'image-editor': {
+        'tags': ['p', 'strong', 'em', 'u', 'ol', 'li', 'ul', 'a', 'img'],
+        'attributes': {
+            'a': ['href', 'rel'],
+            'img': ['src', 'alt', 'style']
+        },
+        'styles': [
+            'float',
+            'margin',
+            'padding',
+            'width',
+            'height',
+            'margin-bottom',
+            'margin-top',
+            'margin-left',
+            'margin-right',
+        ],
+    },
 }
 
 # Internationalization
