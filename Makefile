@@ -1,4 +1,3 @@
-
 hackytest-init:
 	printf 'hackytestproject\n\n\n\n\n\n\n\n\n\n\n\n\n\n' | cookiecutter .
 	(cd hackytestproject && make install)
@@ -6,7 +5,6 @@ hackytest-init:
 TMPDIR := $(shell mktemp -d)
 hackytest-reset:
 	mv hackytestproject ${TMPDIR}
-
 
 .PHONY: hackytest
 TMPDIR := $(shell mktemp -d)
