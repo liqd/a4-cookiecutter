@@ -1,5 +1,4 @@
 -r base.txt
-brotli==1.0.4
+django-redis==4.10.0
 gunicorn==19.8.1
-whitenoise==3.3.1
-psycopg2-binary==2.7.4
+psycopg2-binary==2.7.5
