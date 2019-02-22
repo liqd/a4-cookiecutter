@@ -56,18 +56,19 @@ INSTALLED_APPS = [
 
     'adhocracy4.administrative_districts',
     'adhocracy4.images',
+    'adhocracy4.organisations',
     'adhocracy4.phases',
     'adhocracy4.projects',
     'adhocracy4.ratings',
     'adhocracy4.reports',
     'adhocracy4.modules',
     'adhocracy4.comments',
-    'adhocracy4.organisations',
 
     'cms.home.apps.Config',
     'cms.snippets.apps.Config',
 
     'apps.users.apps.UserConfig',
+    'apps.organisations'
 ]
 
 MIDDLEWARE = (
@@ -259,7 +260,7 @@ REST_FRAMEWORK = {
 }
 
 #A4 based Settings
-A4_ORGANISATIONS_MODEL = "a4organisations.Organisation"
+A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_name }}_organisations.Organisation"
 
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
