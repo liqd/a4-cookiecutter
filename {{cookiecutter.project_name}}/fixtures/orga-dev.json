@@ -1,0 +1,11 @@
+[
+  {
+    "model": "{{ cookiecutter.project_name }}_organisations.Organisation",
+    "pk": 1,
+    "fields": {
+      "name": "liqd",
+      "slug": "liqd",
+      "initiators": ["1","3"]
+    }
+  }
+]
