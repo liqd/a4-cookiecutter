@@ -1,0 +1,57 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+
+{% block head_title %}{% trans "Register" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>{% trans "Register" %}</h1>
+
+            <p>{% blocktrans %}Already have an account? Then please
+                <a href="{{ login_url }}">login</a>.{% endblocktrans %}</p>
+
+            <form id="signup_form" method="post" action="{% url 'account_signup' %}">
+                <div class="form-group">
+                {% csrf_token %}
+
+                {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+                {% endfor %}
+                </div>
+
+                {% for field in form.visible_fields %}
+                    <div class="form-group">
+                      {{ field.label_tag }}
+                      {% render_field field class="form-control" %}
+                      {% if field.checkbox %}
+                          {% render_field field class="form-check" %}
+                      {% endif %}
+                      {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                      {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="form-check">
+                    <label class="form-check__label">
+                        <input type="checkbox" class="form-check-input" id="id_terms_of_use">
+                        {% blocktrans with terms_of_use_url="/terms-of-use" privacy_policy="/datenschutz" %}
+                         I have read and accept the <a href="{{terms_of_use_url}}" target="_blank">terms of use</a> and the <a href="{{privacy_policy}}" target="_blank">privacy policy</a>.
+                        {% endblocktrans %}
+                    </label>
+                    {{ form.terms_of_use.errors }}
+                </div>
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+
+                <div class="u-spacer-bottom">
+                    <button class="btn btn--primary" type="submit">{% trans "Register" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

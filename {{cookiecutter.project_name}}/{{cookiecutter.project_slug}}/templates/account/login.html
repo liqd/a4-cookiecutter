@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n account %}
+{% load widget_tweaks %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>{% trans "Login" %}</h1>
+
+            <p>{% blocktrans %}If you have not created an account yet, then please <a href="{{ signup_url }}">register</a> first.{% endblocktrans %}</p>
+
+            <form  method="POST" action="{% url 'account_login' %}">
+                <div class="form-group">
+                  {% csrf_token %}
+                  {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field }}
+                  {% endfor %}
+                </div>
+
+                {% for field in form.visible_fields %}
+                  <div class="form-group">
+                    {{ field.label_tag }}
+                    {% render_field field class="form-control" %}
+                    {% if field.checkbox %}
+                        {% render_field field class="form-check" %}
+                    {% endif %}
+                    {% if field.help_text %}
+                      <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">{% trans "Login" %}</button>
+                <a class="btn btn--link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
