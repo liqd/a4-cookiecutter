@@ -7,8 +7,8 @@ var autoprefixer = require('autoprefixer')
 module.exports = {
   entry: {
     adhocracy4: [
-      './cookie2/assets/scss/style.scss',
-      './cookie2/assets/js/app.js'
+      './{{ cookiecutter.project_slug}}/assets/scss/style.scss',
+      './{{ cookiecutter.project_slug}}/assets/js/app.js'
     ],
     vendor: [
       'classnames',
@@ -23,23 +23,23 @@ module.exports = {
       'react-dom',
       'react-flip-move',
     ],
-
+{% if cookiecutter.use_leaflet == 'y' %}
     leaflet: [
       'leaflet',
       'leaflet/dist/leaflet.css',
       'leaflet.markercluster',
       'leaflet.markercluster/dist/MarkerCluster.css',
     ],
-
+{% endif %}
     datepicker: [
-      './cookie2/assets/js/init-picker.js',
+      './{{ cookiecutter.project_slug}}/assets/js/init-picker.js',
       'datepicker/css/datepicker.min.css'
     ]
   },
   output: {
     libraryTarget: 'this',
     library: '[name]',
-    path: path.resolve('./cookie2/static/'),
+    path: path.resolve('./{{ cookiecutter.project_slug}}/static/'),
     publicPath: '/static/',
     filename: '[name].js'
   },
@@ -121,7 +121,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: './cookie2/assets/images/**/*',
+        from: './{{ cookiecutter.project_slug}}/assets/images/**/*',
         to: 'images/',
         flatten: true
       }
