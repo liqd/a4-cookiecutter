@@ -1,0 +1,15 @@
+{% raw %}{% extends "a4dashboard/base_dashboard.html" %}
+{% load i18n widget_tweaks %}
+
+{% block title %}{% endblock%}
+
+{% block dashboard_content %}
+    <form enctype="multipart/form-data" action="{{ request.path }}" method="post">
+        {% csrf_token %}
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+        {% endfor %}
+
+        {% include '{% endraw %}{{ cookiecutter.project_app_prefix}}{% raw %}_contrib/form_fields.html' with fields=form.visible_fields %}
+    </form>
+{% endblock %}{% endraw %}

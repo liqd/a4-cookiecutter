@@ -1,9 +1,4 @@
 {% raw %}{% load i18n widget_tweaks %}
 
-{% for field in form.visible_fields %}
-  <div class="form-group">
-      <label for="{{ field.id }}">{{ field.label_tag }}</label>
-      {% render_field field class+="form-control" %}
-      <small id="{{ field.id }}" class="form-text text-muted">{{ field.help_text }}</small>
-  </div>
-{% endfor %}{% endraw %}
+{% include '{% endraw %}{{ cookiecutter.project_app_prefix}}{% raw %}_contrib/form_fields.html' with fields=form.visible_fields %}
+{% endraw %}
