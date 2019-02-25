@@ -7,15 +7,15 @@ var autoprefixer = require('autoprefixer')
 module.exports = {
   entry: {
     adhocracy4: [
-      './{{ cookiecutter.project_slug}}/assets/scss/style.scss',
-      './{{ cookiecutter.project_slug}}/assets/js/app.js'
+      './cookie2/assets/scss/style.scss',
+      './cookie2/assets/js/app.js'
     ],
     vendor: [
       'classnames',
-      '@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss',
-      '@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss',
-      '@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss',
-      '@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss',
+      '@fortawesome/fontawesome-free/scss/fontawesome.scss',
+      '@fortawesome/fontawesome-free/scss/brands.scss',
+      '@fortawesome/fontawesome-free/scss/regular.scss',
+      '@fortawesome/fontawesome-free/scss/solid.scss',
       'jquery',
       'js-cookie',
       'react',
@@ -23,23 +23,23 @@ module.exports = {
       'react-dom',
       'react-flip-move',
     ],
-{% if cookiecutter.use_leaflet == 'y' %}
+
     leaflet: [
       'leaflet',
       'leaflet/dist/leaflet.css',
       'leaflet.markercluster',
       'leaflet.markercluster/dist/MarkerCluster.css',
     ],
-{% endif %}
+
     datepicker: [
-      './{{ cookiecutter.project_slug}}/assets/js/init-picker.js',
+      './cookie2/assets/js/init-picker.js',
       'datepicker/css/datepicker.min.css'
     ]
   },
   output: {
     libraryTarget: 'this',
     library: '[name]',
-    path: path.resolve('./{{ cookiecutter.project_slug}}/static/'),
+    path: path.resolve('./cookie2/static/'),
     publicPath: '/static/',
     filename: '[name].js'
   },
@@ -121,7 +121,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: './{{ cookiecutter.project_slug}}/assets/images/**/*',
+        from: './cookie2/assets/images/**/*',
         to: 'images/',
         flatten: true
       }
