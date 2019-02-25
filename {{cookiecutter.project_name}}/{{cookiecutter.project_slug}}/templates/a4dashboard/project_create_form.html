@@ -1,0 +1,45 @@
+{% raw %}{% extends "a4dashboard/base_dashboard.html" %}
+{% load i18n widget_tweaks %}
+
+{% block title %}{% trans "Create project based on" %} {{ view.blueprint.title }} &mdash; {{ block.super }}{% endblock %}
+
+{% block dashboard_content %}
+    <h1>{% trans "Create project based on" %} {{ view.blueprint.title }}</h1>
+
+    {% for error in form.non_field_errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    <form enctype="multipart/form-data" action="{{ request.path }}" method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field.errors }}
+        {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id }}">{{ field.label_tag }}</label>
+            {% render_field field class+="form-control" %}
+            <small id="{{ field.id }}" class="form-text text-muted">{{ field.help_text }}</small>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">{% trans 'Save changes'%}</button>
+
+        <p>{% trans 'After saving the draft project you can further customize and edit your project and eventually publish it.' %}</p>
+
+        <input type="submit" class="btn btn--primary" name="send" value="{% trans 'Create draft' %}"/>
+        <a href="{% url 'a4dashboard:blueprint-list' organisation_slug=view.organisation.slug %}"
+           class="btn btn--light">{% trans 'Cancel' %}</a>
+    </form>
+{% endblock %}
+
+{% block extra_js %}
+    {{ form.media.js }}
+{% endblock %}
+{% block extra_css %}
+    {{ form.media.css }}
+{% endblock %}{% endraw %}
