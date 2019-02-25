@@ -9,7 +9,7 @@
 <div>
   <div class="row">
     <div class="col-12 mx-auto" role="tablist">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs mb-3">
       <li class="nav-item ml-auto">
         <a href="{% url 'a4dashboard:project-list' organisation_slug=view.organisation.slug %}"
            class="nav-link {% ifequal view.menu_item 'project' %}active{% endifequal %}">{% trans 'Participation projects' %}
