@@ -1,0 +1,51 @@
+{% raw %}{% load i18n project_tags thumbnail %}
+{% project_tile_image project as project_image %}
+{% project_tile_image_copyright project as project_image_copyright %}
+
+
+<li class="list-group-item">
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item flex-fill" {% if project_image %}style="background-image: url({% thumbnail project_image '170x170' crop %})"{% endif %}></li>
+        <li class="list-group-item flex-fill">
+            <h2>{{ project.name }}</h2>
+            <div class="dashboard-list-labels">
+                {% if project.has_finished %}
+                <span class="label">{% trans "Finished" %}</span>
+                {% endif %}
+                {% if not project.is_public %}
+                <span class="label">{% trans 'private' %}</span>
+                {% endif %}
+                </div>
+        </li>
+        <li class="list-group-item">
+            <div class="btn-group" role="group">
+                <a class="btn btn-light">{% if project.is_draft %}
+                        {% trans 'Preview' %}
+                        {% else %}
+                        {% trans 'View' %}
+                        {% endif %}</a>
+                <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn-light">
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                        {% trans 'Edit'%}
+                </a>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop{{ project.id}}" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ project.id}}">
+                        <div class="dropdown-item">
+                            <form method="post" class="">
+                                {% csrf_token %}
+                                <input type="hidden" name="project_pk" value="{{ project.pk }}">
+                                <button type="submit" name="duplicate" value="{{ project }}"
+                                            class="">
+                                        <i class="far fa-copy" aria-hidden="true"></i>
+                                        {% trans 'Duplicate' %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>
+{% endraw %}

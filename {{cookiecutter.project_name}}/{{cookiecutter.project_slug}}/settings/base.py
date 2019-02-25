@@ -54,8 +54,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'adhocracy4.dashboard',
+    'adhocracy4.forms',
     'adhocracy4.administrative_districts',
     'adhocracy4.images',
+    'adhocracy4.maps',
     'adhocracy4.organisations',
     'adhocracy4.phases',
     'adhocracy4.projects',
@@ -145,6 +148,29 @@ CKEDITOR_CONFIGS = {
             ['NumberedList', 'BulletedList'],
             ['Link', 'Unlink']
         ]
+    },
+    'image-editor': {
+        'width': '100%',
+        'title': _('Rich text editor'),
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['Image'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink']
+        ]
+    },
+    'collapsible-image-editor': {
+        'width': '100%',
+        'title': _('Rich text editor'),
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['Image'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['CollapsibleItem']
+        ]
     }
 }
 
@@ -153,7 +179,45 @@ BLEACH_LIST = {
         'tags': ['p','strong','em','u','ol','li','ul','a'],
         'attributes': {
             'a': ['href', 'rel'],
-        }
+        },
+    },
+    'image-editor': {
+        'tags': ['p','strong','em','u','ol','li','ul','a','img'],
+        'attributes': {
+            'a': ['href', 'rel'],
+            'img': ['src', 'alt', 'style']
+        },
+        'styles': [
+            'float',
+            'margin',
+            'padding',
+            'width',
+            'height',
+            'margin-bottom',
+            'margin-top',
+            'margin-left',
+            'margin-right',
+        ],
+    },
+    'collapsible-image-editor': {
+        'tags': ['p', 'strong', 'em', 'u', 'ol', 'li', 'ul', 'a', 'img',
+                 'div'],
+        'attributes': {
+            'a': ['href', 'rel'],
+            'img': ['src', 'alt', 'style'],
+            'div': ['class']
+        },
+        'styles': [
+            'float',
+            'margin',
+            'padding',
+            'width',
+            'height',
+            'margin-bottom',
+            'margin-top',
+            'margin-left',
+            'margin-right',
+        ]
     }
 }
 
@@ -277,3 +341,5 @@ A4_REPORTABLES = (
 ACTIONABLE = [
     ('a4comments', 'comment')
 ]
+
+A4_PROJECT_TOPICS = ()

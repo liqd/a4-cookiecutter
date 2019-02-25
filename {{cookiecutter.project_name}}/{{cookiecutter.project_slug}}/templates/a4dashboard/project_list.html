@@ -1,0 +1,35 @@
+{% raw %}
+{% extends "a4dashboard/base_dashboard.html" %}
+{% load i18n %}
+
+{% block dashboard_content %}
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group">
+              <a href="{% url 'a4dashboard:project-list' organisation_slug=view.organisation.slug %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'project-list' %}active{% endif %}">{% trans "Projects" %}</a>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="d-flex flex-row justify-content-between">
+            <h1>{% trans 'Projects' %}</h1>
+            <div>
+              <a href="{% url 'a4dashboard:blueprint-list' organisation_slug=view.organisation.slug %}" class="btn btn-primary">
+                  {% trans 'New Project' %}
+              </a>
+          </div>
+        </div>
+
+    {% if project_list|length > 0 %}
+    <ul class="list-group">
+        {% for project in project_list %}
+            {% include "a4dashboard/includes/project_list_item.html" with project=project %}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% trans 'We could not find any projects.' %}</p>
+    {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endraw %}
