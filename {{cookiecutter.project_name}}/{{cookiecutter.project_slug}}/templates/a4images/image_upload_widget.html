@@ -1,29 +1,33 @@
 {% raw %}{% load i18n %}
 <div class="row">
     <div class="col-8">
-        {{ text_input }}
-        <span class="input-group-btn">
-            {% if has_image_set and not is_required %}
-            <label for="{{ checkbox_id }}" class="btn btn-danger"
-                   title="{% trans 'Remove the picture' %}">
-                <i class="fas fa-trash-alt"></i>
-            </label>
-            {% else %}
-            <label for="{{ id }}" class="btn btn-default" title="{% trans  'Upload a picture' %}">
-                <i class="fas fa-cloud-upload-alt"></i>
-            </label>
-            {% endif  %}
-        </span>
-        {{ file_input }}
-        <div class="alert alert-info" role="alert">
-            {% blocktrans %}
-            Your image will be uploaded/removed once you save your changes
-            at the end of this page.
-            {% endblocktrans %}
+        <div class="input-group mb-3">
+            {{ text_input }}
+            <span class="input-group-btn">
+                {% if has_image_set and not is_required %}
+                <label for="{{ checkbox_id }}" class="btn btn-danger"
+                       title="{% trans 'Remove the picture' %}">
+                    <i class="fas fa-trash-alt"></i>
+                </label>
+                {% else %}
+                <button for="{{ id }}" class="btn btn-default" type="button" title="{% trans  'Upload a picture' %}">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </button>
+                {% endif  %}
+            </span>
+        </div>
+        <div class="input-group mb-3">
+            {{ file_input }}
+            <div class="alert alert-info" role="alert">
+                {% blocktrans %}
+                Your image will be uploaded/removed once you save your changes
+                at the end of this page.
+                {% endblocktrans %}
+            </div>
         </div>
     </div>
     <div class="col-4">
-        <div class="form-{{ id }}">
+        <div class="form-{{ id }} test">
             {{ checkbox_input }}
             <img class="img-fluid" id="{{ file_id }}"
                  src="{% if has_image_set %}{{ file_url }}{% else %}data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs={% endif %}"

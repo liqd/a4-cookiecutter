@@ -19,11 +19,13 @@
         </li>
         <li class="list-group-item border-0">
             <div class="btn-group" role="group">
-                <a class="btn btn-light">{% if project.is_draft %}
+                <a class="btn btn-light">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    {% if project.is_draft %}
                         {% trans 'Preview' %}
-                        {% else %}
+                    {% else %}
                         {% trans 'View' %}
-                        {% endif %}</a>
+                    {% endif %}</a>
                 <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn-light">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         {% trans 'Edit'%}
