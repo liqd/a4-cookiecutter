@@ -10,17 +10,6 @@
         {{ hidden_field }}
         {% endfor %}
 
-        {% for field in form.visible_fields %}
-        <div class="form-group">
-        {{ field.label_tag }}
-            {% render_field field class="form-control" %}
-        {% if field.checkbox %}
-            {% render_field field class="form-check" %}
-        {% endif %}
-        {% if field.help_text %}
-          <small class="form-text text-muted">{{ field.help_text }}</small>
-        {% endif %}
-        </div>
-        {% endfor %}
+        {% include '{% endraw %}{{ cookiecutter.project_app_prefix}}{% raw %}_contrib/form_fields.html' with fields=form.visible_fields %}
     </form>
 {% endblock %}{% endraw %}
