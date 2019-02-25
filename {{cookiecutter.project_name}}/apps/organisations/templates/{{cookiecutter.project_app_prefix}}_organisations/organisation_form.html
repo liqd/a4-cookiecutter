@@ -1,0 +1,26 @@
+{% raw %}{% extends "a4dashboard/base_dashboard.html" %}
+{% load i18n widget_tweaks %}
+
+{% block title %}{% endblock%}
+
+{% block dashboard_content %}
+    <form enctype="multipart/form-data" action="{{ request.path }}" method="post">
+        {% csrf_token %}
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+        {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+        {% if field.checkbox %}
+            {% render_field field class="form-check" %}
+        {% endif %}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        </div>
+        {% endfor %}
+    </form>
+{% endblock %}{% endraw %}
