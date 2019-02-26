@@ -12,6 +12,7 @@
 
 .btn--light {
     @extend .btn-light;
+    border: 1px solid $border-color;
 }
 
 .btn--link {
