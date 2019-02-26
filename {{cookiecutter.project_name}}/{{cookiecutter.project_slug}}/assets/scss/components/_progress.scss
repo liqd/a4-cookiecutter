@@ -5,7 +5,7 @@
 }
 
 .progress__background {
-    stroke: $body-color;
+    stroke: $gray-300;
 }
 
 .progress__value {
@@ -45,5 +45,5 @@
 }
 
 .progress__check-unpublished {
-    fill: $body-color;
+    fill: $gray-300;
 }
