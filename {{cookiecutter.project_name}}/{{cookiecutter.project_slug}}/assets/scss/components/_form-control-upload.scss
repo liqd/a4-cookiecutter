@@ -1,0 +1,22 @@
+.form-control-upload {
+    position: relative;
+    display: block;
+
+    .form-control-file {
+        cursor: pointer;
+        float: none;
+        left: 0;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+    }
+}
+
+.clear-image {
+    display: none;
+}
+
+.clear-image:checked + img {
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
