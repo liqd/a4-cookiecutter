@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'adhocracy4.categories',
     'adhocracy4.ckeditor',
     'adhocracy4.dashboard',
     'adhocracy4.forms',
@@ -71,6 +72,7 @@ INSTALLED_APPS = [
     'cms.home.apps.Config',
     'cms.snippets.apps.Config',
 
+    'apps.ideas',
     'apps.contrib',
     'apps.users.apps.UserConfig',
     'apps.organisations'
