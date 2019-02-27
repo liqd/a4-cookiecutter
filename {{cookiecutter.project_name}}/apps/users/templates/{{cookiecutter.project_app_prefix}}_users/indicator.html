@@ -14,7 +14,6 @@
             id="user-actions"
     >
         {{ request.user.username }}
-        <i class="fa fa-caret-down" aria-hidden="true"></i>
     </button>
     <div class="dropdown-menu">
         <form class="u-inline" action="{% url 'account_logout' %}" method="post" aria-label="{% trans 'Logout' %}">

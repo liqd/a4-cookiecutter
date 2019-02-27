@@ -5,7 +5,7 @@
 
 <li class="list-group-item">
     <ul class="list-group d-flex flex-row">
-        <li class="list-group-item flex-fill border-0" {% if project_image %}style="background-image: url({% thumbnail project_image '170x170' crop %})"{% endif %}></li>
+        <li class="list-group-item flex-fill border-0 rounded" {% if project_image %}style="background-image: url({% thumbnail project_image '170x170' crop %})"{% endif %}></li>
         <li class="list-group-item flex-fill border-0">
             <h2>{{ project.name }}</h2>
             <div class="dashboard-list-labels">
@@ -19,11 +19,13 @@
         </li>
         <li class="list-group-item border-0">
             <div class="btn-group" role="group">
-                <a class="btn btn-light">{% if project.is_draft %}
+                <a class="btn btn-light">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    {% if project.is_draft %}
                         {% trans 'Preview' %}
-                        {% else %}
+                    {% else %}
                         {% trans 'View' %}
-                        {% endif %}</a>
+                    {% endif %}</a>
                 <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn-light">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         {% trans 'Edit'%}

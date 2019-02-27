@@ -3,10 +3,10 @@
 
 
 {% block dashboard_content %}
-<div class="row">
+<div class="row mb-4">
     <div class="col-3">
 
-        <ul class="list-group">
+        <ul class="list-group mb-3">
             <li class="list-group-item active">{{ project.name }}</li>
             {% for item in dashboard_menu.project %}
             <li class="list-group-item">
@@ -23,7 +23,7 @@
 
 
         {% for module_menu in dashboard_menu.modules %}
-        <ul class="list-group">
+        <ul class="list-group mb-3">
             <li class="list-group-item active">{{ module_menu.module.name }}</li>
             {% for item in module_menu.menu %}
             <li class="list-group-item">
@@ -46,8 +46,11 @@
 
     <div class="col-3">
         {% include "a4dashboard/includes/progress.html" with value=project_progress.valid max=project_progress.required project=project %}
-        {% include "a4dashboard/includes/preview.html" with project=project %}
+        <div class="mt-3">
+            {% include "a4dashboard/includes/preview.html" with project=project %}
+        </div>
     </div>
 </div>
 {% endblock %}
+
 {% endraw %}

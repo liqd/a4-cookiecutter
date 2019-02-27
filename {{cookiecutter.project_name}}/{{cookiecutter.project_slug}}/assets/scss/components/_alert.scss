@@ -1,3 +1,7 @@
+.alert {
+    margin-top: 0.25*$spacer;
+}
+
 .alert--success {
     @extend .alert-success;
 }

@@ -12,7 +12,7 @@
   {% elif field|is_radiobutton %}
   <div class="form-group">
     <label for="{{ field.id }}">{{ field.label }}</label>
-    {% render_field field %}
+    {% render_field field class="list-unstyled" %}
     {% if field.help_text %}
       <small class="form-text text-muted">{{ field.help_text }}</small>
     {% endif %}
