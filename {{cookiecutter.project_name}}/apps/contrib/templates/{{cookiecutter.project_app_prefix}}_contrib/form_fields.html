@@ -3,19 +3,19 @@
 {% for field in fields %}
   {% if field|is_checkbox %}
   <div class="form-group form-check">
+    {% render_field field class="form-check-input" %}
     <label class="form-check-label mb-1" for="{{ field.id }}">{{ field.label }}</label>
     {% if field.help_text %}
       <small class="form-text text-muted mt-0 mb-2">{{ field.help_text }}</small>
     {% endif %}
-    {% render_field field class="form-check-input" %}
   </div>
   {% elif field|is_radiobutton %}
   <div class="form-group">
     <label for="{{ field.id }} mb-1">{{ field.label }}</label>
+    {% render_field field class="list-unstyled" %}
     {% if field.help_text %}
       <small class="form-text text-muted mt-0 mb-2">{{ field.help_text }}</small>
     {% endif %}
-    {% render_field field %}
   </div>
   {% else %}
   <div class="form-group">
