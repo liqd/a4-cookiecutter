@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'adhocracy4.ckeditor',
     'adhocracy4.dashboard',
     'adhocracy4.forms',
     'adhocracy4.administrative_districts',
