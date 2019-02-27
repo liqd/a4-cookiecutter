@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'adhocracy4.categories',
     'adhocracy4.ckeditor',
     'adhocracy4.dashboard',
     'adhocracy4.forms',
@@ -71,6 +72,7 @@ INSTALLED_APPS = [
     'cms.home.apps.Config',
     'cms.snippets.apps.Config',
 
+    'apps.ideas',
     'apps.contrib',
     'apps.users.apps.UserConfig',
     'apps.organisations'
@@ -326,7 +328,7 @@ REST_FRAMEWORK = {
 }
 
 #A4 based Settings
-A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_name }}_organisations.Organisation"
+A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Organisation"
 
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
@@ -344,4 +346,13 @@ ACTIONABLE = [
     ('a4comments', 'comment')
 ]
 
+A4_CATEGORIZABLE = (
+    ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+)
+
 A4_PROJECT_TOPICS = ()
+
+A4_DASHBOARD = {
+    'PROJECT_DASHBOARD_CLASS': 'adhocracy4.dashboard.ProjectDashboard',
+    'BLUEPRINTS': 'apps.dashboard.blueprints.blueprints'
+}

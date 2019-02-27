@@ -1,6 +1,6 @@
 [
   {
-    "model": "{{ cookiecutter.project_name }}_organisations.Organisation",
+    "model": "{{ cookiecutter.project_app_prefix }}_organisations.Organisation",
     "pk": 1,
     "fields": {
       "name": "liqd",
