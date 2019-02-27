@@ -8,21 +8,39 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from django.contrib import admin
 
+from rest_framework import routers
+
+from adhocracy4.api import routers as a4routers
+from adhocracy4.ratings.api import RatingViewSet
+from adhocracy4.reports.api import ReportViewSet
+from adhocracy4.comments.api import CommentViewSet
+
 from adhocracy4.projects import urls as project_urls
 
 from apps.dashboard import urls as dashboard_urls
+from apps.ideas import urls as ideas_urls
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
 }
 
+router = routers.DefaultRouter()
+router.register(r'reports', ReportViewSet, base_name='reports')
+
+ct_router = a4routers.ContentTypeDefaultRouter()
+ct_router.register(r'comments', CommentViewSet, base_name='comments')
+ct_router.register(r'ratings', RatingViewSet, base_name='ratings')
+
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^api/', include(router.urls)),
+    url(r'^api/', include(ct_router.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
+    url(r'^ideas/', include(ideas_urls)),
     url(r'^jsi18n/$', javascript_catalog,
         js_info_dict, name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
