@@ -36,7 +36,6 @@
             id="login-register"
     >
         {% trans "Login" %}/{% trans "Register" %}
-        <i class="fa fa-caret-down" aria-hidden="true"></i>
     </button>
     <div class="dropdown-menu" aria-labelledby="login-register">
         <a class="dropdown-item" href="{% url 'account_login' %}?next={{ redirect_field_value|urlencode }}">{% trans "Login" %}</a>
