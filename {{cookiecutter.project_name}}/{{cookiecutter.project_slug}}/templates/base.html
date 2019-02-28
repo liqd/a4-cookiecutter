@@ -1,6 +1,7 @@
 {% raw %}<!DOCTYPE html>
 {% load i18n wagtailuserbar static %}
-<html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8" />
@@ -28,6 +29,9 @@
             </div>
         </div>
         {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+        {% block extra_css %}
         {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
