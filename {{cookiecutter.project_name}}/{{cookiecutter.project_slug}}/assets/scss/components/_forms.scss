@@ -24,3 +24,10 @@
 .django-ckeditor-widget {
     display: block !important;
 }
+
+.form-hint {
+    font-size: 80%;
+    font-weight: 400;
+    color: $gray-600;
+    margin-bottom: 0.5*$spacer;
+}
