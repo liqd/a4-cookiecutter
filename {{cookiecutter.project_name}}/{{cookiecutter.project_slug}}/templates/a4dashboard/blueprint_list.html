@@ -6,46 +6,49 @@
 
 {% block dashboard_content %}
 <div class="container">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="offset-1 col-md-10">
         <h1 class="">
             {% trans "What kind of project would you like to create?" %}
         </h1>
 
         <div class="row">
-            <div class="col-4 card">
-                <img class="card-img-top" src="{% static 'images/placeholder_transparent.png' %}" alt="Decision support tool">
-                <div class="card-body">
-                    <h2 class="sans-serif h4">{% trans 'Not sure which template?' %}</h2>
-                    <h3 class="h5">{% trans "Try the Decision Support Tool (DST)!" %}</h3>
-                        {% trans "In just three minutes you'll find out which process suits your needs. It's easy." %}
-                    <a href="" class="btn btn-primary">
-                        {% trans 'Choose template'%}
-                    </a>
-                </div>
-            </div>
-
-            {% for blueprint_slug, blueprint in view.blueprints %}
-            <div class="col-4 card">
-                <img class="card-img-top" src="{% static blueprint.image %}" alt="{{ blueprint.title }}">
-                <div class="card-body">
-                    <h2 class="card-title">{{ blueprint.title }}</h2>
-                    <p class="card-text">{{ blueprint.description | linebreaks }}</p>
-                    <ul class="list-unstyled">
-                        {% for phase_content in blueprint.content %}
-                        <li><strong>Phase {{ forloop.counter }}</strong>: {{ phase_content.description }}</li>
-                        {% endfor %}
-                    </ul>
-                    <div class="">
-                        <a href="{% url 'a4dashboard:project-create' organisation_slug=view.organisation.slug blueprint_slug=blueprint_slug %}"
-                           class="btn btn-primary">
-                            {% trans 'use this template' %}
-                        </a>
-                        <button class="btn btn-link" type="button" data-toggle="modal" data-target="#dst-infopage-{{ blueprint_slug }}">{% trans 'Learn More' %}</button>
+            <div class="card-deck">
+                <div class="card px-0">
+                    <img class="card-img-top" src="{% static 'images/placeholder_transparent.png' %}" alt="Decision support tool">
+                    <div class="card-body">
+                        <h2 class="sans-serif h4">{% trans 'Not sure which template?' %}</h2>
+                        <h3 class="h5">{% trans "Try the Decision Support Tool (DST)!" %}</h3>
+                            {% trans "In just three minutes you'll find out which process suits your needs. It's easy." %}
+                        <div class="text-center mt-3">
+                            <a href="" class="btn btn-primary">
+                                {% trans 'Choose template'%}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
 
+            {% for blueprint_slug, blueprint in view.blueprints %}
+                <div class="card px-0">
+                    <img class="card-img-top" src="{% static blueprint.image %}" alt="{{ blueprint.title }}">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ blueprint.title }}</h2>
+                        <p class="card-text">{{ blueprint.description | linebreaks }}</p>
+                        <ul class="list-unstyled">
+                            {% for phase_content in blueprint.content %}
+                            <li><strong>Phase {{ forloop.counter }}</strong>: {{ phase_content.description }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="text-center">
+                            <a href="{% url 'a4dashboard:project-create' organisation_slug=view.organisation.slug blueprint_slug=blueprint_slug %}"
+                               class="btn btn-primary">
+                                {% trans 'use this template' %}
+                            </a>
+                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#dst-infopage-{{ blueprint_slug }}">{% trans 'Learn More' %}</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}                
+            </div>
         </div>
     </div>
 </div>
