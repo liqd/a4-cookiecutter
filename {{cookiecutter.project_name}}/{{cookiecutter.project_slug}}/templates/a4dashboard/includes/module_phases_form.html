@@ -1,0 +1,14 @@
+{% raw %}{% load a4dashboard_tags %}
+
+{{ form.management_form }}
+{% for phase_form in form %}
+
+    {% get_phase_name phase_form.type.value as phasename %}
+    <h3>{{ phasename }}</h3>
+
+    {% include '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_contrib/form_fields.html' with fields=phase_form.visible_fields %}
+
+    {% for hidden in phase_form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+{% endfor %}{% endraw %}
