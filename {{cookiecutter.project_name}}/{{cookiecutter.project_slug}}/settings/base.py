@@ -57,10 +57,12 @@ INSTALLED_APPS = [
     'adhocracy4.categories',
     'adhocracy4.ckeditor',
     'adhocracy4.dashboard',
+    'adhocracy4.filters',
     'adhocracy4.forms',
     'adhocracy4.administrative_districts',
     'adhocracy4.images',
     'adhocracy4.maps',
+    'adhocracy4.rules',
     'adhocracy4.organisations',
     'adhocracy4.phases',
     'adhocracy4.projects',
@@ -74,6 +76,7 @@ INSTALLED_APPS = [
 
     'apps.ideas',
     'apps.contrib',
+    'apps.projects',
     'apps.users.apps.UserConfig',
     'apps.organisations'
 ]
@@ -332,10 +335,12 @@ A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Or
 
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
+    ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
 )
 
 A4_RATEABLES = (
     ('a4comments', 'comment'),
+    ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
 )
 
 A4_REPORTABLES = (

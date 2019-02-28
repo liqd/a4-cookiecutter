@@ -6,6 +6,7 @@ from rules.contrib.views import PermissionRequiredMixin
 
 from adhocracy4.filters import views as filter_views
 from adhocracy4.modules.models import Module
+from adhocracy4.projects.mixins import ProjectMixin
 
 from . import forms
 from . import models as idea_models
@@ -13,6 +14,7 @@ from .filters import IdeaFilterSet
 
 
 class IdeaListView(
+    ProjectMixin,
     filter_views.FilteredListView
 ):
     model = idea_models.Idea
@@ -30,7 +32,7 @@ class IdeaDetailView(PermissionRequiredMixin, generic.DetailView):
     model = idea_models.Idea
     queryset = idea_models.Idea.objects.annotate_positive_rating_count() \
         .annotate_negative_rating_count()
-    permission_required = 'euth_ideas.view_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.view_idea'
 
     @property
     def raise_exception(self):
@@ -46,7 +48,7 @@ class IdeaDetailView(PermissionRequiredMixin, generic.DetailView):
 class IdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
     model = idea_models.Idea
     form_class = forms.IdeaForm
-    permission_required = 'euth_ideas.modify_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.modify_idea'
 
     @property
     def raise_exception(self):
@@ -67,7 +69,7 @@ class IdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
 class IdeaCreateView(PermissionRequiredMixin, generic.CreateView):
     model = idea_models.Idea
     form_class = forms.IdeaForm
-    permission_required = 'euth_ideas.propose_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.propose_idea'
 
     @property
     def raise_exception(self):
@@ -103,7 +105,7 @@ class IdeaCreateView(PermissionRequiredMixin, generic.CreateView):
 class IdeaDeleteView(PermissionRequiredMixin, generic.DeleteView):
     model = idea_models.Idea
     success_message = _("Your Idea has been deleted")
-    permission_required = 'euth_ideas.modify_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.modify_idea'
 
     @property
     def raise_exception(self):

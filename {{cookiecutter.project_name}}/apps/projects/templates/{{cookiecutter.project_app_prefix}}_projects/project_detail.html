@@ -1,0 +1,24 @@
+{% raw %}{% extends "base.html" %}
+{% load i18n static ckeditor_tags %}
+
+{% block title %}{{view.project.name}}{% endblock %}
+
+{% block extra_messages %}
+    {{ block.super }}
+
+    {% if view.project.is_draft %}
+        <div class="alert alert-warning alert-top" role="alert">
+            <div class="container-narrow alert-text">
+                {% trans 'This project is in not published yet.' %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ project.view.name }}</h1>
+
+{% block phase_content %}{% endblock %}
+
+
+{% endblock %}{% endraw %}
