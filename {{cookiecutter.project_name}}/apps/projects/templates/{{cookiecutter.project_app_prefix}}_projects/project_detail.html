@@ -1,7 +1,7 @@
 {% raw %}{% extends "base.html" %}
-{% load i18n static ckeditor_tags %}
-
-{% block title %}{{view.project.name}}{% endblock %}
+{% load i18n static ckeditor_tags project_tags thumbnail tz %}
+{% project_tile_image project as project_image %}
+{% project_tile_image_copyright project as project_image_copyright %}
 
 {% block extra_messages %}
     {{ block.super }}
@@ -16,9 +16,68 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ project.view.name }}</h1>
+<div class="hero my-5">
+    <h1 class="text-center">{{ view.project.name }}</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn--light float-right" data-embed-target="external">{% trans 'Edit' %}</a>
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+               <li class="nav-item">
+                   <a id="info-tab" class="nav-link " href="#information" data-toggle="tab">{% trans "Information" %}</a>
+               </li>
+               <li class="nav-item">
+                   <a id="participation-tab" role="tab" class="nav-link" href="#participation" data-toggle="tab">{% trans "Participation" %}</a>
+               </li>
+               <li class="nav-item">
+                   <a id="result-tab" class="nav-link active" href="#result" data-toggle="tab">{% trans "Result" %}</a>
+               </li>
+            </ul>
+        </div>
+    </div>
 
-{% block phase_content %}{% endblock %}
+<div class="row">
+    <div class="col-md-10 mx-auto mt-5">
 
+        <div class="tab-content my-5" id="tab-content">
+          <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+              <h3 class="text-center">{% trans "Information" %}</h3>
+              <p>{{ view.project.information }}</p>
+          </div>
+          <div class="tab-pane fade" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+            {% if not request.get_full_path == offlineevent_url %}
+            <div>
+                {% if not view.phase %}
+                  {% trans 'Welcome!' as title %}
+                  {% trans 'This project has not started yet!' as text %}
+                {% endif %}
+
+                {% if view.phase and view.phase.is_over %}
+                  {% if view.project.future_phases or view.project.active_phase  %}
+                    {% trans 'Thanks for participating!' as title %}
+                    {% trans 'This phase is already over. Thanks a lot to everyone for taking part in the project! The next phase will start soon.' as text %}
+                  {% else %}
+                    {% trans 'Thanks for participating!' as title %}
+                    {% trans 'This project is already over. Thanks a lot to everyone for taking part in the project!' as text %}
+                  {% endif %}
+                {% endif %}
+
+                {% if view.phase %}
+                <div>
+                    <h2>{{ view.phase.name }}</h2>
+                    <p>{{ view.phase.description }} </p>
+                </div>
+                {% endif %}
+                {% endif %}
+          </div>
+          <div class="tab-pane fade show active" id="result" role="tabpanel" aria-labelledby="result-tab">{{ view.project.result }}</div>
+        </div>
+
+        <div class="col-md-10 mx-auto my-5">
+            {% block phase_content %}{% endblock %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}{% endraw %}
