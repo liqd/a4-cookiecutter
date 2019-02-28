@@ -1,0 +1,32 @@
+.category-formset__form__category {
+    position: relative;
+
+    input {
+        padding-right: 1.5em;
+        width: 100%;
+    }
+}
+
+.category-formset__template {
+    display: none;
+}
+
+.category-formset__delete {
+    @include sr-only();
+
+    & ~ .category-formset__delete-label {
+        position: absolute;
+        right: 0.5em;
+        top: 0.6em;
+        color: $gray-600;
+    }
+
+    &:checked ~ label {
+        color: $warning;
+    }
+
+    &:checked ~ input {
+        color: $warning;
+        text-decoration: line-through;
+    }
+}
