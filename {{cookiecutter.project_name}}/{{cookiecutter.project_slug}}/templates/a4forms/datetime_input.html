@@ -1,11 +1,13 @@
 {% raw %}
-<div>
-    {{ date }}
-</div>
-<div>
-    {% if time_label.label %}
-        <label class="sr-only" for="{{ time_label.id_for_label }}">{{ time_label.label }}</label>
-    {% endif %}
-    {{ time }}
+<div class="row">
+    <div class="col-md-6">
+        {{ date }}
+    </div>
+    <div class="col-md-6">
+        {% if time_label.label %}
+            <label class="sr-only" for="{{ time_label.id_for_label }}">{{ time_label.label }}</label>
+        {% endif %}
+        {{ time }}
+    </div>
 </div>
 {% endraw %}
