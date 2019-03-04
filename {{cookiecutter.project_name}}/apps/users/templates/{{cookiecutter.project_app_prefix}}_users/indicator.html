@@ -16,6 +16,9 @@
         {{ request.user.username }}
     </button>
     <div class="dropdown-menu">
+        {% for organisation in request.user.organisations %}
+            <a href="{% url 'a4dashboard:project-list' organisation_slug=organisation.slug %}" class="dropdown-item">{{ organisation.name }}</a>
+        {% endfor %}
         <form class="u-inline" action="{% url 'account_logout' %}" method="post" aria-label="{% trans 'Logout' %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ redirect_field_value }}">
