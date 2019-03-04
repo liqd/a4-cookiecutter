@@ -23,12 +23,11 @@
 
             {% for field in form.visible_fields %}
             <div class="form-group">
-                <label for="{{ field.id }}">{{ field.label_tag }}</label>
+                <label for="{{ field.id }}" class="mb-1">{{ field.label }}</label>
+                <small id="{{ field.id }}" class="form-text text-muted mb-2">{{ field.help_text }}</small>
                 {% render_field field class+="form-control" %}
-                <small id="{{ field.id }}" class="form-text text-muted">{{ field.help_text }}</small>
             </div>
             {% endfor %}
-            <button type="submit" class="btn btn-primary mb-1">{% trans 'Save changes'%}</button>
 
             <p>{% trans 'After saving the draft project you can further customize and edit your project and eventually publish it.' %}</p>
 

@@ -1,7 +1,7 @@
 {% raw %}{% extends "base.html" %}
-{% load i18n static ckeditor_tags %}
-
-{% block title %}{{view.project.name}}{% endblock %}
+{% load i18n static ckeditor_tags project_tags thumbnail tz %}
+{% project_tile_image project as project_image %}
+{% project_tile_image_copyright project as project_image_copyright %}
 
 {% block extra_messages %}
     {{ block.super }}
@@ -16,9 +16,39 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ project.view.name }}</h1>
+<div class="hero my-5">
+    <h1 class="text-center">{{ view.project.name }}</h1>
+</div>
+<div class="row">
+    <div class="col-12 mx-auto">
+        <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn--light float-right" data-embed-target="external">{% trans 'Edit' %}</a>
+    </div>
 
-{% block phase_content %}{% endblock %}
+    <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="information" aria-selected="true">{% trans "Information" %}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="participation-tab" data-toggle="tab" href="#participation" role="tab" aria-controls="participation" aria-selected="false">{% trans "Participation" %}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">{% trans "Result" %}</a>
+        </li>
+    </ul>
 
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+            <h3 class="text-center">{% trans "Information" %}</h3>
+            <p>{{ view.project.information }}</p>
+        </div>
+        <div class="tab-pane fade" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+            <h3 class="text-center">{% trans "Information" %}</h3>
+            <p>{{ view.project.information }}</p>
+        </div>
+        <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab">
+            {{ view.project.result}}
+        </div>
+    </div>
+</div>
 
 {% endblock %}{% endraw %}
