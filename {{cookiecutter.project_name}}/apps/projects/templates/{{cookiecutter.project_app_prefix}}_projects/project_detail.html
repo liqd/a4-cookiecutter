@@ -1,5 +1,5 @@
 {% raw %}{% extends "base.html" %}
-{% load i18n static ckeditor_tags project_tags thumbnail tz %}
+{% load i18n static rules wagtailcore_tags ckeditor_tags project_tags thumbnail a4dashboard_tags %}
 {% project_tile_image project as project_image %}
 {% project_tile_image_copyright project as project_image_copyright %}
 
@@ -19,14 +19,14 @@
 <div class="hero my-5">
       <p>
       {% if not project.is_public %}
-      <span class="label label-private">{% trans 'private' %}</span>
+      <span class="badge badge-secondary">{% trans 'private' %}</span>
       {% endif %}
       {% if project.is_archived %}
-      <span class="label label-archived">{% trans 'archived' %}</span>
+      <span class="badge badge-info">{% trans 'archived' %}</span>
       {% elif project.has_finished %}
-      <span class="label label-finished">{% trans 'finished' %}</span>
+      <span class="badge badge-dark">{% trans 'finished' %}</span>
       {% elif days %}
-      <span class="label label-runningout">{{ days }}</span>
+      <span class="badge badge-warning">{{ days }}</span>
       {% endif %}
     </p>
     <div class="text-center">
@@ -55,48 +55,48 @@
 
     <ul class="nav nav-tabs col-12 mb-5" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="information" aria-selected="true">{% trans "Information" %}</a>
+            <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="information" aria-selected="true">{% trans "Information" %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="participation-tab" data-toggle="tab" href="#participation" role="tab" aria-controls="participation" aria-selected="false">{% trans "Participation" %}</a>
+            <a class="nav-link active" id="participation-tab" data-toggle="tab" href="#participation" role="tab" aria-controls="participation" aria-selected="false">{% trans "Participation" %}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">{% trans "Result" %}</a>
         </li>
     </ul>
 </div>
-<div class="row">
+<div class="row mb-5">
     <div class="offset-md-1 col-md-10">
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
                 <h3 class="text-center">{% trans "Information" %}</h3>
                 <div>
                     <p>{{ view.project.information|transform_collapsibles|richtext }}</p>
                     {% if view.project.contact_name or view.project.contact_address_text or view.project.contact_email or view.project.contact_phone or view.project.contact_url %}
                     <h4>{% trans 'Contact for questions' %}</h4>
-                    {% if view.project.contact_name %}
-                    <p>{{ view.project.contact_name }}</p>
-                    {% endif %}
-                    {% if view.project.contact_address_text %}
-                    <p>{{ view.project.contact_address_text|linebreaks }}</p>
-                    {% endif %}
-                    {% if view.project.contact_phone %}
-                    <p><strong>{% trans 'Telephone' %}: </strong>{{ view.project.contact_phone }}</p>
-                    {% endif %}
-                    {% if view.project.contact_email %}
-                    <a class="btn btn-primary" href="mailto:{{ view.project.contact_email }}">
-                     {% trans 'Email' %}
-                    </a>
-                    {% endif %}
-                    {% if view.project.contact_url %}
-                    <a class="btn btn-primary" target="_blank" href="{{ view.project.contact_url }}">
-                     {% trans 'Website' %}
-                    </a>
-                    {% endif %}
+                      {% if view.project.contact_name %}
+                      <p>{{ view.project.contact_name }}</p>
+                      {% endif %}
+                      {% if view.project.contact_address_text %}
+                      <p>{{ view.project.contact_address_text|linebreaks }}</p>
+                      {% endif %}
+                      {% if view.project.contact_phone %}
+                      <p><strong>{% trans 'Telephone' %}: </strong>{{ view.project.contact_phone }}</p>
+                      {% endif %}
+                      {% if view.project.contact_email %}
+                      <a class="btn btn-primary" href="mailto:{{ view.project.contact_email }}">
+                       {% trans 'Email' %}
+                      </a>
+                      {% endif %}
+                      {% if view.project.contact_url %}
+                      <a class="btn btn-primary" target="_blank" href="{{ view.project.contact_url }}">
+                       {% trans 'Website' %}
+                      </a>
+                      {% endif %}
                     {% endif %}
                 </div>
             </div>
-            <div class="tab-pane fade" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+            <div class="tab-pane fade show active" id="participation" role="tabpanel" aria-labelledby="participation-tab">
                 {% url 'offlineevent-detail' pk=object.pk as offlineevent_url %}
                 {% if not request.get_full_path == offlineevent_url %}
                 <div>
@@ -117,11 +117,15 @@
 
                     {% if view.phase %}
                     <div>
-                        <h2>{{ view.phase.name }}</h2>
-                        <p>{{ view.phase.description }} </p>
+                        <h2>{{ phase.name }}</h2>
+                        <p>{{ phase.description }} </p>
                     </div>
                     {% endif %}
                 {% endif %}
+                <div>
+                    <h2>{{ view.phase.name }}</h2>
+                    <p>{{ view.phase.description }} </p>
+                </div>
                 {% block phase_content %}{% endblock %}
                 </div>
             </div>
