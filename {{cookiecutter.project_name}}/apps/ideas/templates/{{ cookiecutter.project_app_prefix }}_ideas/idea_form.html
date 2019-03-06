@@ -4,7 +4,7 @@
 {% block title %}{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="offset-md-2 col-md-8">
+    <div class="offset-md-1 col-md-10">
         <div class="card">
             <div class="card-header">
                 {% if mode == 'create' %}
@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-primary">{% trans 'post'%}</button>
                     </div>
                     <div class="col-2">
-                        <a href="{% if mode == 'create' %}{% url 'project-detail' project.slug %}{% else %}{% url 'idea-detail' idea.slug %}{% endif %}" class="">{% trans 'cancel'%}</a>
+                        <a href="{% if mode == 'create' %}{% url 'project-detail' project.slug %}{% else %}{% url 'idea-detail' idea.slug %}{% endif %}" class="btn btn-link">{% trans 'cancel'%}</a>
                     </div>
                 </div>
             </form>

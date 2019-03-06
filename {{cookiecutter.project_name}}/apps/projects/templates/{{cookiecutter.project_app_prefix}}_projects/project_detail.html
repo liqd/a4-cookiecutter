@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="hero my-5">
+<div class="py-5 mb-5" style="{% if project.image %}background-image: url({{ project.image |thumbnail_url:'heroimage' }});{% endif %}">
       <p>
       {% if not project.is_public %}
       <span class="badge badge-secondary">{% trans 'private' %}</span>
