@@ -1,7 +1,5 @@
 {% raw %}{% extends "base.html" %}
-{% load i18n static rules wagtailcore_tags ckeditor_tags project_tags thumbnail a4dashboard_tags %}
-{% project_tile_image project as project_image %}
-{% project_tile_image_copyright project as project_image_copyright %}
+{% load i18n static rules wagtailcore_tags ckeditor_tags thumbnail a4dashboard_tags %}
 
 {% block extra_messages %}
     {{ block.super }}
@@ -16,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="py-5 mb-5" style="{% if project.image %}background-image: url({{ project.image |thumbnail_url:'heroimage' }});{% endif %}">
+<div class="py-5 mb-5" style="{% if project.image %}background-image: url({{ project.image |thumbnail_url:'heroimage' }}); background-repeat: no-repeat; background-size: cover;{% endif %}">
       <p>
       {% if not project.is_public %}
       <span class="badge badge-secondary">{% trans 'private' %}</span>
@@ -44,16 +42,15 @@
         <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn--small btn--light float-right" data-embed-target="external"> <i class="fa fa-edit"></i>{% trans 'Edit' %}</a>
     </div>
 </div>
-
-<div class="row">
+<div class="row mb-5">
     <!-- if statement not working right now
      {% if can_change_project %}
     <div class="col-12 mx-auto">
         <a href="{% url 'a4dashboard:project-edit' project_slug=project.slug %}" class="btn btn--light float-right" data-embed-target="external"> <i class="fa fa-edit"></i>{% trans 'Edit' %}</a>
     </div>
     {% endif %} -->
-
-    <ul class="nav nav-tabs col-12 mb-5" id="myTab" role="tablist">
+    <div class="offset-md-2 col-md-8 ">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="information" aria-selected="true">{% trans "Information" %}</a>
         </li>
@@ -64,75 +61,78 @@
             <a class="nav-link" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">{% trans "Result" %}</a>
         </li>
     </ul>
+  </div>
 </div>
-<div class="row mb-5">
-    <div class="offset-md-1 col-md-10">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-                <h3 class="text-center">{% trans "Information" %}</h3>
-                <div>
-                    <p>{{ view.project.information|transform_collapsibles|richtext }}</p>
-                    {% if view.project.contact_name or view.project.contact_address_text or view.project.contact_email or view.project.contact_phone or view.project.contact_url %}
-                    <h4>{% trans 'Contact for questions' %}</h4>
-                      {% if view.project.contact_name %}
-                      <p>{{ view.project.contact_name }}</p>
-                      {% endif %}
-                      {% if view.project.contact_address_text %}
-                      <p>{{ view.project.contact_address_text|linebreaks }}</p>
-                      {% endif %}
-                      {% if view.project.contact_phone %}
-                      <p><strong>{% trans 'Telephone' %}: </strong>{{ view.project.contact_phone }}</p>
-                      {% endif %}
-                      {% if view.project.contact_email %}
-                      <a class="btn btn-primary" href="mailto:{{ view.project.contact_email }}">
-                       {% trans 'Email' %}
-                      </a>
-                      {% endif %}
-                      {% if view.project.contact_url %}
-                      <a class="btn btn-primary" target="_blank" href="{{ view.project.contact_url }}">
-                       {% trans 'Website' %}
-                      </a>
-                      {% endif %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="tab-pane fade show active" id="participation" role="tabpanel" aria-labelledby="participation-tab">
-                {% url 'offlineevent-detail' pk=object.pk as offlineevent_url %}
-                {% if not request.get_full_path == offlineevent_url %}
-                <div>
-                    {% if not view.phase %}
-                      {% trans 'Welcome!' as title %}
-                      {% trans 'This project has not started yet!' as text %}
-                    {% endif %}
-
-                    {% if view.phase and view.phase.is_over %}
-                      {% if view.project.future_phases or view.project.active_phase  %}
-                        {% trans 'Thanks for participating!' as title %}
-                        {% trans 'This phase is already over. Thanks a lot to everyone for taking part in the project! The next phase will start soon.' as text %}
-                      {% else %}
-                        {% trans 'Thanks for participating!' as title %}
-                        {% trans 'This project is already over. Thanks a lot to everyone for taking part in the project!' as text %}
-                      {% endif %}
-                    {% endif %}
-
-                    {% if view.phase %}
+<div class="container">
+    <div class="row mb-5">
+        <div class="offset-md-1 col-md-10">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                    <h3 class="text-center">{% trans "Information" %}</h3>
                     <div>
-                        <h2>{{ phase.name }}</h2>
-                        <p>{{ phase.description }} </p>
+                        <p>{{ view.project.information|transform_collapsibles|richtext }}</p>
+                        {% if view.project.contact_name or view.project.contact_address_text or view.project.contact_email or view.project.contact_phone or view.project.contact_url %}
+                        <h4>{% trans 'Contact for questions' %}</h4>
+                          {% if view.project.contact_name %}
+                          <p>{{ view.project.contact_name }}</p>
+                          {% endif %}
+                          {% if view.project.contact_address_text %}
+                          <p>{{ view.project.contact_address_text|linebreaks }}</p>
+                          {% endif %}
+                          {% if view.project.contact_phone %}
+                          <p><strong>{% trans 'Telephone' %}: </strong>{{ view.project.contact_phone }}</p>
+                          {% endif %}
+                          {% if view.project.contact_email %}
+                          <a class="btn btn-primary" href="mailto:{{ view.project.contact_email }}">
+                           {% trans 'Email' %}
+                          </a>
+                          {% endif %}
+                          {% if view.project.contact_url %}
+                          <a class="btn btn-primary" target="_blank" href="{{ view.project.contact_url }}">
+                           {% trans 'Website' %}
+                          </a>
+                          {% endif %}
+                        {% endif %}
                     </div>
+                </div>
+                <div class="tab-pane fade show active" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+                    {% url 'offlineevent-detail' pk=object.pk as offlineevent_url %}
+                    {% if not request.get_full_path == offlineevent_url %}
+                    <div>
+                        {% if not view.phase %}
+                          {% trans 'Welcome!' as title %}
+                          {% trans 'This project has not started yet!' as text %}
+                        {% endif %}
+
+                        {% if view.phase and view.phase.is_over %}
+                          {% if view.project.future_phases or view.project.active_phase  %}
+                            {% trans 'Thanks for participating!' as title %}
+                            {% trans 'This phase is already over. Thanks a lot to everyone for taking part in the project! The next phase will start soon.' as text %}
+                          {% else %}
+                            {% trans 'Thanks for participating!' as title %}
+                            {% trans 'This project is already over. Thanks a lot to everyone for taking part in the project!' as text %}
+                          {% endif %}
+                        {% endif %}
+
+                        {% if view.phase %}
+                        <div>
+                            <h2>{{ phase.name }}</h2>
+                            <p>{{ phase.description }} </p>
+                        </div>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                <div>
-                    <h2>{{ view.phase.name }}</h2>
-                    <p>{{ view.phase.description }} </p>
+                    <div>
+                        <h2>{{ view.phase.name }}</h2>
+                        <p>{{ view.phase.description }} </p>
+                    </div>
+                    {% block phase_content %}{% endblock %}
+                    </div>
                 </div>
-                {% block phase_content %}{% endblock %}
-                </div>
-            </div>
-            <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab">
-                <h2 class="text-center">{% trans "Result" %}</h2>
-                <div>
-                {{ view.project.result|richtext }}
+                <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab">
+                    <h2 class="text-center">{% trans "Result" %}</h2>
+                    <div>
+                    {{ view.project.result|richtext }}
+                    </div>
                 </div>
             </div>
         </div>
