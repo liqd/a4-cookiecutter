@@ -1,0 +1,19 @@
+{% raw %}
+<div class="mb-2">
+    <label for="{{ id }}">
+        {{ label }}
+    </label>
+    <br>
+    <button
+        type="button"
+        class="btn btn-outline-dark dropdown-toggle"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        id="{{ id }}"
+    >
+        <span>{{ value_label }}</span>
+    </button>
+    {{ options }}
+</div>
+{% endraw %}

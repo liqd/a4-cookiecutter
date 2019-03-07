@@ -4,46 +4,49 @@
 {% block title %}{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            {% if mode == 'create' %}
-            {% trans 'create new proposal for this project'%}:
-            {% elif mode == 'update' %}
-            {% trans 'update idea'%}
-            {% endif %}
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">{{ project.name }}</h5>
-            <p class="card-text">{{ project.description | truncatechars:185 }}</p>
-            <a href="{% url 'project-detail' project.slug %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> {% trans 'back to project' %}</a>
-        </div>
-    </div>
-    <div>
-        <form enctype="multipart/form-data" action="{{ request.path }}" method="post">
-            {% csrf_token %}
-            {% for hidden_field in form.hidden_fields %}
-            {{ hidden_field }}
-            {% endfor %}
-
-            {% include '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_contrib/form_fields.html' with fields=form.visible_fields %}
-
-            <div class="row">
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">{% trans 'post'%}</button>
-                </div>
-                <div class="col-2">
-                    <a href="{% if mode == 'create' %}{% url 'project-detail' project.slug %}{% else %}{% url 'idea-detail' idea.slug %}{% endif %}" class="">{% trans 'cancel'%}</a>
-                </div>
+    <div class="offset-md-1 col-md-10">
+        <div class="card">
+            <div class="card-header">
+                {% if mode == 'create' %}
+                {% trans 'create new proposal for this project'%}:
+                {% elif mode == 'update' %}
+                {% trans 'update idea'%}
+                {% endif %}
             </div>
-        </form>
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <p class="card-text">{{ project.description | truncatechars:185 }}</p>
+                <a href="{% url 'project-detail' project.slug %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> {% trans 'back to project' %}</a>
+            </div>
+        </div>
+        <div>
+            <form enctype="multipart/form-data" action="{{ request.path }}" method="post">
+                {% csrf_token %}
+                {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+                {% endfor %}
+
+                {% include '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_contrib/form_fields.html' with fields=form.visible_fields %}
+
+                <div class="row">
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary">{% trans 'post'%}</button>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% if mode == 'create' %}{% url 'project-detail' project.slug %}{% else %}{% url 'idea-detail' idea.slug %}{% endif %}" class="btn btn-link">{% trans 'cancel'%}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endblock %}
+
+        {% block extra_js %}
+            {{ block.super }}
+            {{ form.media.js }}
+        {% endblock %}
+        {% block extra_css %}
+            {{ form.media.css }}
+        {% endblock %}
     </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
-    {{ block.super }}
-    {{ form.media.js }}
-{% endblock %}
-{% block extra_css %}
-    {{ form.media.css }}
-{% endblock %}{% endraw %}
+{% endraw %}
