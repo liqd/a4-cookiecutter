@@ -27,8 +27,14 @@ module.exports = {
     leaflet: [
       'leaflet',
       'leaflet/dist/leaflet.css',
+      'leaflet-draw',
+      'leaflet-draw/dist/leaflet.draw.css',
       'leaflet.markercluster',
       'leaflet.markercluster/dist/MarkerCluster.css',
+    ],
+    'leaflet.draw': [
+      'leaflet-draw',
+      'leaflet-draw/dist/leaflet.draw.css'
     ],
 {% endif %}
     datepicker: [

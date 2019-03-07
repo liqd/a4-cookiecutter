@@ -1,0 +1,73 @@
+{% raw %}{% extends "base.html" %}
+{% load i18n react_comments react_ratings thumbnail rules static maps_tags %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'leaflet.js' %}"></script>
+<script type="text/javascript" src="{% static 'a4maps/map_display_point.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link type="text/css" href="{% static 'leaflet.css'%}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="container-medium">
+        <div class="action-bar">
+            <nav class="navbar navbar-default navbar-static">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{% url 'project-detail' object.project.slug %}">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            {% trans 'back to project' %}</a>
+                    </li>
+                </ul>
+                {% has_perm '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas.modify_mapidea' request.user object as show_dropdown %}
+                {% if show_dropdown %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a id="drop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-h"
+                                                                          aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="drop">
+                            <li>
+                                <a href="{% url 'map-idea-update' object.slug %}">{% trans 'Edit' %}</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="" data-toggle="modal" data-target="#myModal">{% trans 'Delete' %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+
+        {% if object.image %}
+        <img class="idea-image" src="{{ object.image | thumbnail_url:'idea_image'}}" style="width: 100%;">
+        {% endif %}
+
+
+        <div class="idea-body">
+            <div class="idea-title">
+                <h1>{{ object.name }}</h1>
+            </div>
+
+            <div class="idea-description">
+                <p>{{ object.description |safe }}</p>
+            </div>
+
+            {% map_display_point object.point object.module.areasettings_settings.polygon %}
+
+            <div class="idea-ratings">
+                {% react_ratings object %}
+            </div>
+
+            {% react_comments object %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}{% endraw %}
