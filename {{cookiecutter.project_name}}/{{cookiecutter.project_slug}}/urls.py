@@ -19,6 +19,7 @@ from adhocracy4.projects import urls as project_urls
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
+from apps.mapideas import urls as map_ideas_urls
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
@@ -41,6 +42,7 @@ urlpatterns = [
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
+    url(r'^mapideas/', include(map_ideas_urls)),
     url(r'^jsi18n/$', javascript_catalog,
         js_info_dict, name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),

@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'cms.snippets.apps.Config',
 
     'apps.ideas',
+    'apps.mapideas',
     'apps.contrib',
     'apps.projects',
     'apps.users.apps.UserConfig',
@@ -267,7 +268,16 @@ THUMBNAIL_ALIASES = {
     '': {
         'heroimage': {'size': (1500, 500), 'crop': 'smart'},
         'thumbnail': {'size': (240, 240), 'crop': 'smart'},
-        'avatar': {'size': (60, 60), 'crop': 'smart'}
+        'avatar': {'size': (60, 60), 'crop': 'smart'},
+        'heroimage_preview': {'size': (880, 220), 'crop': 'smart'},
+        'project_thumbnail': {'size': (520, 330), 'crop': 'smart'},
+        'idea_image': {'size': (800, 0), 'crop': 'scale'},
+        'idea_thumbnail': {'size': (240, 240), 'crop': 'smart'},
+        'map_thumbnail': {'size': (400, 200), 'crop': 'smart'},
+        'organisation_thumbnail': {'size': (740, 540), 'crop': 'smart'},
+        'avatar_small': {'size': (60, 60), 'crop': 'smart'},
+        'org_avatar_small': {'size': (60, 60), 'crop': 'scale'},
+        'org_avatar_medium': {'size': (200, 200), 'crop': 'scale'},
     }
 }
 # Static files (CSS, JavaScript, Images)
@@ -336,26 +346,37 @@ A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Or
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 )
 
 A4_RATEABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 )
 
 A4_REPORTABLES = (
     ('a4comments', 'comment'),
+    ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 )
 
 ACTIONABLE = [
-    ('a4comments', 'comment')
+    ('a4comments', 'comment'),
+    ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 ]
 
 A4_CATEGORIZABLE = (
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 )
 
 A4_PROJECT_TOPICS = ()
+
+A4_MAP_BASEURL = 'https://{s}.tile.openstreetmap.org/'
+A4_MAP_ATTRIBUTION = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+A4_MAP_BOUNDING_BOX = ([[54.983, 15.016], [47.302, 5.988]])
 
 A4_DASHBOARD = {
     'PROJECT_DASHBOARD_CLASS': 'adhocracy4.dashboard.ProjectDashboard',
