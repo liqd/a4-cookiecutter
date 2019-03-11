@@ -2,51 +2,54 @@
 {% load i18n discovery_tags %}
 
 {% block phase_content %}
-<div class="container-medium">
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="idea-list">
+                {% has_or_would_have_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.propose_idea' request.user view.module as add_button_enabled %}
+                {% if add_button_enabled %}
+                <a href="{% url 'idea-create' slug=view.module.slug %}" class="btn btn--primary btn--full btn--huge idea-list-button mb-4" id="idea-create">
+                    <i class="fa fa-plus idea-list-button-icon" aria-hidden="true"></i>
+                    {% trans 'Create Proposal' %}
+                </a>
+                {% endif %}
 
-    <div class="idea-list">
-        {% has_or_would_have_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.propose_idea' request.user view.module as add_button_enabled %}
-        {% if add_button_enabled %}
-        <a href="{% url 'idea-create' slug=view.module.slug %}" class="btn btn--primary btn--full btn--huge idea-list-button mb-5" id="idea-create">
-            <i class="fa fa-plus idea-list-button-icon" aria-hidden="true"></i>
-            {% trans 'Create Proposal' %}
-        </a>
-        {% endif %}
+                <div id="idea-list">
+                    <div class="filter-bar d-flex justify-content-between">
+                    {% for field in view.filter.form %}
+                    {% if field.name != 'ordering' %}
+                    <div class="filter d-none d-sm-inline-block projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% else %}
+                    <div class="d-none d-sm-inline-block projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% endif %}
+                    <div class="col-xs-12 d-block d-sm-none projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    </div>
 
-        <div id="idea-list">
-            <div class="filter-bar d-flex justify-content-end">
-            {% for field in view.filter.form %}
-            {% if field.name != 'ordering' %}
-            <div class="filter d-none d-sm-inline-block projects-filter-{{ field.name }}">
-                {{ field }}
+                  {% if idea_list.count > 0 %}
+                  {% for idea in idea_list %}
+                  <div class="list-group">
+                  {% include "{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas/includes/idea_list_tile.html" with idea=idea %}
+                  </div>
+                  {% endfor %}
+
+
+                  {% if is_paginated %}
+                  {% include "{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas/includes/pagination.html"%}
+                  {% endif %}
+                  {% else %}
+                  <div class="infotext">
+                      {% trans 'No proposals found' %}
+                  </div>
+                  {% endif %}
+                </div>
             </div>
-            {% else %}
-            <div class="ordering d-none d-sm-inline-block projects-filter-{{ field.name }}">
-                {{ field }}
-            </div>
-            {% endif %}
-            <div class="col-xs-12 d-block d-sm-none projects-filter-{{ field.name }}">
-                {{ field }}
-            </div>
-            {% endfor %}
-            </div>
-
-          {% if idea_list.count > 0 %}
-          {% for idea in idea_list %}
-          <div class="list-group">
-          {% include "{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas/includes/idea_list_tile.html" with idea=idea %}
-          </div>
-          {% endfor %}
-
-
-          {% if is_paginated %}
-          {% include "{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas/includes/pagination.html"%}
-          {% endif %}
-          {% else %}
-          <div class="infotext">
-              {% trans 'No proposals found' %}
-          </div>
-          {% endif %}
         </div>
     </div>
 </div>
