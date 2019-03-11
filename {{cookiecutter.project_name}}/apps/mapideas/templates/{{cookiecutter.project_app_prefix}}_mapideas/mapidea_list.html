@@ -11,61 +11,81 @@
 <link type="text/css" href="{% static 'leaflet.css'%}" rel="stylesheet" />
 {% endblock %}
 
-
 {% block phase_content %}
-<div class="idea-map">
-  <div class="container idea-map-buttons">
-      <a href="#idea-list" class="btn btn-primary idea-map-buttons-list"><i class="fa fa-list" aria-hidden="true"></i>  {% trans 'view on list' %}</a>
-      <div class="idea-map-buttons-zoom">
-          <div class="leaflet-control-zoom leaflet-bar leaflet-control">
-              <a class="leaflet-control-zoom-in" id="zoom-in" href="#" title="Zoom in">+</a>
-              <a class="leaflet-control-zoom-out leaflet-disabled" id="zoom-out" href="#" title="Zoom out">-</a>
-          </div>
-      </div>
-  </div>
+
+{% has_or_would_have_perm '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_mapideas.add_idea' request.user view.module as add_button_enabled %}
+{% if add_button_enabled %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <a href="{% url 'map-idea-create' slug=view.module.slug %}" class="idea-list-button" id="idea-create">
+                <i class="fa fa-plus idea-list-button-icon" aria-hidden="true"></i>
+                {% trans 'Create Proposal' %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="idea-map mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="idea-map-buttons">
+                    <a href="#idea-list" class="btn btn-primary idea-map-buttons-list mt-3 position-absolute" style="z-index:800"><i class="fa fa-list" aria-hidden="true"></i>  {% trans 'view on list' %}</a>
+                    <div class="idea-map-buttons-zoom mt-3 position-absolute offset-11">
+                        <div class="leaflet-control-zoom leaflet-bar leaflet-control">
+                            <a class="leaflet-control-zoom-in" id="zoom-in" href="#" title="Zoom in">+</a>
+                            <a class="leaflet-control-zoom-out leaflet-disabled" id="zoom-out" href="#" title="Zoom out">-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   {% map_display_points view.get_queryset view.module.areasettings_settings.polygon %}
 </div>
 
-<div class="container-medium">
-    <div class="idea-list">
-        {% has_or_would_have_perm '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_mapideas.add_idea' request.user view.module as add_button_enabled %}
-        {% if add_button_enabled %}
-        <a href="{% url 'map-idea-create' slug=view.module.slug %}" class="idea-list-button" id="idea-create">
-            <i class="fa fa-plus idea-list-button-icon" aria-hidden="true"></i>
-            {% trans 'Create Proposal' %}
-        </a>
-        {% endif %}
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="idea-list">
+                <div id="idea-list">
+                    <div class="filter-bar d-flex justify-content-between">
+                    {% for field in view.filter.form %}
+                    {% if field.name != 'ordering' %}
+                    <div class="filter d-none d-sm-inline-block projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% else %}
+                    <div class="d-none d-sm-inline-block projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% endif %}
+                    <div class="col-xs-12 d-block d-sm-none projects-filter-{{ field.name }}">
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    </div>
 
-        <div id="idea-list">
-            <div class="filter-bar">
-            {% for field in view.filter.form %}
-            {% if field.name != 'ordering' %}
-            <div class="filter projects-filter-{{ field.name }}">
-                {{ field }}
+                  {% if mapidea_list.count > 0 %}
+                  {% for idea in mapidea_list %}
+                  <div class="list-group">
+                      {% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_mapideas/includes/mapidea_list_tile.html" with idea=idea %}
+                  </div>
+                  {% endfor %}
+
+
+                  {% if is_paginated %}
+                  {% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas/includes/pagination.html"%}
+                  {% endif %}
+                  {% else %}
+                  <div class="infotext">
+                      {% trans 'No proposals found' %}
+                  </div>
+                  {% endif %}
+                </div>
             </div>
-            {% endif %}
-            <div class="projects-filter-{{ field.name }}">
-                {{ field }}
-            </div>
-            {% endfor %}
-            </div>
-
-          {% if mapidea_list.count > 0 %}
-          {% for idea in mapidea_list %}
-          <div class="list-group">
-          {% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_mapideas/includes/mapidea_list_tile.html" with idea=idea %}
-          </div>
-          {% endfor %}
-
-
-          {% if is_paginated %}
-          {% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas/includes/pagination.html"%}
-          {% endif %}
-          {% else %}
-          <div class="infotext">
-              {% trans 'No proposals found' %}
-          </div>
-          {% endif %}
         </div>
     </div>
 </div>
