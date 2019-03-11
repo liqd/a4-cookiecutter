@@ -63,11 +63,11 @@
     </ul>
   </div>
 </div>
-<div class="container">
-    <div class="row mb-5">
-        <div class="offset-md-1 col-md-10">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="offset-md-1 col-md-10">
                     <h3 class="text-center">{% trans "Information" %}</h3>
                     <div>
                         <p>{{ view.project.information|transform_collapsibles|richtext }}</p>
@@ -95,7 +95,13 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="tab-pane fade show active" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show active" id="participation" role="tabpanel" aria-labelledby="participation-tab">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="offset-md-1 col-md-10">
                     {% url 'offlineevent-detail' pk=object.pk as offlineevent_url %}
                     {% if not request.get_full_path == offlineevent_url %}
                     <div>
@@ -120,15 +126,21 @@
                             <p>{{ phase.description }} </p>
                         </div>
                         {% endif %}
-                    {% endif %}
-                    <div>
-                        <h2>{{ view.phase.name }}</h2>
-                        <p>{{ view.phase.description }} </p>
-                    </div>
-                    {% block phase_content %}{% endblock %}
+                        {% endif %}
+                        <div>
+                            <h2>{{ view.phase.name }}</h2>
+                            <p>{{ view.phase.description }} </p>
+                        </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab">
+            </div>
+        </div>
+        {% block phase_content %}{% endblock %}
+    </div>
+    <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="offset-md-1 col-md-10">
                     <h2 class="text-center">{% trans "Result" %}</h2>
                     <div>
                     {{ view.project.result|richtext }}
