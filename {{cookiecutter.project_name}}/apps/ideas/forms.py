@@ -12,4 +12,7 @@ class IdeaForm(category_forms.CategorizableFieldMixin, forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['category'].empty_label = '---'
+        if self.fields['category']:
+            self.fields['category'].empty_label = '---'
+        else:
+            del self.fields['category']
