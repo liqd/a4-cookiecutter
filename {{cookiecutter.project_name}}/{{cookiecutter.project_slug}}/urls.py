@@ -15,11 +15,10 @@ from adhocracy4.ratings.api import RatingViewSet
 from adhocracy4.reports.api import ReportViewSet
 from adhocracy4.comments.api import CommentViewSet
 
-from adhocracy4.projects import urls as project_urls
-
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
 from apps.mapideas import urls as map_ideas_urls
+from apps.projects import urls as project_urls
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'easy_thumbnails',
+    'capture_tag',
     'ckeditor',
     'ckeditor_uploader',
     'background_task',
@@ -247,6 +248,9 @@ LANGUAGES = [
     ('de', _('German'))
 ]
 
+# The default language is used for emails and strings
+# that are stored translated to the database.
+DEFAULT_LANGUAGE = 'de'
 
 # fixtures
 
