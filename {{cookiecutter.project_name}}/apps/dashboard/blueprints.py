@@ -26,7 +26,7 @@ blueprints = [
          content=[
              map_ideas_phases.CollectPhase(),
          ],
-         image='images/brainstorming.svg',
+         image='images/map-brainstorming.svg',
          settings_model=('a4maps', 'AreaSettings'),
      ))
 ]

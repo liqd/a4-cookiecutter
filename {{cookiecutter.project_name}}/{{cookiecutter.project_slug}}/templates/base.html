@@ -22,6 +22,17 @@
             {% block title %}{% endblock %}
             </h1>
         </div>
+        {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert--{{ message.level_tag }}" role="alert">
+                  <div class="text-center alert-text">
+                  {{ message }}
+                  </div>
+              </div>
+          {% endfor %}
+          {% endif %}
+          {% block extra_messages %}{% endblock %}
+
         <div class="content">
         {% block content %}
         {% endblock %}
