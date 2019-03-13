@@ -20,7 +20,7 @@ class MapIdeaForm(CategorizableFieldMixin, forms.ModelForm):
             polygon=self.settings.polygon)
         self.fields['point'].error_messages['required'] = _(
             'Please locate your proposal on the map.')
-        if self.fields['category']:
+        if self.module.category_set.all():
             self.fields['category'].empty_label = '---'
         else:
             del self.fields['category']
