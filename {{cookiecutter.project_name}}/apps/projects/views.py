@@ -1,28 +1,16 @@
 import itertools
 
-import django_filters
-from django.apps import apps
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
-from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 from django.views import generic
 from rules.contrib.views import LoginRequiredMixin
 
-from adhocracy4.administrative_districts.models import AdministrativeDistrict
 from adhocracy4.dashboard import mixins as a4dashboard_mixins
 from adhocracy4.dashboard import signals as a4dashboard_signals
-from adhocracy4.filters import views as filter_views
-from adhocracy4.filters import widgets as filters_widgets
-from adhocracy4.filters.filters import DefaultsFilterSet
-from adhocracy4.filters.filters import DistinctOrderingFilter
-from adhocracy4.filters.filters import FreeTextFilter
-from adhocracy4.filters.widgets import DropdownLinkWidget
 from adhocracy4.projects import models as project_models
 from adhocracy4.projects.mixins import ProjectMixin
 

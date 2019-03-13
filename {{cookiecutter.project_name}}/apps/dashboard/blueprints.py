@@ -16,7 +16,7 @@ blueprints = [
          ],
          image='images/brainstorming.svg',
          settings_model=None,
-    )),
+     )),
     ('brainstorming_map',
      ProjectBlueprint(
          title=_('Spatial Brainstorming'),

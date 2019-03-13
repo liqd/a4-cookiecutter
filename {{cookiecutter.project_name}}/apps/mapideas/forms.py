@@ -7,7 +7,7 @@ from adhocracy4.maps import widgets
 from . import models
 
 
-class MapIdeaForm(CategorizableFieldMixin,forms.ModelForm):
+class MapIdeaForm(CategorizableFieldMixin, forms.ModelForm):
 
     class Meta:
         model = models.MapIdea
