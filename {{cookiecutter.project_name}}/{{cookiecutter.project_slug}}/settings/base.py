@@ -72,14 +72,14 @@ INSTALLED_APPS = [
     'adhocracy4.modules',
     'adhocracy4.comments',
 
-    'cms.home.apps.Config',
-    'cms.snippets.apps.Config',
+    'cms.home',
+    'cms.snippets',
 
     'apps.ideas',
     'apps.mapideas',
     'apps.contrib',
     'apps.projects',
-    'apps.users.apps.UserConfig',
+    'apps.users',
     'apps.organisations'
 ]
 
