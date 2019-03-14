@@ -351,8 +351,7 @@ A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Or
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
-    ('{{ cookiecutter.project_app_prefix }}polls', 'poll')
+    ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea')
 )
 
 A4_RATEABLES = (

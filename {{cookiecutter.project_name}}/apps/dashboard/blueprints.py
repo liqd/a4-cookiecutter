@@ -38,7 +38,7 @@ blueprints = [
          content=[
              poll_phases.VotingPhase(),
          ],
-         image='images/poll.png',
+         image='images/poll.svg',
          settings_model=None,
     ))
 ]
