@@ -17,6 +17,7 @@ blueprints = [
          image='images/brainstorming.svg',
          settings_model=None,
      )),
+    {% if cookiecutter.use_maps_and_mapideas == 'y' %}
     ('brainstorming_map',
      ProjectBlueprint(
          title=_('Spatial Brainstorming'),
@@ -28,5 +29,6 @@ blueprints = [
          ],
          image='images/map-brainstorming.svg',
          settings_model=('a4maps', 'AreaSettings'),
-     ))
+     )),
+    {% endif %}
 ]
