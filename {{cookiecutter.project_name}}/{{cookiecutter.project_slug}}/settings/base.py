@@ -75,12 +75,14 @@ INSTALLED_APPS = [
     'cms.home.apps.Config',
     'cms.snippets.apps.Config',
 
-    'apps.ideas',
-    'apps.mapideas',
     'apps.contrib',
+    'apps.ideas',
+    {% if cookiecutter.use_maps_and_mapideas == 'y' %}
+    'apps.mapideas',
+    {% endif %}
+    'apps.organisations',
     'apps.projects',
-    'apps.users.apps.UserConfig',
-    'apps.organisations'
+    'apps.users.apps.UserConfig'
 ]
 
 MIDDLEWARE = (
