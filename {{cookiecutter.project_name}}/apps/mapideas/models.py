@@ -13,8 +13,10 @@ from adhocracy4.maps import fields as map_fields
 from adhocracy4.ratings import models as rating_models
 from adhocracy4.modules import models as module_models
 
+
 class IdeaQuerySet(query.RateableQuerySet, query.CommentableQuerySet):
     pass
+
 
 class MapIdea(module_models.Item):
     slug = AutoSlugField(populate_from='name', unique=True)
@@ -58,5 +60,4 @@ class MapIdea(module_models.Item):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
         return reverse('map-idea-detail', args=[str(self.slug)])

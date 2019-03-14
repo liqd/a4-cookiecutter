@@ -7,7 +7,7 @@ from adhocracy4.maps import widgets
 from . import models
 
 
-class MapIdeaForm(CategorizableFieldMixin,forms.ModelForm):
+class MapIdeaForm(CategorizableFieldMixin, forms.ModelForm):
 
     class Meta:
         model = models.MapIdea
@@ -20,3 +20,7 @@ class MapIdeaForm(CategorizableFieldMixin,forms.ModelForm):
             polygon=self.settings.polygon)
         self.fields['point'].error_messages['required'] = _(
             'Please locate your proposal on the map.')
+        if self.module.category_set.all():
+            self.fields['category'].empty_label = '---'
+        else:
+            del self.fields['category']

@@ -123,3 +123,4 @@ class MapIdeaDeleteView(PermissionRequiredMixin, generic.DeleteView):
     def get_success_url(self):
         return reverse('project-detail',
                        kwargs={'slug': self.object.project.slug})
+
