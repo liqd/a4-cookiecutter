@@ -1,6 +1,6 @@
 {% raw %}{% load i18n widget_tweaks %}
 
-<form method="POST">
+<form class="mb-4" method="POST">
     {% csrf_token %}
     {% if form.non_field_errors %}
     <div class="alert alert--danger">
@@ -11,11 +11,11 @@
     {% endif %}
 
     <div class="form-group">
-        <label for="{{ form.add_users.id_for_label }}">
+        <label class="mb-1" for="{{ form.add_users.id_for_label }}">
             {{ form.add_users.label }}
         </label>
         {% if form.add_users.help_text %}
-        <small class="form-text text-muted">
+        <small class="form-text text-muted mt-0 mb-2">
             {{ form.add_users.help_text }}
         </small>
         {% endif %}
@@ -27,13 +27,13 @@
     </div>
 </form>
 
-<form method="POST" enctype="multipart/form-data">
+<form class="mb-4" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
-        <label for="{{ form.add_users_upload.id_for_label }}">
+        <label class="mb-1" for="{{ form.add_users_upload.id_for_label }}">
             {{ form.add_users_upload.label }}
         </label>
-        <small class="form-text text-muted">
+        <small class="form-text text-muted mt-0 mb-2">
             {{ form.add_users_upload.help_text }}
         </small>
         <div class="input-group">
