@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'adhocracy4.reports',
     'adhocracy4.modules',
     'adhocracy4.comments',
+    'adhocracy4.polls',
 
     'cms.home.apps.Config',
     'cms.snippets.apps.Config',
@@ -351,6 +352,7 @@ A4_COMMENTABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
+    ('{{ cookiecutter.project_app_prefix }}polls', 'poll')
 )
 
 A4_RATEABLES = (

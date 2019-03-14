@@ -14,6 +14,8 @@ from adhocracy4.api import routers as a4routers
 from adhocracy4.ratings.api import RatingViewSet
 from adhocracy4.reports.api import ReportViewSet
 from adhocracy4.comments.api import CommentViewSet
+from adhocracy4.polls.api import PollViewSet, VoteViewSet
+from adhocracy4.polls.routers import QuestionDefaultRouter
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
@@ -26,6 +28,7 @@ js_info_dict = {
 
 router = routers.DefaultRouter()
 router.register(r'reports', ReportViewSet, base_name='reports')
+router.register(r'polls', PollViewSet, base_name='polls')
 
 ct_router = a4routers.ContentTypeDefaultRouter()
 ct_router.register(r'comments', CommentViewSet, base_name='comments')
