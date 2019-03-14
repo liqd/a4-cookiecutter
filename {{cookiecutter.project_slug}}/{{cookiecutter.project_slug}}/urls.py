@@ -17,7 +17,9 @@ from adhocracy4.comments.api import CommentViewSet
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
+{% if cookiecutter.use_maps_and_mapideas == 'y' %}
 from apps.mapideas import urls as map_ideas_urls
+{% endif %}
 from apps.projects import urls as project_urls
 
 js_info_dict = {
@@ -41,7 +43,9 @@ urlpatterns = [
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
+{% if cookiecutter.use_maps_and_mapideas == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
+{% endif %}
     url(r'^jsi18n/$', javascript_catalog,
         js_info_dict, name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
