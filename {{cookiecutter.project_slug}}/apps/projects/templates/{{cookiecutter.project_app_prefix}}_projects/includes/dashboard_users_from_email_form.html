@@ -1,0 +1,46 @@
+{% raw %}{% load i18n widget_tweaks %}
+
+<form class="mb-4" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert--danger">
+        {% for error in form.non_field_errors %}
+        {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label class="mb-1" for="{{ form.add_users.id_for_label }}">
+            {{ form.add_users.label }}
+        </label>
+        {% if form.add_users.help_text %}
+        <small class="form-text text-muted mt-0 mb-2">
+            {{ form.add_users.help_text }}
+        </small>
+        {% endif %}
+        <div class="input-group">
+                {{ form.add_users|add_class:'form-control' }}
+                <input type="submit" class="btn btn--primary input-group-append" value="{% trans 'Add' %}"/>
+        </div>
+        {{ form.add_users.errors }}
+    </div>
+</form>
+
+<form class="mb-4" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="mb-1" for="{{ form.add_users_upload.id_for_label }}">
+            {{ form.add_users_upload.label }}
+        </label>
+        <small class="form-text text-muted mt-0 mb-2">
+            {{ form.add_users_upload.help_text }}
+        </small>
+        <div class="input-group">
+            {{ form.add_users_upload|add_class:'form-control p-0' }}
+                <input type="submit" class="btn btn--primary input-group-append" value="{% trans 'Upload' %}"/>
+        </div>
+        {{ form.add_users_upload.errors }}
+    </div>
+</form>
+{% endraw%}

@@ -1,0 +1,27 @@
+{% raw %}{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% blocktrans with project=moderatorinvite.project.name %}Invitation to {{ project }}{% endblocktrans %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-md-8">
+                <h2>{% blocktrans with project=moderatorinvite.project.name %}Moderation invitation for {{ project }}{% endblocktrans %}</h2>
+                {{ form.non_field_errors }}
+                <p>
+                    {% trans "You were invited by the initiator of the project. If you accept you will be able to moderate the project." %}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-2 col-md-8">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="accept" class="btn btn--primary">{% trans 'Accept' %}</button>
+                    <button type="submit" name="reject" class="btn btn--light">{% trans 'Decline' %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% endraw%}
