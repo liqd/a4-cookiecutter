@@ -1,22 +1,22 @@
 {% raw %}{% load i18n %}
 
 {% if users|length %}
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>{% trans 'Name' %}</th>
-                <th><span class="sr-only">{% trans 'Remove' %}</span></th>
+                <th scope="col">{% trans 'Name' %}</th>
+                <th scope="col"><span class="sr-only">{% trans 'Remove' %}</span></th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
                 <tr>
                     <td>{{ user.username }}</td>
-                    <td class="td--action">
+                    <td class="td--action pr-0 text-right">
                         <form method="post">
                             {% csrf_token %}
                             <input type="hidden" name="user_pk" value="{{ user.pk }}">
-                            <button type="submit" name="submit_action" value="remove_user" title="{% trans 'Remove' %}">
+                            <button class="btn btn--small btn--none" type="submit" name="submit_action" value="remove_user" title="{% trans 'Remove' %}">
                                 <i class="fa fa-times" aria-label="{% trans 'Remove' %}"></i>
                             </button>
                         </form>
