@@ -1,12 +1,12 @@
 {% raw %}{% load i18n %}
 
 {% if invites|length %}
-    <table>
+    <table class="table">
         <thead>
         <tr>
-            <th>{% trans 'Email' %}</th>
-            <th>{% trans 'Date' %}</th>
-            <th><span class="sr-only">{% trans 'Remove' %}</span></th>
+            <th scope="col">{% trans 'Email' %}</th>
+            <th scope="col">{% trans 'Date' %}</th>
+            <th scope="col"><span class="sr-only">{% trans 'Remove' %}</span></th>
         </tr>
         </thead>
         <tbody>
@@ -14,11 +14,11 @@
             <tr>
                 <td>{{ invite.email }}</td>
                 <td>{{ invite.created }}</td>
-                <td class="td--action">
+                <td class="td--action pr-0 text-right">
                     <form method="post">
                         {% csrf_token %}
                         <input type="hidden" name="invite_pk" value="{{ invite.pk }}">
-                        <button type="submit" name="submit_action" value="remove_invite" title="{% trans 'Remove' %}">
+                        <button class="btn btn--small btn--none" type="submit" name="submit_action" value="remove_invite" title="{% trans 'Remove' %}">
                             <i class="fa fa-times" aria-label="{% trans 'Remove' %}"></i>
                         </button>
                     </form>
