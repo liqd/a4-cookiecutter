@@ -72,8 +72,8 @@ INSTALLED_APPS = [
     'adhocracy4.modules',
     'adhocracy4.comments',
 
-    'cms.home.apps.Config',
-    'cms.snippets.apps.Config',
+    'cms.home',
+    'cms.snippets',
 
     'apps.contrib',
     'apps.ideas',
@@ -82,7 +82,7 @@ INSTALLED_APPS = [
     {% endif %}
     'apps.organisations',
     'apps.projects',
-    'apps.users.apps.UserConfig'
+    'apps.users'
 ]
 
 MIDDLEWARE = (
