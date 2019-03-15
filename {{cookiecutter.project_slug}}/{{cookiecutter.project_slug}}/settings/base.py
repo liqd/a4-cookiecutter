@@ -71,7 +71,9 @@ INSTALLED_APPS = [
     'adhocracy4.reports',
     'adhocracy4.modules',
     'adhocracy4.comments',
+    {% if cookiecutter.add_polls_app == 'y' %}
     'adhocracy4.polls',
+    {% endif %}
 
     'cms.home',
     'cms.snippets',
@@ -352,7 +354,9 @@ A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Or
 
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
+{% if cookiecutter.add_polls_app == 'y' %}
     ('a4polls', 'poll'),
+{% endif %}
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),

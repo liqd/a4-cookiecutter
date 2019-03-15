@@ -14,8 +14,10 @@ from adhocracy4.api import routers as a4routers
 from adhocracy4.ratings.api import RatingViewSet
 from adhocracy4.reports.api import ReportViewSet
 from adhocracy4.comments.api import CommentViewSet
+{% if cookiecutter.add_polls_app == 'y' %}
 from adhocracy4.polls.api import PollViewSet, VoteViewSet
 from adhocracy4.polls.routers import QuestionDefaultRouter
+{% endif %}
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
@@ -30,10 +32,12 @@ js_info_dict = {
 
 router = routers.DefaultRouter()
 router.register(r'reports', ReportViewSet, base_name='reports')
+{% if cookiecutter.add_polls_app == 'y' %}
 router.register(r'polls', PollViewSet, base_name='polls')
 
 question_router = QuestionDefaultRouter()
 question_router.register(r'vote', VoteViewSet, base_name='vote')
+{% endif %}
 
 ct_router = a4routers.ContentTypeDefaultRouter()
 ct_router.register(r'comments', CommentViewSet, base_name='comments')
@@ -45,7 +49,9 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^api/', include(router.urls)),
     url(r'^api/', include(ct_router.urls)),
+{% if cookiecutter.add_polls_app == 'y' %}
     url(r'^api/', include(question_router.urls)),
+{% endif %}
     url(r'^accounts/', include('allauth.urls')),
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
