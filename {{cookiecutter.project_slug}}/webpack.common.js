@@ -23,7 +23,7 @@ module.exports = {
       'react-dom',
       'react-flip-move',
     ],
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     leaflet: [
       'leaflet',
       'leaflet/dist/leaflet.css',

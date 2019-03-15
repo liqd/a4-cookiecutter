@@ -71,13 +71,16 @@ INSTALLED_APPS = [
     'adhocracy4.reports',
     'adhocracy4.modules',
     'adhocracy4.comments',
+    {% if cookiecutter.add_polls_app == 'y' %}
+    'adhocracy4.polls',
+    {% endif %}
 
     'cms.home',
     'cms.snippets',
 
     'apps.contrib',
     'apps.ideas',
-    {% if cookiecutter.use_maps_and_mapideas == 'y' %}
+    {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     'apps.mapideas',
     {% endif %}
     'apps.organisations',
@@ -351,8 +354,11 @@ A4_ORGANISATIONS_MODEL = "{{ cookiecutter.project_app_prefix }}_organisations.Or
 
 A4_COMMENTABLES = (
     ('a4comments', 'comment'),
+{% if cookiecutter.add_polls_app == 'y' %}
+    ('a4polls', 'poll'),
+{% endif %}
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -360,7 +366,7 @@ A4_COMMENTABLES = (
 A4_RATEABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -368,7 +374,7 @@ A4_RATEABLES = (
 A4_REPORTABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -376,14 +382,14 @@ A4_REPORTABLES = (
 ACTIONABLE = [
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 ]
 
 A4_CATEGORIZABLE = (
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )

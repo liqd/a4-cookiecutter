@@ -1,0 +1,35 @@
+//Polls styling
+
+.questionform__content {
+
+    .input-group__input {
+        @extend .form-control;
+    }
+}
+
+.questionform__content--border {
+    @extend .my-3;
+    @extend .py-3;
+    @extend .border-top;
+}
+
+.questionform__textarea {
+    @extend .form-control;
+}
+
+.questionform__append {
+    @extend .my-3;
+    @extend .py-3;
+    @extend .border-top;
+}
+
+
+.questionform {
+    @extend .position-relative;
+}
+
+.questionform__actions {
+    @extend .position-absolute;
+    @extend .sticky-top;
+    right: 0;
+}

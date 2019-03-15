@@ -1,8 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
 from adhocracy4.dashboard.blueprints import ProjectBlueprint
+{% if cookiecutter.add_polls_app == 'y' %}
+from adhocracy4.polls import phases as poll_phases
+{% endif %}
 from apps.ideas import phases as ideas_phases
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
 from apps.mapideas import phases as map_ideas_phases
 {% endif %}
 
@@ -19,7 +22,7 @@ blueprints = [
          image='images/brainstorming.svg',
          settings_model=None,
      )),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('brainstorming_map',
      ProjectBlueprint(
          title=_('Spatial Brainstorming'),
@@ -32,5 +35,18 @@ blueprints = [
          image='images/map-brainstorming.svg',
          settings_model=('a4maps', 'AreaSettings'),
      )),
+{% endif %}
+{% if cookiecutter.add_polls_app == 'y' %}
+    ('poll',
+     ProjectBlueprint(
+         title=_('Poll'),
+         description=_('Run customizable, multi-step polls detailed opinions'
+                       'on topics from the public or your members.'),
+         content=[
+             poll_phases.VotingPhase(),
+         ],
+         image='images/poll.svg',
+         settings_model=None,
+    )),
 {% endif %}
 ]
