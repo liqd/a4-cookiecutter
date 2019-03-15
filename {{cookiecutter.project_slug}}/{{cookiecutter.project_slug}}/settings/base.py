@@ -78,7 +78,7 @@ INSTALLED_APPS = [
 
     'apps.contrib',
     'apps.ideas',
-    {% if cookiecutter.use_maps_and_mapideas == 'y' %}
+    {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     'apps.mapideas',
     {% endif %}
     'apps.organisations',
@@ -354,7 +354,7 @@ A4_COMMENTABLES = (
     ('a4comments', 'comment'),
     ('a4polls', 'poll'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -362,7 +362,7 @@ A4_COMMENTABLES = (
 A4_RATEABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -370,7 +370,7 @@ A4_RATEABLES = (
 A4_REPORTABLES = (
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )
@@ -378,14 +378,14 @@ A4_REPORTABLES = (
 ACTIONABLE = [
     ('a4comments', 'comment'),
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 ]
 
 A4_CATEGORIZABLE = (
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
-{% if cookiecutter.use_maps_and_mapideas == 'y' %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
 {% endif %}
 )

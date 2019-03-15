@@ -17,5 +17,5 @@ def remove_mapideas(project_directory):
     shutil.rmtree(location)
 
 # 1. Removes the mapideas app-folder if it's not wanted
-if '{{ cookiecutter.use_maps_and_mapideas }}' != 'y':
+if '{{ cookiecutter.add_maps_and_mapideas_app }}' != 'y':
     remove_mapideas(PROJECT_DIRECTORY)
