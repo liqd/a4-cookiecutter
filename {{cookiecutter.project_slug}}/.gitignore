@@ -18,3 +18,4 @@ venv
 /pyvenv.cfg
 /webpack-stats.json
 /{{cookiecutter.project_slug}}/settings/local.py
+/{{cookiecutter.project_slug}}/static
