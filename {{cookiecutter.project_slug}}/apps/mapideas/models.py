@@ -60,4 +60,4 @@ class MapIdea(module_models.Item):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('map-idea-detail', args=[str(self.slug)])
+        return reverse('mapidea-detail', args=[str(self.slug)])
