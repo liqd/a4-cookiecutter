@@ -6,7 +6,7 @@
     <div class="row mb-5">
         <div class="col-12">
             <div class="idea-list">
-                {% has_or_would_have_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.propose_idea' request.user view.module as add_button_enabled %}
+                {% has_or_would_have_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.add_idea' request.user view.module as add_button_enabled %}
                 {% if add_button_enabled %}
                 <a href="{% url 'idea-create' slug=view.module.slug %}" class="btn btn--primary btn--full btn--huge idea-list-button mb-4" id="idea-create">
                     <i class="fa fa-plus idea-list-button-icon" aria-hidden="true"></i>

@@ -48,7 +48,7 @@ class MapIdeaDetailView(PermissionRequiredMixin, generic.DetailView):
 class MapIdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
     model = idea_models.MapIdea
     form_class = forms.MapIdeaForm
-    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.modify_mapidea'
+    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.change_mapidea'
 
     @property
     def raise_exception(self):
@@ -110,7 +110,7 @@ class MapIdeaCreateView(PermissionRequiredMixin, generic.CreateView):
 class MapIdeaDeleteView(PermissionRequiredMixin, generic.DeleteView):
     model = idea_models.MapIdea
     success_message = _("Your Idea has been deleted")
-    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.modify_mapidea'
+    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.change_mapidea'
 
     @property
     def raise_exception(self):

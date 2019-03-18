@@ -1,40 +1,43 @@
 import rules
-from rules.predicates import is_superuser
 
-from adhocracy4.modules.predicates import (is_context_initiator,
-                                           is_context_member,
-                                           is_context_moderator, is_owner,
-                                           is_public_context)
-from adhocracy4.phases.predicates import (phase_allows_add,
-                                          phase_allows_change,
-                                          phase_allows_comment,
-                                          phase_allows_rate)
+from adhocracy4.modules import predicates as module_predicates
 
-from .models import Idea
-
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.rate_idea',
-               is_superuser | is_context_moderator | is_context_initiator |
-               (is_context_member & phase_allows_rate))
+from . import models
 
 
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.comment_idea',
-               is_superuser | is_context_moderator | is_context_initiator |
-               (is_context_member & phase_allows_comment))
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.view_idea',
+    module_predicates.is_allowed_view_item
+)
 
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.add_idea',
+    module_predicates.is_allowed_add_item(models.Idea)
+)
 
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.modify_idea',
-               is_superuser | is_context_moderator | is_context_initiator |
-               (is_context_member & is_owner & phase_allows_change))
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.change_idea',
+    module_predicates.is_allowed_change_item
+)
 
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.rate_idea',
+    module_predicates.is_allowed_rate_item
+)
 
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.propose_idea',
-               is_superuser | is_context_moderator | is_context_initiator |
-               (is_context_member & phase_allows_add(Idea)))
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.comment_idea',
+    module_predicates.is_allowed_comment_item
+)
 
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.moderate_idea',
+    module_predicates.is_context_moderator |
+    module_predicates.is_context_initiator
+)
 
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.view_idea',
-               is_superuser | is_context_moderator | is_context_initiator |
-               is_context_member | is_public_context)
-
-rules.add_perm('{{cookiecutter.project_app_prefix}}_ideas.export_ideas',
-               is_superuser | is_context_moderator | is_context_initiator)
+rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_ideas.export_ideas',
+    module_predicates.is_context_moderator |
+    module_predicates.is_context_initiator
+)

@@ -15,7 +15,7 @@ class DashboardOrganisationUpdateView(a4dashboard_mixins.DashboardBaseMixin,
     form_class = forms.OrganisationForm
     slug_url_kwarg = 'organisation_slug'
     success_message = _('Organisation successfully updated.')
-    permission_required = 'hallo_organisations.modify_organisation'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_organisations.change_organisation'
     menu_item = 'organisation'
 
     def get_permission_object(self):
