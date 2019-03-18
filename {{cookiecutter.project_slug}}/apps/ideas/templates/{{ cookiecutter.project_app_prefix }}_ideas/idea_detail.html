@@ -59,4 +59,7 @@
         {% react_comments idea %}
     </div>
 </div>
+
+{% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas/includes/modal.html" with idea=idea %}
+
 {% endblock %}{% endraw %}
