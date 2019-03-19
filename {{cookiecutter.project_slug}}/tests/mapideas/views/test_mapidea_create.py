@@ -23,10 +23,12 @@ def test_anonymous_cannot_create_mapidea(client, phase_factory):
 
 
 @pytest.mark.django_db
-def test_user_can_create_mapidea_during_active_phase(client, phase_factory, user,
-                                                  category_factory):
+def test_user_can_create_mapidea_during_active_phase(client, phase_factory,
+                                                     user, category_factory,
+                                                     area_settings_factory):
     phase = phase_factory(phase_content=phases.IssuePhase())
     module = phase.module
+    area_settings_factory(module=module)
     category = category_factory(module=module)
     url = reverse('mapidea-create',
                   kwargs={'slug': module.slug})
@@ -54,7 +56,8 @@ def test_user_can_create_mapidea_during_active_phase(client, phase_factory, user
 
 
 @pytest.mark.django_db
-def test_user_cannot_create_mapidea_in_wrong_phase(client, phase_factory, user):
+def test_user_cannot_create_mapidea_in_wrong_phase(client, user,
+                                                   phase_factory):
     phase = phase_factory(phase_content=phases.RatingPhase())
     module = phase.module
     url = reverse('mapidea-create',
@@ -69,9 +72,11 @@ def test_user_cannot_create_mapidea_in_wrong_phase(client, phase_factory, user):
 
 @pytest.mark.django_db
 def test_admin_can_create_mapidea_in_wrong_phase(client, phase_factory,
-                                              category_factory, admin):
+                                                 category_factory, admin,
+                                                 area_settings_factory):
     phase = phase_factory(phase_content=phases.RatingPhase())
     module = phase.module
+    area_settings_factory(module=module)
     category = category_factory(module=module)
     url = reverse('mapidea-create',
                   kwargs={'slug': module.slug})

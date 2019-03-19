@@ -9,13 +9,14 @@ from tests.helpers import setup_phase
 
 
 @pytest.mark.django_db
-def test_creator_can_update_during_active_phase(client,
-                                                phase_factory,
+def test_creator_can_update_during_active_phase(client, phase_factory,
                                                 map_idea_factory,
-                                                category_factory):
+                                                category_factory,
+                                                area_settings_factory):
     phase, module, project, mapidea = setup_phase(
         phase_factory, map_idea_factory, phases.IssuePhase)
     category = category_factory(module=module)
+    area_settings_factory(module=module)
     user = mapidea.creator
     url = reverse(
         'mapidea-update',
@@ -28,6 +29,8 @@ def test_creator_can_update_during_active_phase(client,
             'name': 'Another MapIdea',
             'description': 'changed description',
             'category': category.pk,
+            'point': (0, 1),
+            'point_label': 'somewhere else'
         }
         response = client.post(url, data)
         assert redirect_target(response) == 'mapidea-detail'
@@ -37,8 +40,7 @@ def test_creator_can_update_during_active_phase(client,
 
 
 @pytest.mark.django_db
-def test_creator_cannot_update_in_wrong_phase(client,
-                                              phase_factory,
+def test_creator_cannot_update_in_wrong_phase(client, phase_factory,
                                               map_idea_factory,
                                               category_factory):
     phase, module, project, mapidea = setup_phase(
@@ -57,19 +59,22 @@ def test_creator_cannot_update_in_wrong_phase(client,
             'name': 'Another MapIdea',
             'description': 'changed description',
             'category': category.pk,
+            'point': (0, 1),
+            'point_label': 'somewhere else'
         }
         response = client.post(url, data)
         assert response.status_code == 403
 
 
 @pytest.mark.django_db
-def test_moderator_can_update_during_wrong_phase(client,
-                                                 phase_factory,
+def test_moderator_can_update_during_wrong_phase(client, phase_factory,
                                                  map_idea_factory,
-                                                 category_factory):
+                                                 category_factory,
+                                                 area_settings_factory):
     phase, module, project, mapidea = setup_phase(
         phase_factory, map_idea_factory, phases.RatingPhase)
     category = category_factory(module=module)
+    area_settings_factory(module=module)
     user = mapidea.creator
     moderator = project.moderators.first()
     assert moderator is not user
@@ -84,6 +89,8 @@ def test_moderator_can_update_during_wrong_phase(client,
             'name': 'Another MapIdea',
             'description': 'changed description',
             'category': category.pk,
+            'point': (0, 1),
+            'point_label': 'somewhere else'
         }
         response = client.post(url, data)
         assert redirect_target(response) == 'mapidea-detail'
@@ -105,7 +112,10 @@ def test_creator_cannot_update(client, map_idea_factory):
     client.login(username=user.email, password='password')
     data = {
         'name': 'Another MapIdea',
-        'description': 'changed description'
+        'description': 'changed description',
+        'category': category.pk,
+        'point': (0, 1),
+        'point_label': 'somewhere else'
     }
     response = client.post(url, data)
     assert response.status_code == 403

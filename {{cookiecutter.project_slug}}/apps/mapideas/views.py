@@ -72,7 +72,7 @@ class MapIdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
 class MapIdeaCreateView(PermissionRequiredMixin, generic.CreateView):
     model = idea_models.MapIdea
     form_class = forms.MapIdeaForm
-    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.propose_mapidea'
+    permission_required = '{{cookiecutter.project_app_prefix}}_mapideas.add_mapidea'
 
     @property
     def raise_exception(self):
