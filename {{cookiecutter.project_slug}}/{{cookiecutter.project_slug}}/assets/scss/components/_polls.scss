@@ -1,0 +1,25 @@
+.poll {
+    @extend .pt-3;
+    @extend .pb-4;
+}
+.poll__rows {
+    @extend .py-2;
+}
+.poll-row {
+    @extend .d-block;
+    @extend .border;
+    @extend .rounded;
+    @extend .px-3;
+    @extend .py-2;
+
+    input[type=checkbox]:checked + span {
+        @extend .font-weight-bold;
+    }
+    input[type=radio]:checked + span {
+        @extend .font-weight-bold;
+    }
+}
+
+.radio__text {
+    @extend .ml-4;
+}
