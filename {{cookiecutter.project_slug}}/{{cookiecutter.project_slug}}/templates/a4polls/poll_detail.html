@@ -4,15 +4,16 @@
 
 {% block phase_content %}
     <div class="container">
-      <div class="row">
-           <div class="offset-md-1 col-md-10">
-                <div class="poll-question-list">
+        <div class="row">
+            <div class="offset-md-1 col-md-10">
+                <div class="poll-question-list mb-3">
                     {% for question in question_list %}
                         {% react_polls question %}
                     {% endfor %}
                 </div>
+
+                {% react_comments object %}
             </div>
-            {% react_comments object %}
         </div>
     </div>
 {% endblock %}
