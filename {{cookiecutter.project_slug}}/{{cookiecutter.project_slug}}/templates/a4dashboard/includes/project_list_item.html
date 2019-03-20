@@ -5,7 +5,7 @@
 
 <li class="list-group-item p-0">
     <ul class="list-group d-flex flex-row">
-        <div class="col-2 rounded position-relative bg-primary" {% if project_image %} style="background-image: url({% thumbnail project_image '170x170' crop %}); background-position: center;"{% endif %}>
+        <div class="d-none d-sm-inline col-2 rounded position-relative bg-primary" {% if project_image %} style="background-image: url({% thumbnail project_image '170x170' crop %}); background-position: center;"{% endif %}>
             {% if project_image_copyright %}
             <small class="position-absolute fixed-bottom bg-light text-break">© {{ project_image_copyright }}</small>
             {% endif %}
@@ -36,7 +36,7 @@
                 </a>
                 <div class="btn-group dropdown" role="group">
                     <button id="btnGroupDrop{{ project.id}}" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
-                    <div class="dropdown-menu p-0" aria-labelledby="btnGroupDrop{{ project.id}}">
+                    <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="btnGroupDrop{{ project.id}}">
                         <div class="dropdown-item">
                             <form method="post" class="">
                                 {% csrf_token %}
