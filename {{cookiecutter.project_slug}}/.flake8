@@ -1,0 +1,6 @@
+[flake8]
+max-complexity = 10
+# D10 Missing docstring in public method
+# W503 line break before binary operator
+ignore = D10,W503
+exclude = .git,__pycache__,*/migrations/*,*/settings/*

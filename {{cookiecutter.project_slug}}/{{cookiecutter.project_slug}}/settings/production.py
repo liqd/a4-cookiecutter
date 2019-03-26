@@ -1,8 +1,6 @@
 from .base import *
 
-COMPRESS = True
-COMPRESS_OFFLINE = True
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEBUG = False
 
 try:

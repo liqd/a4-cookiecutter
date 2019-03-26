@@ -84,7 +84,7 @@ lint:
 	EXIT_STATUS=0; \
 	$(VIRTUAL_ENV)/bin/isort --diff -rc -c $(SOURCE_DIRS) ||  EXIT_STATUS=$$?; \
 	$(VIRTUAL_ENV)/bin/flake8 $(SOURCE_DIRS) --exclude migrations,settings ||  EXIT_STATUS=$$?; \
-	npm run lint --silent ||  EXIT_STATUS=$$?; \
+	npm run lint ||  EXIT_STATUS=$$?; \
 	$(VIRTUAL_ENV)/bin/python manage.py makemigrations --dry-run --check --noinput || EXIT_STATUS=$$?; \
 	exit $${EXIT_STATUS}
 
@@ -101,6 +101,11 @@ po:
 mo:
 	$(VIRTUAL_ENV)/bin/python manage.py compilemessages
 
-.PHONY: make
-make:
-	@echo Hello dwarf planet!
+.PHONY: release
+release: export DJANGO_SETTINGS_MODULE ?= a4-speakup.settings.build
+release:
+	npm install --silent
+	npm run build:prod
+	$(VIRTUAL_ENV)/bin/python3 -m pip install -r requirements.txt -q
+	$(VIRTUAL_ENV)/bin/python3 manage.py compilemessages -v0
+	$(VIRTUAL_ENV)/bin/python3 manage.py collectstatic --noinput -v0
