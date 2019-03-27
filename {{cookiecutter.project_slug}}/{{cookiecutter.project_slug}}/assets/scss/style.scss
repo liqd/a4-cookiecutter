@@ -1,4 +1,12 @@
 // Required
+@import "~bootstrap/scss/functions";
+
+@import 'base';
+
+// Project variables overwriting bootstrap's variables
+@import 'variables';
+
+// Must be loaded after above due to use of !default
 @import "~bootstrap/scss/bootstrap.scss";
 
 //A4 components
@@ -9,4 +17,5 @@
 @import 'a4-components/polls';
 @import 'a4-components/progress';
 
+//Project components
 @import 'components/button';
