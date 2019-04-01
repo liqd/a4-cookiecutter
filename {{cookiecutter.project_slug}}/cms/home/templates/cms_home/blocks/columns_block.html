@@ -1,0 +1,7 @@
+<div class="block row mb-4">
+    {% for column in value.columns %}
+        <div class="block-col-{{ value.columns_count }}">
+        {{ column }}
+        </div>
+    {% endfor %}
+</div>

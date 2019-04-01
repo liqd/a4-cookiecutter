@@ -2,7 +2,14 @@
 {% load wagtailcore_tags %}
 
 {% block title %}
-{{ page.title }}
+<div class="block__header_img" {% if page.header_image %} style="background-image: url({{ page.header_image.url }});  background-repeat: no-repeat; background-position: center; background-size: cover; " {% endif %}>
+    <div class="block__header_img_overlay">
+        <div class="container">
+            {{ page.title }}
+            {{ page.subtitle }}
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
