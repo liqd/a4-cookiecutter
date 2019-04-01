@@ -1,4 +1,4 @@
-{% load wagtailcore_tags %}
+{% raw %}{% load wagtailcore_tags %}
 
 <div class="block block--cta row mb-4">
     <div class="col-md-8 offset-md-2">
@@ -6,3 +6,4 @@
         <a href="{{ value.link }}" class="btn btn--primary">{{ value.link_text }}</a>
     </div>
 </div>
+{% endraw %}
