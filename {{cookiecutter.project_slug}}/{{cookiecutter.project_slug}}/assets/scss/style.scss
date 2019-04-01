@@ -1,5 +1,5 @@
 // Required
-@import "~bootstrap/scss/functions";
+@import '~bootstrap/scss/functions';
 
 @import 'base';
 
@@ -7,7 +7,7 @@
 @import 'variables';
 
 // Must be loaded after above due to use of !default
-@import "~bootstrap/scss/bootstrap.scss";
+@import '~bootstrap/scss/bootstrap.scss';
 
 //A4 components
 @import 'a4-components/alert';
