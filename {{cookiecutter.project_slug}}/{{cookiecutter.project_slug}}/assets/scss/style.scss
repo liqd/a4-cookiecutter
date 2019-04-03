@@ -41,10 +41,14 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
-@import 'components/alert';
-@import 'components/category_formset';
+//A4 components
+@import 'a4-components/alert';
+@import 'a4-components/category_formset';
+@import 'a4-components/forms';
+@import 'a4-components/question_list';
+@import 'a4-components/polls';
+@import 'a4-components/progress';
+
+//Project components
+@import 'components/blocks';
 @import 'components/button';
-@import 'components/forms';
-@import 'components/question_list';
-@import 'components/polls';
-@import 'components/progress';

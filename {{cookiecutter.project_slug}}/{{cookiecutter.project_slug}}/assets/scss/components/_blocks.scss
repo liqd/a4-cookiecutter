@@ -1,0 +1,36 @@
+.block-col-6 {
+    @extend .col-sm-4;
+    @extend .col-md-2;
+}
+
+.block-col-4 {
+    @extend .col-sm-3;
+}
+
+.block-col-3 {
+    @extend .col-sm-4;
+}
+
+.block-col-2 {
+    @extend .col-sm-6;
+}
+
+.block-call_to_action,
+.block-image_call_to_action {
+    text-align: center;
+}
+
+.block__header_img {
+    position: relative;
+    padding: 10*$spacer 0;
+}
+
+.block__header_img_overlay {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255, 255, 0.5);
+}

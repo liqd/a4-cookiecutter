@@ -3,14 +3,14 @@
 {% project_tile_image_copyright project as project_image_copyright %}
 
 
-<li class="list-group-item p-0">
+<li class="list-group-item py-0 px-3 px-sm-0">
     <ul class="list-group d-flex flex-row">
-        <div class="col-2 rounded position-relative bg-primary" {% if project_image %} style="background-image: url({% thumbnail project_image '170x170' crop %}); background-position: center;"{% endif %}>
+        <div class="d-none d-sm-inline col-2 rounded position-relative bg-primary" {% if project_image %} style="background-image: url({% thumbnail project_image '170x170' crop %}); background-position: center;"{% endif %}>
             {% if project_image_copyright %}
             <small class="position-absolute fixed-bottom bg-light text-break">© {{ project_image_copyright }}</small>
             {% endif %}
         </div>
-        <li class="list-group-item flex-fill border-0 mb-1">
+        <li class="list-group-item flex-fill border-0 mb-1 pl-0 pl-sm-3">
             <h2>{{ project.name }}</h2>
             <div class="dashboard-list-labels">
                 {% if project.has_finished %}
@@ -21,7 +21,7 @@
                 {% endif %}
                 </div>
         </li>
-        <li class="list-group-item border-0 py-5">
+        <li class="list-group-item border-0 px-0 pr-sm-3 py-5">
             <div class="btn-group" role="group">
                 <a href="{{  project.get_absolute_url }}" class="btn btn-light">
                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
                 </a>
                 <div class="btn-group dropdown" role="group">
                     <button id="btnGroupDrop{{ project.id}}" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
-                    <div class="dropdown-menu p-0" aria-labelledby="btnGroupDrop{{ project.id}}">
+                    <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="btnGroupDrop{{ project.id}}">
                         <div class="dropdown-item">
                             <form method="post" class="">
                                 {% csrf_token %}
