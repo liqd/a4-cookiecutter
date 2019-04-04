@@ -21,12 +21,12 @@ from adhocracy4.polls.routers import QuestionDefaultRouter
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
-from apps.documents import urls as documents_urls
-from apps.documents.api import DocumentViewSet
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
 from apps.mapideas import urls as map_ideas_urls
 {% endif %}
 from apps.projects import urls as project_urls
+from apps.documents import urls as documents_urls
+from apps.documents.api import DocumentViewSet
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
