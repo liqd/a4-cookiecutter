@@ -8,4 +8,4 @@ def has_started(user, project):
 
 @rules.predicate
 def has_context_started(user, item):
-return has_started(user, item.project)
+    return has_started(user, item.project)
