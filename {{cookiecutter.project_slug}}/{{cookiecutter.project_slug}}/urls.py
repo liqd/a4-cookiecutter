@@ -21,6 +21,8 @@ from adhocracy4.polls.routers import QuestionDefaultRouter
 
 from apps.dashboard import urls as dashboard_urls
 from apps.ideas import urls as ideas_urls
+from apps.documents import urls as documents_urls
+from apps.documents.api import DocumentViewSet
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
 from apps.mapideas import urls as map_ideas_urls
 {% endif %}
@@ -39,6 +41,10 @@ question_router = QuestionDefaultRouter()
 question_router.register(r'vote', VoteViewSet, base_name='vote')
 {% endif %}
 
+module_router = a4routers.ModuleDefaultRouter()
+# FIXME: rename to 'chapters'
+module_router.register(r'documents', DocumentViewSet, basename='chapters')
+
 ct_router = a4routers.ContentTypeDefaultRouter()
 ct_router.register(r'comments', CommentViewSet, base_name='comments')
 ct_router.register(r'ratings', RatingViewSet, base_name='ratings')
@@ -56,6 +62,7 @@ urlpatterns = [
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
+    url(r'^text/', include(documents_urls)),
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}

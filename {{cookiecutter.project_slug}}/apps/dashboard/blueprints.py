@@ -22,6 +22,19 @@ blueprints = [
          image='images/brainstorming.svg',
          settings_model=None,
      )),
+    ('text-review',
+     ProjectBlueprint(
+         title=_('Text Review'),
+         description=_(
+             'In the text-review it’s possible to structure draft texts '
+             'that can be commented.'
+         ),
+         content=[
+             documents_phases.CommentPhase(),
+         ],
+         image='images/blueprints/text-review.svg',
+         settings_model=None,
+    )),
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('brainstorming_map',
      ProjectBlueprint(
