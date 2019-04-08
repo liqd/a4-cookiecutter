@@ -17,6 +17,9 @@ var ReactFollows = require('adhocracy4').follows
 {% if cookiecutter.add_polls_app == 'y' %}
 var ReactPolls = require('adhocracy4').polls
 {% endif %}
+{% if cookiecutter.add_documents_app == 'y' %}
+var ReactDocuments = require('../../../apps/documents/assets/react_documents.jsx')
+{% endif %}
 
 var initialiseWidget = function (namespace, name, fn) {
   var key = 'data-' + namespace + '-widget'
@@ -38,6 +41,9 @@ var init = function () {
 {% if cookiecutter.add_polls_app == 'y' %}
   initialiseWidget('a4', 'polls', ReactPolls.renderPolls)
   initialiseWidget('a4', 'poll-management', ReactPolls.renderPollManagement)
+{% endif %}
+{% if cookiecutter.add_documents_app == 'y' %}
+initialiseWidget('cc', 'document-management', ReactDocuments.renderDocumentManagement)
 {% endif %}
 }
 
