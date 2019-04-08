@@ -45,7 +45,9 @@ question_router.register(r'vote', VoteViewSet, base_name='vote')
 
 module_router = a4routers.ModuleDefaultRouter()
 # FIXME: rename to 'chapters'
+{% if cookiecutter.add_documents_app == 'y' %}
 module_router.register(r'documents', DocumentViewSet, base_name='chapters')
+{% endif %}
 
 ct_router = a4routers.ContentTypeDefaultRouter()
 ct_router.register(r'comments', CommentViewSet, base_name='comments')
@@ -64,7 +66,9 @@ urlpatterns = [
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
+{% if cookiecutter.add_documents_app == 'y' %}
     url(r'^text/', include(documents_urls)),
+{% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}
