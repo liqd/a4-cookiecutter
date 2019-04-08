@@ -62,20 +62,20 @@ class Paragraph extends React.Component {
     var ckEditorToolbarsHeight = 60 // measured on example editor
     return (
       <section>
-        <div className="commenting">
-          <div className="commenting__content commenting__content--border">
+        <div className="row no-gutters">
+          <div className="border rounded col-9 mb-4 p-3">
             <div className="form-group">
               <label
                 htmlFor={'id_paragraphs-' + this.props.id + '-name'}>
                 {django.gettext('Headline')}
-                <input
-                  className="form-control"
-                  id={'id_paragraphs-' + this.props.id + '-name'}
-                  name={'paragraphs-' + this.props.id + '-name'}
-                  type="text"
-                  value={this.props.paragraph.name}
-                  onChange={this.handleNameChange.bind(this)} />
               </label>
+              <input
+                className="form-control"
+                id={'id_paragraphs-' + this.props.id + '-name'}
+                name={'paragraphs-' + this.props.id + '-name'}
+                type="text"
+                value={this.props.paragraph.name}
+                onChange={this.handleNameChange.bind(this)} />
               <ErrorList errors={this.props.errors} field="name" />
             </div>
 
@@ -83,47 +83,49 @@ class Paragraph extends React.Component {
               <label
                 htmlFor={'id_paragraphs-' + this.props.id + '-text'}>
                 {django.gettext('Paragraph')}
-                <div
-                  className="django-ckeditor-widget"
-                  data-field-id={'id_paragraphs-' + this.props.id + '-text'}
-                  style={% raw %}{{ display: 'inline-block' }}{% endraw %}>
-                  <textarea
-                    // fix height to avoid jumping on ckeditor initalization
-                    style={% raw %}{{ height: this.props.config.height + ckEditorToolbarsHeight }}{% endraw %}
-                    id={'id_paragraphs-' + this.props.id + '-text'} />
-                </div>
               </label>
+              <div
+                className="django-ckeditor-widget"
+                data-field-id={'id_paragraphs-' + this.props.id + '-text'}
+                style={% raw %}{{ display: 'inline-block' }}{% endraw %}>
+                <textarea
+                  // fix height to avoid jumping on ckeditor initalization
+                  style={% raw %}{{ height: this.props.config.height + ckEditorToolbarsHeight }}{% endraw %}
+                  id={'id_paragraphs-' + this.props.id + '-text'} />
+              </div>
               <ErrorList errors={this.props.errors} field="text" />
             </div>
           </div>
 
-          <div className="commenting__actions btn-group" role="group">
-            <button
-              className="btn btn--light btn--small"
-              onClick={this.props.onMoveUp}
-              disabled={!this.props.onMoveUp}
-              title={django.gettext('Move up')}
-              type="button">
-              <i className="fa fa-chevron-up"
-                aria-label={django.gettext('Move up')} />
-            </button>
-            <button
-              className="btn btn--light btn--small"
-              onClick={this.props.onMoveDown}
-              disabled={!this.props.onMoveDown}
-              title={django.gettext('Move down')}
-              type="button">
-              <i className="fa fa-chevron-down"
-                aria-label={django.gettext('Move down')} />
-            </button>
-            <button
-              className="btn btn--light btn--small"
-              onClick={this.props.onDelete}
-              title={django.gettext('Delete')}
-              type="button">
-              <i className="fas fa-trash-alt"
-                aria-label={django.gettext('Delete')} />
-            </button>
+          <div className="col-3">
+            <div className="ml-3 btn-group" role="group">
+              <button
+                className="btn btn--light"
+                onClick={this.props.onMoveUp}
+                disabled={!this.props.onMoveUp}
+                title={django.gettext('Move up')}
+                type="button">
+                <i className="fa fa-chevron-up"
+                  aria-label={django.gettext('Move up')} />
+              </button>
+              <button
+                className="btn btn--light "
+                onClick={this.props.onMoveDown}
+                disabled={!this.props.onMoveDown}
+                title={django.gettext('Move down')}
+                type="button">
+                <i className="fa fa-chevron-down"
+                  aria-label={django.gettext('Move down')} />
+              </button>
+              <button
+                className="btn btn--light"
+                onClick={this.props.onDelete}
+                title={django.gettext('Delete')}
+                type="button">
+                <i className="fas fa-trash-alt"
+                  aria-label={django.gettext('Delete')} />
+              </button>
+            </div>
           </div>
         </div>
       </section>

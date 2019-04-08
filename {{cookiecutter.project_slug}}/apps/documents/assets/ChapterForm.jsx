@@ -6,18 +6,19 @@ var ParagraphForm = require('./ParagraphForm')
 
 const ChapterForm = (props) => {
   return (
-    <section className="u-spacer-bottom-double">
-      <div className="commenting">
-        <div className="form-group commenting__content">
+    <section className="mb-4">
+      <div className="mb-3 d-block">
+        <div className="form-group">
           <label htmlFor={'id_chapters-' + props.id + '-name'}>
             {django.gettext('Chapter title')}
-            <input
-              id={'id_chapters-' + props.id + '-name'}
-              name={'chapters-' + props.id + '-name'}
-              type="text"
-              value={props.chapter.name}
-              onChange={(e) => { props.onChapterNameChange(e.target.value) }} />
           </label>
+          <input
+            className="col-9 form-control"
+            id={'id_chapters-' + props.id + '-name'}
+            name={'chapters-' + props.id + '-name'}
+            type="text"
+            value={props.chapter.name}
+            onChange={(e) => { props.onChapterNameChange(e.target.value) }} />
           <ErrorList errors={props.errors} field="name" />
         </div>
       </div>
@@ -28,6 +29,7 @@ const ChapterForm = (props) => {
             var key = paragraph.id || paragraph.key
             return (
               <ParagraphForm
+                className="form-control"
                 id={key}
                 key={key}
                 index={index}

@@ -6,8 +6,8 @@ var ChapterNavItem = require('./ChapterNavItem')
 const ChapterNav = (props) => {
   const activeKey = props.activeChapter.id || props.activeChapter.key
   return (
-    <nav aria-label={django.gettext('Chapter navigation')}>
-      <FlipMove easing="cubic-bezier(0.25, 0.5, 0.75, 1)" typeName="ol" className="u-list-reset">
+    <nav aria-label={django.gettext('Chapter navigation')} className="mb-4">
+      <FlipMove easing="cubic-bezier(0.25, 0.5, 0.75, 1)" typeName="ol" className="list-unstyled">
         {
           props.chapters.map((chapter, index, arr) => {
             const key = chapter.id || chapter.key

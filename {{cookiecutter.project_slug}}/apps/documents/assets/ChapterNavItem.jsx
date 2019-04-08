@@ -14,18 +14,18 @@ function getErrorCount (props) {
 
 const ChapterNavItem = (props) => {
   return (
-    <div className="commenting">
+    <div className="form-inline mb-2">
       <button
         type="button"
-        className={classNames('commenting__content', 'commenting--toc__button', 'btn btn--light', 'btn--small', { 'active': props.active })}
+        className={classNames('col-9', 'btn btn--light', 'text-left', { 'active': props.active })}
         onClick={props.onClick}>
         {props.index + 1}. {props.name}
         {getErrorCount(props)}
       </button>
 
-      <div className="commenting__actions btn-group" role="group">
+      <div className="col-3 btn-group" role="group">
         <button
-          className="btn btn--light btn--small"
+          className="btn btn--light"
           onClick={props.onMoveUp}
           disabled={!props.onMoveUp}
           title={django.gettext('Move up')}
@@ -34,7 +34,7 @@ const ChapterNavItem = (props) => {
             aria-label={django.gettext('Move up')} />
         </button>
         <button
-          className="btn btn--light btn--small"
+          className="btn btn--light"
           onClick={props.onMoveDown}
           disabled={!props.onMoveDown}
           title={django.gettext('Move down')}
@@ -43,7 +43,7 @@ const ChapterNavItem = (props) => {
             aria-label={django.gettext('Move down')} />
         </button>
         <button
-          className="btn btn--light btn--small"
+          className="btn btn--light"
           onClick={props.onDelete}
           disabled={!props.onDelete}
           title={django.gettext('Delete')}
