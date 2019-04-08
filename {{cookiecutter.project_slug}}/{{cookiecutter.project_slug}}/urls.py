@@ -62,6 +62,9 @@ urlpatterns = [
 {% if cookiecutter.add_polls_app == 'y' %}
     url(r'^api/', include(question_router.urls)),
 {% endif %}
+{% if cookiecutter.add_documents_app == 'y' %}
+    url(r'^api/', include(module_router.urls)),
+{% endif %}
     url(r'^accounts/', include('allauth.urls')),
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
