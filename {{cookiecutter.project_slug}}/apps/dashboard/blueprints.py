@@ -35,7 +35,7 @@ blueprints = [
          content=[
              documents_phases.CommentPhase(),
          ],
-         image='images/blueprints/text-review.svg',
+         image='images/text-review.svg',
          settings_model=None,
     )),
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
