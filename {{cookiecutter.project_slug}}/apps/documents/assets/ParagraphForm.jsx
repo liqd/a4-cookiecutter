@@ -86,10 +86,10 @@ class Paragraph extends React.Component {
                 <div
                   className="django-ckeditor-widget"
                   data-field-id={'id_paragraphs-' + this.props.id + '-text'}
-                  style={{ display: 'inline-block' }}>
+                  style={% raw %}{{ display: 'inline-block' }}{% endraw %}>
                   <textarea
                     // fix height to avoid jumping on ckeditor initalization
-                    style={{ height: this.props.config.height + ckEditorToolbarsHeight }}
+                    style={% raw %}{{ height: this.props.config.height + ckEditorToolbarsHeight }}{% endraw %}
                     id={'id_paragraphs-' + this.props.id + '-text'} />
                 </div>
               </label>

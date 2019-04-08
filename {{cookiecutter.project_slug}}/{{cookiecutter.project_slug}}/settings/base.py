@@ -79,6 +79,7 @@ INSTALLED_APPS = [
 
     'apps.contrib',
     'apps.ideas',
+    # addif statement
     'apps.documents',
     {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     'apps.mapideas',

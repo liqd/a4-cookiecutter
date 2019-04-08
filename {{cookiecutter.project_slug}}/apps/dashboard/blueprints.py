@@ -8,6 +8,9 @@ from apps.ideas import phases as ideas_phases
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
 from apps.mapideas import phases as map_ideas_phases
 {% endif %}
+# addif statement {% if cookiecutter.add_documents_app == 'y' %}
+from apps.documents import phases as documents_phases
+# {% endif %}
 
 blueprints = [
     ('brainstorming',
