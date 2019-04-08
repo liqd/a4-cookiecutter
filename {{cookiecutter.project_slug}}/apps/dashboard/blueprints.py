@@ -8,9 +8,10 @@ from apps.ideas import phases as ideas_phases
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
 from apps.mapideas import phases as map_ideas_phases
 {% endif %}
-# addif statement {% if cookiecutter.add_documents_app == 'y' %}
+{% if cookiecutter.add_documents_app == 'y' %}
 from apps.documents import phases as documents_phases
-# {% endif %}
+{% endif %}
+
 
 blueprints = [
     ('brainstorming',
@@ -25,6 +26,7 @@ blueprints = [
          image='images/brainstorming.svg',
          settings_model=None,
      )),
+{% if cookiecutter.add_documents_app == 'y' %}
     ('text-review',
      ProjectBlueprint(
          title=_('Text Review'),
@@ -38,6 +40,7 @@ blueprints = [
          image='images/text-review.svg',
          settings_model=None,
     )),
+{% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('brainstorming_map',
      ProjectBlueprint(

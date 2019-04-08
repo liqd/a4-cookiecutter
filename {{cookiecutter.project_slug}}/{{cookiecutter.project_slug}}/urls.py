@@ -25,9 +25,10 @@ from apps.ideas import urls as ideas_urls
 from apps.mapideas import urls as map_ideas_urls
 {% endif %}
 from apps.projects import urls as project_urls
-# addif statement
+{% if cookiecutter.add_documents_app == 'y' %}
 from apps.documents import urls as documents_urls
 from apps.documents.api import DocumentViewSet
+{% endif %}
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
