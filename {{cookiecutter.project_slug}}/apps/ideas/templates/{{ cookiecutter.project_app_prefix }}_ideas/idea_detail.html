@@ -12,7 +12,7 @@
                         {% trans 'back to project' %}</a>
                 </li>
             </ul>
-            {% has_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.modify_idea' request.user idea as show_dropdown %}
+            {% has_perm '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_ideas.change_idea' request.user idea as show_dropdown %}
 
             {% if show_dropdown %}
             <ul class="navbar-nav navbar-right">
@@ -59,4 +59,7 @@
         {% react_comments idea %}
     </div>
 </div>
+
+{% include "{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas/includes/modal.html" with idea=idea %}
+
 {% endblock %}{% endraw %}

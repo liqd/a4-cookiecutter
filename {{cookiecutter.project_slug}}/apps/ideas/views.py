@@ -48,7 +48,7 @@ class IdeaDetailView(PermissionRequiredMixin, generic.DetailView):
 class IdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
     model = idea_models.Idea
     form_class = forms.IdeaForm
-    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.modify_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.change_idea'
 
     @property
     def raise_exception(self):
@@ -69,7 +69,7 @@ class IdeaUpdateView(PermissionRequiredMixin, generic.UpdateView):
 class IdeaCreateView(PermissionRequiredMixin, generic.CreateView):
     model = idea_models.Idea
     form_class = forms.IdeaForm
-    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.propose_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.add_idea'
 
     @property
     def raise_exception(self):
@@ -105,7 +105,7 @@ class IdeaCreateView(PermissionRequiredMixin, generic.CreateView):
 class IdeaDeleteView(PermissionRequiredMixin, generic.DeleteView):
     model = idea_models.Idea
     success_message = _("Your Idea has been deleted")
-    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.modify_idea'
+    permission_required = '{{ cookiecutter.project_app_prefix }}_ideas.change_idea'
 
     @property
     def raise_exception(self):

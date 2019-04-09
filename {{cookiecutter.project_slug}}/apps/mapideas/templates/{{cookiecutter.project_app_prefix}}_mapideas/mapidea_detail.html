@@ -22,7 +22,7 @@
                             {% trans 'back to project' %}</a>
                     </li>
                 </ul>
-                {% has_perm '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_ideas.modify_mapidea' request.user object as show_dropdown %}
+                {% has_perm '{% endraw %}{{cookiecutter.project_app_prefix}}{% raw %}_mapideas.change_mapidea' request.user object as show_dropdown %}
                 {% if show_dropdown %}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -32,7 +32,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="drop">
                             <li>
-                                <a href="{% url 'map-idea-update' object.slug %}">{% trans 'Edit' %}</a>
+                                <a href="{% url 'mapidea-update' object.slug %}">{% trans 'Edit' %}</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>

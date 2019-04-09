@@ -16,6 +16,11 @@ def remove_mapideas(project_directory):
         'apps/mapideas'
     )
     shutil.rmtree(location)
+    test_location = os.path.join(
+        PROJECT_DIRECTORY,
+        'tests/mapideas'
+    )
+    shutil.rmtree(test_location)
 
 def remove_polls(project_directory):
     location = os.path.join(

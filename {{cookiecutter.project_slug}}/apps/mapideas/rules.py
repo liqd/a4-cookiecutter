@@ -15,6 +15,11 @@ rules.add_perm(
 )
 
 rules.add_perm(
+    '{{cookiecutter.project_app_prefix}}_mapideas.change_mapidea',
+    module_predicates.is_allowed_change_item
+)
+
+rules.add_perm(
     '{{cookiecutter.project_app_prefix}}_mapideas.rate_mapidea',
     module_predicates.is_allowed_rate_item
 )
@@ -25,12 +30,13 @@ rules.add_perm(
 )
 
 rules.add_perm(
-    '{{cookiecutter.project_app_prefix}}.change_mapidea',
-    module_predicates.is_allowed_change_item
+    '{{cookiecutter.project_app_prefix}}_mapideas.moderate_mapidea',
+    module_predicates.is_context_moderator |
+    module_predicates.is_context_initiator
 )
 
 rules.add_perm(
-    '{{cookiecutter.project_app_prefix}}.moderate_mapidea',
+    '{{cookiecutter.project_app_prefix}}_mapideas.export_mapideas',
     module_predicates.is_context_moderator |
     module_predicates.is_context_initiator
 )
