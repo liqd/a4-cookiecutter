@@ -76,7 +76,7 @@ add_polls_app [y]:
 ##### 6) Do you want users to comment on documents?
 The default vlaue is [y], which means yes. If you type 'n' the programming code for documents will not be added.
 ```
-add_polls_app [y]:
+add_documents_app [y]:
 
 ``` 
 
