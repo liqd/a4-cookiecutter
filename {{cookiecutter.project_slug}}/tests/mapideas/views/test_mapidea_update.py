@@ -42,10 +42,12 @@ def test_creator_can_update_during_active_phase(client, phase_factory,
 @pytest.mark.django_db
 def test_creator_cannot_update_in_wrong_phase(client, phase_factory,
                                               map_idea_factory,
-                                              category_factory):
+                                              category_factory,
+                                              area_settings_factory):
     phase, module, project, mapidea = setup_phase(
         phase_factory, map_idea_factory, phases.RatingPhase)
     category = category_factory(module=module)
+    area_settings_factory(module=module)
     user = mapidea.creator
     assert user not in project.moderators.all()
     url = reverse(
@@ -100,8 +102,12 @@ def test_moderator_can_update_during_wrong_phase(client, phase_factory,
 
 
 @pytest.mark.django_db
-def test_creator_cannot_update(client, map_idea_factory):
-    mapidea = map_idea_factory()
+def test_creator_cannot_update(client, phase_factory, map_idea_factory,
+                               category_factory, area_settings_factory):
+    phase, module, project, mapidea = setup_phase(
+        phase_factory, map_idea_factory, phases.RatingPhase)
+    category = category_factory(module=module)
+    area_settings_factory(module=module)
     user = mapidea.creator
     assert user not in mapidea.module.project.moderators.all()
     url = reverse(
@@ -122,8 +128,13 @@ def test_creator_cannot_update(client, map_idea_factory):
 
 
 @pytest.mark.django_db
-def test_moderators_can_always_update(client, map_idea_factory):
-    mapidea = map_idea_factory()
+def test_moderators_can_always_update(client, phase_factory, map_idea_factory,
+                                      category_factory,
+                                      area_settings_factory):
+    phase, module, project, mapidea = setup_phase(
+        phase_factory, map_idea_factory, phases.RatingPhase)
+    category = category_factory(module=module)
+    area_settings_factory(module=module)
     moderator = mapidea.module.project.moderators.first()
     assert moderator is not mapidea.creator
     url = reverse(
@@ -134,7 +145,10 @@ def test_moderators_can_always_update(client, map_idea_factory):
     client.login(username=moderator.email, password='password')
     data = {
         'name': 'Another MapIdea',
-        'description': 'changed description'
+        'description': 'changed description',
+        'category': category.pk,
+        'point': (0, 1),
+        'point_label': 'somewhere else'
     }
     response = client.post(url, data)
     assert redirect_target(response) == 'mapidea-detail'

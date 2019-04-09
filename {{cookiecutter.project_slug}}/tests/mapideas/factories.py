@@ -10,6 +10,13 @@ class MapIdeaFactory(factory.django.DjangoModelFactory):
         model = mapidea_models.MapIdea
 
     name = factory.Faker('sentence')
-    description = '<script>alert("hello");</script>Description'
+    description = 'Description'
     creator = factory.SubFactory(a4_factories.USER_FACTORY)
     module = factory.SubFactory(a4_factories.ModuleFactory)
+    point_label = factory.Faker('address')
+    point = {
+        'type': 'Feature',
+        'properties': {},
+        'geometry': {'type': 'Point',
+                     'coordinates': [13.447437286376953, 52.51518602243137]}
+}
