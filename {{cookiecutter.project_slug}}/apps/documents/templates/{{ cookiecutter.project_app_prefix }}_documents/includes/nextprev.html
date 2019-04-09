@@ -1,0 +1,29 @@
+{% raw %}{% load i18n %}
+
+<div class="d-flex justify-content-between mb-3">
+    {% if object.prev %}
+        <a href="{{ object.prev.get_absolute_url }}" class="btn btn--light">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            {% trans "Previous Chapter" %}
+        </a>
+    {% else %}
+        <span class="btn btn--light is-disabled">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            {% trans "Previous Chapter" %}
+        </span>
+    {% endif %}
+
+    {% if object.next %}
+        <a href="{{ object.next.get_absolute_url }}" class="btn btn--light">
+            {% trans "Next Chapter" %}
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    {% else %}
+        <span class="btn btn--light is-disabled">
+            {% trans "Next Chapter" %}
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </span>
+    {% endif %}
+</div>
+
+{% endraw %}

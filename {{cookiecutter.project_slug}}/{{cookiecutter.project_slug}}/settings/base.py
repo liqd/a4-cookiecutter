@@ -79,6 +79,9 @@ INSTALLED_APPS = [
 
     'apps.contrib',
     'apps.ideas',
+    {% if cookiecutter.add_documents_app == 'y' %}
+    'apps.documents',
+    {% endif %}
     {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     'apps.mapideas',
     {% endif %}
@@ -360,6 +363,10 @@ A4_COMMENTABLES = (
     ('{{ cookiecutter.project_app_prefix }}_ideas', 'idea'),
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     ('{{ cookiecutter.project_app_prefix }}_mapideas', 'mapidea'),
+{% endif %}
+{% if cookiecutter.add_documents_app == 'y' %}
+    ('{{ cookiecutter.project_app_prefix }}_documents', 'chapter'),
+    ('{{ cookiecutter.project_app_prefix }}_documents', 'paragraph')
 {% endif %}
 )
 

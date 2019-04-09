@@ -1,0 +1,17 @@
+.document__dropdown--menu {
+    transform: none !important;
+    float: none;
+}
+
+.document__dropdown i {
+    transition: transform 0.3s;
+    position: absolute;
+    top: 0.7em;
+    right: 1rem;
+}
+
+.document__dropdown.show {
+    i {
+        transform: rotate(-180deg);
+    }
+}

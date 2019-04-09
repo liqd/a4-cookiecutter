@@ -1,0 +1,81 @@
+{% raw %}{% extends '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_projects/project_detail.html' %}
+{% load i18n react_comments wagtailcore_tags %}
+
+{% block phase_content %}
+
+    {% if chapter_list|length > 1 %}
+    <div class="container">
+        <div class="offset-md-1 col-md-10">
+        {% include '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_documents/includes/nextprev.html' %}
+        </div>
+    </div>
+    {% endif %}
+
+    <article class="container">
+        <div class="row">
+            <div class="offset-md-1 col-md-10 px-4">
+                {% if chapter_list|length > 1 %}
+                <div class="dropdown mb-4 document__dropdown show" aria-label="{% trans 'Table of Contents' %}">
+                    <button
+                        class="btn btn-block btn--light d-flex justify-content-between "
+                        id="dropdownMenu"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        <h2 class="d-inline">{% trans 'Table of Contents' %}</h2>
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu position-static document__dropdown--menu show" aria-labelledby="dropdownMenu">
+                        <ol>
+                            {% for chapter in chapter_list %}
+                            <li>
+                                <a href="{{ chapter.get_absolute_url }}" class="dropdown-item {% if chapter.pk == object.pk %}active{% endif %}">
+                                    {{ chapter.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="card mb-3">
+                    <h2 class="card-header">{{ object.name }}</h2>
+                    {% for paragraph in object.paragraphs.all %}
+                    <section id="paragraph-{{ object.pk }}-{{ paragraph.pk }}">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                {{ paragraph.name }}
+                            </h3>
+                            <p class="card-text">
+                            {{ paragraph.text|richtext }}
+                            </p>
+                        </div>
+                        <div class="card-footer border-bottom text-right">
+                            <a class="btn btn--primary" href="{{ paragraph.get_absolute_url }}">
+                                <i class="far fa-comment" aria-hidden="true"></i>
+                                {% blocktrans count count=paragraph.comments.all|length %}{{ count }} Comment{% plural %}{{ count }} Comments{% endblocktrans %}
+                            </a>
+                        </div>
+                    </section>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </article>
+
+    {% if chapter_list|length > 1 %}
+    <div class="container">
+        <div class="offset-md-1 col-md-10">
+            {% include '{% endraw %}{{ cookiecutter.project_app_prefix }}{% raw %}_documents/includes/nextprev.html' %}
+        </div>
+    </div>
+    {% endif %}
+
+        <div class="container">
+            <div class="offset-md-1 col-md-10">
+                {% react_comments object %}
+            </div>
+        </div>
+{% endblock %}
+{% endraw %}

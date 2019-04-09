@@ -1,0 +1,34 @@
+{% raw %}{% extends "base.html" %}
+{% load i18n react_comments react_ratings wagtailcore_tags %}
+
+{% block title %}{{ paragraph.name }} &mdash; {{ paragraph.chapter.project.name }} &mdash; {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="offset-md-1 col-md-10 mb-5">
+        <nav class="mb-5" aria-label="{% trans 'breadcrumbs' %}">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="{{ paragraph.chapter.get_absolute_url }}">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        {% trans 'back to chapter' %}</a>
+                </li>
+            </ul>
+        </nav>
+
+        <article>
+            <h3>
+                {{ paragraph.name }}
+            </h3>
+            <div>
+                {{ paragraph.text | richtext }}
+            </div>
+        </article>
+    </div>
+
+    <div class="offset-md-1 col-md-10">
+        {% react_comments paragraph %}
+    </div>
+</div>
+{% endblock %}
+{% endraw %}

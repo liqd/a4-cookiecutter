@@ -25,6 +25,10 @@ from apps.ideas import urls as ideas_urls
 from apps.mapideas import urls as map_ideas_urls
 {% endif %}
 from apps.projects import urls as project_urls
+{% if cookiecutter.add_documents_app == 'y' %}
+from apps.documents import urls as documents_urls
+from apps.documents.api import DocumentViewSet
+{% endif %}
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
@@ -37,6 +41,12 @@ router.register(r'polls', PollViewSet, base_name='polls')
 
 question_router = QuestionDefaultRouter()
 question_router.register(r'vote', VoteViewSet, base_name='vote')
+{% endif %}
+
+module_router = a4routers.ModuleDefaultRouter()
+# FIXME: rename to 'chapters'
+{% if cookiecutter.add_documents_app == 'y' %}
+module_router.register(r'documents', DocumentViewSet, base_name='chapters')
 {% endif %}
 
 ct_router = a4routers.ContentTypeDefaultRouter()
@@ -52,10 +62,16 @@ urlpatterns = [
 {% if cookiecutter.add_polls_app == 'y' %}
     url(r'^api/', include(question_router.urls)),
 {% endif %}
+{% if cookiecutter.add_documents_app == 'y' %}
+    url(r'^api/', include(module_router.urls)),
+{% endif %}
     url(r'^accounts/', include('allauth.urls')),
     url(r'^dashboard/', include(dashboard_urls)),
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
+{% if cookiecutter.add_documents_app == 'y' %}
+    url(r'^text/', include(documents_urls, '{{ cookiecutter.project_app_prefix }}_documents')),
+{% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}

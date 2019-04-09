@@ -3,5 +3,6 @@
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
     "project_app_prefix": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
     "add_maps_and_mapideas_app": "y",
-    "add_polls_app": "y"
+    "add_polls_app": "y",
+    "add_documents_app": "y"
 }
