@@ -70,7 +70,7 @@ urlpatterns = [
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
 {% if cookiecutter.add_documents_app == 'y' %}
-    url(r'^text/', include(documents_urls '{{ cookiecutter.project_app_prefix }}_documents')),
+    url(r'^text/', include(documents_urls, '{{ cookiecutter.project_app_prefix }}_documents')),
 {% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
