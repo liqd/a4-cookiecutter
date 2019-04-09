@@ -1,6 +1,6 @@
 # a4-cookiecutter
 
-This is a [cookiecutter template](https://cookiecutter.readthedocs.io/en/latest/) that can be used to set up a participation platform using our participation library [adhocracy4](https://github.com/liqd/adhocracy4) and CMS [wagtail](https://wagtail.io/).
+This is a [cookiecutter template](https://cookiecutter.readthedocs.io/en/latest/) that can be used to set up a participation platform using our participation library [adhocracy4](https://github.com/liqd/adhocracy4) and the CMS [wagtail](https://wagtail.io/).
 
 When using the cookiecutter a new [django](https://www.djangoproject.com/) project with all functionalities already in place will be created. After the setup you can start customizing the platform for your own needs.
 
