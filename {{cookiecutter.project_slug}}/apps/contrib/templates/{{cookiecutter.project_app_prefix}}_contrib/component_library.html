@@ -6,70 +6,60 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <div class="wrapper">
 
                 <!-- Conponentes menu-->
-                <nav id="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Component List</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <nav id="sidebar">
+                            <div class="sidebar-header">
+                                <h3>Component List</h3>
+                            </div>
+
+                            <ul class="list-unstyled components">
+                                <li class="active">
+                                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Components</a>
+                                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                                        <li>
+                                            <a href="#cl-alerts">Alerts</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-buttons">Buttons</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-cards">Cards</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-comp-lib">Component Library list item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-forms">Forms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-list-group-items">List Group Items</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-progress-circle">Progress Circle</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="https://getbootstrap.com/docs/4.0/components/alerts/" target="_blank">All Other Bootstrap Components</a>
+                                </li>
+                                <li>
+                                    <a href="#cl-variables">Variables</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-
-                    <ul class="list-unstyled components">
-                        <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Components</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="#cl-alerts">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-buttons">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-cards">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-forms">Forms</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-list-group-items">List Group Items</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-progress-circle">Progress Circle</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Homepage Blocks</a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#cl-">Columns</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-">Call to Action</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-">Call to Action - Image</a>
-                                </li>
-                                <li>
-                                    <a href="#cl-"></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="https://getbootstrap.com/docs/4.0/components/alerts/" target="_blank">All Bootstrap Components</a>
-                        </li>
-                        <li>
-                            <a href="#cl-variables">Variables</a>
-                        </li>
-                    </ul>
-                </nav>
+                </div>
             </div>
         </div>
 
         <!-- Conponentes -->
-        <div class="col-9">
+        <div class="col-sm-9">
             <ul class="list-group">
 
                 <h3>Alerts</h3>
@@ -100,11 +90,37 @@
                     </div>
                 </li>
 
+                <h3>Component Library list item</h3>
+                <li id="cl-comp-lib" class="list-group-item mb-4">
+                    <p>
+                        <button class="btn btn--light" type="button">Light Button</button>
+                        <button class="btn btn--transparent" type="button">Transparent Button</button>
+                        <button class="btn btn--primary" type="button">Primary Button</button>
+                        <button class="btn btn--secondary" type="button">Secondary Button</button>
+                        <button class="btn btn--danger" type="button">Danger Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--link" type="button">Button as Link</button>
+                        <button class="btn btn--none" type="button">No Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--light btn--select" type="button">Select Button <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <button class="btn btn--secondary btn--small" type="button">Small Button</button>
+                        <button class="btn btn--secondary btn--huge" type="button">Huge Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--primary btn-block" type="button">Full Button</button>
+                    </p>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn--light" type="button">But</button><button class="btn btn--light" type="button">ton</button><button class="btn btn--light" type="button">group</button>
+                    </div>
+                </li>
+
                 <h3>Cards</h3>
                 <li id="cl-cards" class="list-group-item mb-4 p-3">
                     <div class="card-deck">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card px-0">
+                        <div class="col-sm-6 col-md-4 mt-4">
+                            <div class="card h-100 mx-0 px-0">
                                 <img class="card-img-top" src="" alt="">
                                 <div class="card-body">
                                     <h2 class="card-title">Blueprint Title</h2>
@@ -122,6 +138,10 @@
                     </div>
                 </li>
 
+                <h3>Component Library list item</h3>
+                <li id="cl-comp-lib" class="list-group-item mb-4">
+                </li>
+
                 <h3>Forms</h3>
                 <li id="cl-forms" class="list-group-item mb-4 p-3">
                     <div class="form-group form-check">
@@ -129,17 +149,21 @@
                         <label class="form-check-label mb-1" for="">Checkbox label</label>
                         <small class="form-text text-muted mt-0 mb-2">help text</small>
                     </div>
+                </li>
+                <li class="list-group-item mb-4 p-3">
                     <div class="form-group">
-                        <label for="" class="mb-1">Radio group label</label>
+                        <label class="mb-1">Radio group label</label>
                         <ul class="list-unstyled">
                             <li>
-                                <label for="">
-                                    <input class="list-unstyled" type="radio" name="" value="">
+                                <label >
+                                    <input type="radio">
                                     This is the label for the radio button
                                 </label>
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="list-group-item mb-4 p-3">
                     <div class="form-group">
                         <label class="mb-1">Text Input</label>
                         <small class="form-text text-muted mt-0 mb-2">help text</small>
@@ -184,7 +208,6 @@
                     </ul>
                 </li>
 
-
                 <h3>Progress Circle</h3>
                 <li id="cl-progress-circle" class="list-group-item mb-4">
                     <div class="col-6">
@@ -210,15 +233,11 @@
                         </a>
                     </div>
                 </li>
-
-                <h3></h3>
-                <li id="cl-" class="list-group-item mb-4">
-                </li>
-
             </ul>
+
             <ul class="list-group">
                 <h3>Variables</h3>
-                <p>Below are a list of easily changable variables for the above components</p>
+                <p>Below are a list of easily changable variables for the above components, can be found in variables.scss</p>
                 <li id="cl-variables" class="list-group-item mb-4">
                     <ul>
                         <li>Colours; <span class="text-primary">primary, </span><span class="text-secondary">secondary, </span><span class="text-info">notifications, </span> and <a>link</a> colours can all be overwritten also can be added to
@@ -228,8 +247,10 @@
                     </ul>
                 </li>
             </ul>
+
         </div>
     </div>
 </div>
+<div></div>
 {% endblock %}
 {% endraw %}

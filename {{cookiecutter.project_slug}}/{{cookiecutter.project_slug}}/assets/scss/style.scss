@@ -3,6 +3,7 @@
 
 // Project variables overwriting bootstrap's variables
 @import 'variables';
+@import 'base';
 
 // Must be loaded after above due to use of default
 @import "~bootstrap/scss/bootstrap.scss";
@@ -19,3 +20,4 @@
 @import 'components/blocks';
 @import 'components/button';
 @import 'components/documents';
+@import 'components/footer';
