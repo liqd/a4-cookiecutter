@@ -13,3 +13,7 @@ Start server at port 8000
 ```
 $ make watch
 ```
+Run the tests
+```
+$ make test
+```
