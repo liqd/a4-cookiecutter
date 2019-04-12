@@ -20,32 +20,35 @@
     <body>
         {% wagtailuserbar %}
         {% include 'header.html' %}
-        <div class="page-header mb-5">
-            <h1>
-            {% block title %}{% endblock %}
-            </h1>
-        </div>
-        {% if messages %}
-          {% for message in messages %}
-              <div class="alert alert--{{ message.level_tag }}" role="alert">
-                  <div class="text-center alert-text">
-                  {{ message }}
+        <div class="base__wrapper">
+            <div class="page-header mb-5">
+                <h1>
+                {% block title %}{% endblock %}
+                </h1>
+            </div>
+            {% if messages %}
+              {% for message in messages %}
+                  <div class="alert alert--{{ message.level_tag }}" role="alert">
+                      <div class="text-center alert-text">
+                      {{ message }}
+                      </div>
                   </div>
-              </div>
-          {% endfor %}
-          {% endif %}
-          {% block extra_messages %}{% endblock %}
+              {% endfor %}
+              {% endif %}
+              {% block extra_messages %}{% endblock %}
 
-        <div class="content">
-        {% block content %}
-        {% endblock %}
+            <div class="content">
+            {% block content %}
+            {% endblock %}
+            </div>
+            {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+            {% endblock %}
+            {% block extra_css %}
+            {# Override this in templates to add extra javascript #}
+            {% endblock %}
         </div>
-        {% block extra_js %}
-        {# Override this in templates to add extra javascript #}
-        {% endblock %}
-        {% block extra_css %}
-        {# Override this in templates to add extra javascript #}
-        {% endblock %}
+        <div class="footer bg-light"></div>
     </body>
 </html>
 {% endraw %}

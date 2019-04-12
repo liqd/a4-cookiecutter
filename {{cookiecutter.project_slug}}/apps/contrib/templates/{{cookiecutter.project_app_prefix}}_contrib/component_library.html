@@ -1,0 +1,256 @@
+{% raw %}{% extends 'base.html' %}
+
+{% block title %}
+<div class="container">Component Library</div> {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="wrapper">
+
+                <!-- Conponentes menu-->
+                <div class="card">
+                    <div class="card-body">
+                        <nav id="sidebar">
+                            <div class="sidebar-header">
+                                <h3>Component List</h3>
+                            </div>
+
+                            <ul class="list-unstyled components">
+                                <li class="active">
+                                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Components</a>
+                                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                                        <li>
+                                            <a href="#cl-alerts">Alerts</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-buttons">Buttons</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-cards">Cards</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-comp-lib">Component Library list item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-forms">Forms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-list-group-items">List Group Items</a>
+                                        </li>
+                                        <li>
+                                            <a href="#cl-progress-circle">Progress Circle</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="https://getbootstrap.com/docs/4.0/components/alerts/" target="_blank">All Other Bootstrap Components</a>
+                                </li>
+                                <li>
+                                    <a href="#cl-variables">Variables</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conponentes -->
+        <div class="col-sm-9">
+            <ul class="list-group">
+
+                <h3>Alerts</h3>
+
+                <li id="cl-alerts" class="list-group-item mb-4 p-3">
+                    <div class="alert alert--success" role="alert">
+                        Alert Success
+                        <button class="alert__close" title={django.gettext('Close')} onClick={onClick}>
+                            <i class="fa fa-times" aria-label={django.gettext('Close')}></i>
+                        </button>
+                    </div>
+                    <div class="alert alert--error" role="alert">
+                        Alert Error & Alert Danger
+                        <button class="alert__close" title={django.gettext('Close')} onClick={onClick}>
+                            <i class="fa fa-times" aria-label={django.gettext('Close')}></i>
+                        </button>
+                    </div>
+                    <div class="alert alert--warning" role="alert">
+                        Alert Warning
+                        <button class="alert__close" title={django.gettext('Close')} onClick={onClick}><i class="fa fa-times" aria-label={django.gettext('Close')}></i>
+                        </button>
+                    </div>
+                    <div class="alert alert--close" role="alert">
+                        Alert Close
+                        <button class="alert__close" title={django.gettext('Close')} onClick={onClick}>
+                            <i class="fa fa-times" aria-label={django.gettext('Close')}></i>
+                        </button>
+                    </div>
+                </li>
+
+                <h3>Component Library list item</h3>
+                <li id="cl-comp-lib" class="list-group-item mb-4">
+                    <p>
+                        <button class="btn btn--light" type="button">Light Button</button>
+                        <button class="btn btn--transparent" type="button">Transparent Button</button>
+                        <button class="btn btn--primary" type="button">Primary Button</button>
+                        <button class="btn btn--secondary" type="button">Secondary Button</button>
+                        <button class="btn btn--danger" type="button">Danger Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--link" type="button">Button as Link</button>
+                        <button class="btn btn--none" type="button">No Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--light btn--select" type="button">Select Button <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        <button class="btn btn--secondary btn--small" type="button">Small Button</button>
+                        <button class="btn btn--secondary btn--huge" type="button">Huge Button</button>
+                    </p>
+                    <p>
+                        <button class="btn btn--primary btn-block" type="button">Full Button</button>
+                    </p>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn--light" type="button">But</button><button class="btn btn--light" type="button">ton</button><button class="btn btn--light" type="button">group</button>
+                    </div>
+                </li>
+
+                <h3>Cards</h3>
+                <li id="cl-cards" class="list-group-item mb-4 p-3">
+                    <div class="card-deck">
+                        <div class="col-sm-6 col-md-4 mt-4">
+                            <div class="card h-100 mx-0 px-0">
+                                <img class="card-img-top" src="" alt="">
+                                <div class="card-body">
+                                    <h2 class="card-title">Blueprint Title</h2>
+                                    <p class="card-text">Blueprint decription</p>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Phase</strong>: phase_content.description </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <a href="" class="btn btn-primary">use this template</a>
+                                        <button class="btn btn-link" type="button" data-toggle="modal" data-target="">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <h3>Component Library list item</h3>
+                <li id="cl-comp-lib" class="list-group-item mb-4">
+                </li>
+
+                <h3>Forms</h3>
+                <li id="cl-forms" class="list-group-item mb-4 p-3">
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="" value="" class="form-check-input" />
+                        <label class="form-check-label mb-1" for="">Checkbox label</label>
+                        <small class="form-text text-muted mt-0 mb-2">help text</small>
+                    </div>
+                </li>
+                <li class="list-group-item mb-4 p-3">
+                    <div class="form-group">
+                        <label class="mb-1">Radio group label</label>
+                        <ul class="list-unstyled">
+                            <li>
+                                <label >
+                                    <input type="radio">
+                                    This is the label for the radio button
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="list-group-item mb-4 p-3">
+                    <div class="form-group">
+                        <label class="mb-1">Text Input</label>
+                        <small class="form-text text-muted mt-0 mb-2">help text</small>
+                        <div class="form-control"></div>
+                    </div>
+                    <div class="alert alert--danger" role="alert">Form alert</div>
+                </li>
+
+                <h3>List Group Item</h3>
+                <li id="cl-list-group-items" class="list-group-item rounded mb-4 py-0 px-3 px-sm-0">
+                    <ul class="list-group d-flex flex-row">
+                        <div class="d-none d-sm-inline col-2 rounded position-relative bg-primary" style="background-image: url(); background-position: center;">
+                            <small class="position-absolute fixed-bottom bg-light text-break">© copyright</small>
+                        </div>
+                        <li class="list-group-item flex-fill border-0 mb-1 pl-0 pl-sm-3">
+                            <h2>Project Name</h2>
+                            <div class="dashboard-list-labels">
+                                <span class="label">Finished</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item border-0 px-0 pr-sm-3 py-5">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-light">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>Preview</a>
+                                <a class="btn btn-light">
+                                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>Edit
+                                </a>
+                                <div class="btn-group dropdown" role="group">
+                                    <button id="btnGroupDrop" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
+                                    <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="btnGroupDrop">
+                                        <div class="dropdown-item">
+                                            <form method="post">
+                                                <input type="hidden" name="project_pk">
+                                                <button type="submit" name="duplicate" class="dropdown-item"><i class="fa fa-copy" aria-hidden="true"></i>Duplicate
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <h3>Progress Circle</h3>
+                <li id="cl-progress-circle" class="list-group-item mb-4">
+                    <div class="col-6">
+                        <div class="progress-box">
+                            <svg viewBox="0 0 35 35" class="progress-box__progress progress" role="presentation">
+                                <circle class="progress__background" r="15.9" cx="50%" cy="50%"></circle>
+                                <circle class="progress__value" stroke-dasharray="64 100" r="15.9" cx="50%" cy="50%"></circle>
+                                <text class="progress__label" x="50%" y="50%" dy="0.3em">50%</text>
+                            </svg>
+                            <div class="progress-box__description">
+                                <strong>7 from 11</strong>
+                                <br>required fields for publication
+                            </div>
+                        </div>
+                        <form action="/dashboard/publish/project/choosing-map/" method="post" data-ignore-submit="true">
+                            <input name="name" value="" type="hidden">
+                            <input name="referrer" value="/dashboard/projects/choosing-map/information/" type="hidden">
+                            <button name="action" value="publish" disabled="" class="btn btn--primary btn--full btn--attached-top">Veröffentlichen</button>
+                        </form>
+                        <a href="/projects/choosing-map/" target="_self" class="btn btn--light btn--full">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            Vorschau
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <h3>Variables</h3>
+                <p>Below are a list of easily changable variables for the above components, can be found in variables.scss</p>
+                <li id="cl-variables" class="list-group-item mb-4">
+                    <ul>
+                        <li>Colours; <span class="text-primary">primary, </span><span class="text-secondary">secondary, </span><span class="text-info">notifications, </span> and <a>link</a> colours can all be overwritten also can be added to
+                            components which were not previously coloured with addition of class names</li>
+                        <li class="border rounded">Border radius; currently set as round per default but can be overwritted</li>
+                        <li>Fonts; fonts can be added, default sizes and colours can also be set but should be consistent across whole site</li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div></div>
+{% endblock %}
+{% endraw %}

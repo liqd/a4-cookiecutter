@@ -14,8 +14,8 @@
         <div class="row">
             <div class="card-deck">
             {% for blueprint_slug, blueprint in view.blueprints %}
-            <div class="col-sm-6 col-md-4">
-                <div class="card px-0">
+            <div class="col-sm-6 col-md-4 mt-4">
+                <div class="card h-100 mx-0 px-0">
                     <img class="card-img-top" src="{% static blueprint.image %}" alt="{{ blueprint.title }}">
                     <div class="card-body">
                         <h2 class="card-title">{{ blueprint.title }}</h2>

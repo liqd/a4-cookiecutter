@@ -30,6 +30,9 @@ from apps.documents import urls as documents_urls
 from apps.documents.api import DocumentViewSet
 {% endif %}
 
+from apps.contrib import views as contrib_views
+
+
 js_info_dict = {
     'packages': ('adhocracy4.comments',),
 }
@@ -75,6 +78,7 @@ urlpatterns = [
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}
+    url(r'^components/$', contrib_views.ComponentLibraryView.as_view()),
     url(r'^jsi18n/$', javascript_catalog,
         js_info_dict, name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),

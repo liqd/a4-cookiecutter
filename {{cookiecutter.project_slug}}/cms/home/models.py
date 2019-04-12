@@ -24,7 +24,7 @@ class HomePage(Page):
     content_panels = [
         edit_handlers.FieldPanel('title'),
         edit_handlers.FieldPanel('subtitle'),
-        edit_handlers.FieldPanel('header_image'),
+        ImageChooserPanel('header_image'),
         edit_handlers.StreamFieldPanel('body')
     ]
 
