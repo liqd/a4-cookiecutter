@@ -1,4 +1,3 @@
-from django.shortcuts import redirect
 from django.views import generic
 
 

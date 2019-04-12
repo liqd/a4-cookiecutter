@@ -2,8 +2,6 @@ import pytest
 import rules
 
 from apps.ideas import phases
-from tests.helpers import freeze_phase
-from tests.helpers import freeze_post_phase
 from tests.helpers import freeze_pre_phase
 from tests.helpers import setup_phase
 from tests.helpers import setup_users

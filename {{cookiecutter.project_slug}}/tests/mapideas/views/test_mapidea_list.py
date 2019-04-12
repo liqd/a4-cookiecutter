@@ -22,5 +22,7 @@ def test_list_view(client, phase_factory, map_idea_factory):
         assert mapidea in response.context_data['mapidea_list']
         assert mapidea_2 not in response.context_data['mapidea_list']
         assert response.context_data['mapidea_list'][0].comment_count == 0
-        assert response.context_data['mapidea_list'][0].positive_rating_count == 0
-        assert response.context_data['mapidea_list'][0].negative_rating_count == 0
+        assert (response.context_data['mapidea_list'][0]
+                .positive_rating_count == 0)
+        assert (response.context_data['mapidea_list'][0]
+                .negative_rating_count == 0)

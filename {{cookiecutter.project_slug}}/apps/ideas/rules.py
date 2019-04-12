@@ -32,12 +32,12 @@ rules.add_perm(
 
 rules.add_perm(
     '{{cookiecutter.project_app_prefix}}_ideas.moderate_idea',
-    module_predicates.is_context_moderator |
-    module_predicates.is_context_initiator
+    module_predicates.is_context_moderator
+    | module_predicates.is_context_initiator
 )
 
 rules.add_perm(
     '{{cookiecutter.project_app_prefix}}_ideas.export_ideas',
-    module_predicates.is_context_moderator |
-    module_predicates.is_context_initiator
+    module_predicates.is_context_moderator
+    | module_predicates.is_context_initiator
 )
