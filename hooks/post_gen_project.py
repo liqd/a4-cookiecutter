@@ -35,6 +35,11 @@ def remove_documents(project_directory):
         'apps/documents'
     )
     shutil.rmtree(location)
+    test_location = os.path.join(
+        PROJECT_DIRECTORY,
+        'tests/documents'
+    )
+    shutil.rmtree(test_location)
 
 # 1. Removes the mapideas app-folder if it's not wanted
 if '{{ cookiecutter.add_maps_and_mapideas_app }}' != 'y':
@@ -42,6 +47,6 @@ if '{{ cookiecutter.add_maps_and_mapideas_app }}' != 'y':
 # 2. Removes the polls templates if polls are not wanted
 if '{{ cookiecutter.add_polls_app }}' != 'y':
     remove_polls(PROJECT_DIRECTORY)
-# 3. Removes the documents templates if documents are not wanted
+# 3. Removes the documents app-folder if documents are not wanted
 if '{{ cookiecutter.add_documents_app }}' != 'y':
     remove_documents(PROJECT_DIRECTORY)

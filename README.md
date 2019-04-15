@@ -43,7 +43,7 @@ $ cookiecutter gh:liqd/a4-cookiecutter
 
 The cookiecutter will now ask you the following things in order to set up the project you like for you. In the brackets behind the question you can see the default value - if you want to stick to that just hit enter.
 
-##### 1) Project Name: 
+##### 1) Project Name:
 First you have to decide for a project name. The default value is 'Project Name', so if you don't type anything your Project Name will be 'Project Name'. The Project Name will appear on your Landing Page. You can change it later.
 ```
 project_name [Project Name]:
@@ -65,20 +65,20 @@ project_app_prefix [project_name]:
 The default vlaue is [y], which means yes. If you type 'n' the programming code for displaying maps will not be added.
 ```
 add_maps_and_mapideas_app [y]:
-``` 
+```
 
 ##### 5) Do you want to use polls?
 The default vlaue is [y], which means yes. If you type 'n' the programming code for polls will not be added.
 ```
 add_polls_app [y]:
-``` 
+```
 
 ##### 6) Do you want users to comment on documents?
 The default vlaue is [y], which means yes. If you type 'n' the programming code for documents will not be added.
 ```
 add_documents_app [y]:
 
-``` 
+```
 
 Now, you are done. There should be a new directory with the name of your project_slug. Use the terminal to navigate to your newly created project.
 
@@ -87,32 +87,40 @@ Now, you are done. There should be a new directory with the name of your project
 When you changed to your project directory, execute the following commands to get started.
 
 ##### Step 1) Install all requirements and create a database
-This will also create virtual env for you (don't worry if you don't know what that is). So just type in the next command and hit enter 
+This will also create virtual env for you (don't worry if you don't know what that is). So just type in the next command and hit enter
 
 ```
 $ make install
 ```
-##### Step 2) Add some data (called fixtures) to you database
-This step will add some dummy data to your database which makes it easier for you to get started and to test your new project. This step will add an organisation called 'Liqd', a dummy idea collection project and the three users 'admin@liqd.net', 'initiator@liqd.net' and 'user@liqd.net'. They all have the same password 'password'. 
+
+##### Step 2) Make sure everything is set up right
+To see if the installed apps are working like they are meant to be, run the tests.
+
+```
+$ make test
+```
+
+##### Step 3) Add some data (called fixtures) to you database
+This step will add some dummy data to your database which makes it easier for you to get started and to test your new project. This step will add an organisation called 'Liqd', a dummy idea collection project and the three users 'admin@liqd.net', 'initiator@liqd.net' and 'user@liqd.net'. They all have the same password 'password'.
 
 ```
 $ make fixtures
 ```
 
-##### Step 3) Start server
-Now you are ready, type in the following command, hit enter. 
+##### Step 4) Start server
+Now you are ready, type in the following command, hit enter.
 ```
 $ make server
 ```
-##### Step 4) Browse to website
+##### Step 5) Browse to website
 Now you should have your local webserver running, s open a browser and navigate to 'localhost:8000'
 
 
-##### Step 5) Login
-Up in the right corner there should be login link. Click that and login with 'initiator@liqd.net' and 'password'. As soon as you are logged in there should be a user dropdown underneath the username, if you open this there is a link to 'liqd'. If you click it you will see the administration interface for the 'liqd'organisation.  
+##### Step 6) Login
+Up in the right corner there should be login link. Click that and login with 'initiator@liqd.net' and 'password'. As soon as you are logged in there should be a user dropdown underneath the username, if you open this there is a link to 'liqd'. If you click it you will see the administration interface for the 'liqd'organisation.
 
-##### Step 6) Update Landingpage
-When you login as admin@liqd.net and navigate to the landing page there should be a round button with a bird on it. If you click on it, you get the possibility to edit the page. 
+##### Step 7) Update Landingpage
+When you login as admin@liqd.net and navigate to the landing page there should be a round button with a bird on it. If you click on it, you get the possibility to edit the page.
 
-
-
+##### Step 8) Get coding!
+There are lots of tutorials for Django and wagtail around. Check them out and see what you want to add.
