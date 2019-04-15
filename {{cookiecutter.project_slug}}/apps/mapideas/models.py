@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
 from adhocracy4 import transforms
 from adhocracy4.categories.fields import CategoryField
 from adhocracy4.images import fields

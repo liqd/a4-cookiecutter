@@ -3,8 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from adhocracy4.dashboard.blueprints import ProjectBlueprint
 {% if cookiecutter.add_polls_app == 'y' %}from adhocracy4.polls import phases as poll_phases{% endif %}
 from apps.ideas import phases as ideas_phases
-{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}from apps.mapideas import phases as map_ideas_phases{% endif %}
 {% if cookiecutter.add_documents_app == 'y' %}from apps.documents import phases as documents_phases{% endif %}
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}from apps.mapideas import phases as map_ideas_phases{% endif %}
 
 blueprints = [
     ('brainstorming',
