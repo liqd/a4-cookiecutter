@@ -4,7 +4,7 @@ body {
     overflow-x: hidden;
 }
 
-//this is to position the footer at bottom of page with little content, the 100px is the height of the footer
+//this is to position the footer at bottom of page with little content, 150px is the height of the header and footer combined
 .base__wrapper {
     min-height: calc(100vh - 150px);
 }
