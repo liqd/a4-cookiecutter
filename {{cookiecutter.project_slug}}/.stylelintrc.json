@@ -50,6 +50,6 @@
     "no-extra-semicolons": true
   },
   "ignoreFiles": [
-    "**/_bootstrap-variables.scss"
+    "**/_variables.scss"
   ]
 }

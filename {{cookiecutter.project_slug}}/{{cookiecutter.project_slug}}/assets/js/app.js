@@ -29,7 +29,6 @@ var initialiseWidget = function (namespace, name, fn) {
 }
 
 var init = function () {
-
   initialiseWidget('a4', 'comment', ReactComments.renderComment)
   initialiseWidget('a4', 'follows', ReactFollows.renderFollow)
   initialiseWidget('a4', 'ratings', ReactRatings.renderRatings)
