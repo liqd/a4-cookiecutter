@@ -19,4 +19,4 @@ class MapIdeaFactory(factory.django.DjangoModelFactory):
         'properties': {},
         'geometry': {'type': 'Point',
                      'coordinates': [13.447437286376953, 52.51518602243137]}
-}
+    }

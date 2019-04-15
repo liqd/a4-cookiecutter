@@ -120,16 +120,16 @@ class AbstractProjectUserInviteListView(
         if existing:
             messages.error(
                 self.request,
-                _('Following users already accepted an invitation: ') +
-                ', '.join(existing)
+                _('Following users already accepted an invitation: ')
+                + ', '.join(existing)
             )
 
         emails, pending = self.filter_pending(emails)
         if pending:
             messages.error(
                 self.request,
-                _('Following users are already invited: ') +
-                ', '.join(pending)
+                _('Following users are already invited: ')
+                + ', '.join(pending)
             )
 
         for email in emails:

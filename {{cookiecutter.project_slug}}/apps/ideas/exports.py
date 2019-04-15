@@ -51,8 +51,8 @@ class IdeaCommentExportView(PermissionRequiredMixin,
         return self.module
 
     def get_queryset(self):
-        comments = (Comment.objects.filter(idea__module=self.module) |
-                    Comment.objects.filter(
+        comments = (Comment.objects.filter(idea__module=self.module)
+                    | Comment.objects.filter(
                     parent_comment__idea__module=self.module))
 
         return comments

@@ -7,10 +7,10 @@ from rules.contrib.views import PermissionRequiredMixin
 from adhocracy4.filters import views as filter_views
 from adhocracy4.modules.models import Module
 from adhocracy4.projects.mixins import ProjectMixin
+from apps.ideas.filters import IdeaFilterSet
 
 from . import forms
 from . import models as idea_models
-from apps.ideas.filters import IdeaFilterSet
 
 
 class MapIdeaListView(
@@ -123,4 +123,3 @@ class MapIdeaDeleteView(PermissionRequiredMixin, generic.DeleteView):
     def get_success_url(self):
         return reverse('project-detail',
                        kwargs={'slug': self.object.project.slug})
-

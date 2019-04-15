@@ -2,7 +2,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from adhocracy4 import phases
 
-from . import apps, models, views
+from . import apps
+from . import models
+from . import views
 
 
 class IssuePhase(phases.PhaseContent):
@@ -81,7 +83,7 @@ class UniversalPhase(phases.PhaseContent):
     features = {
         'crud': (models.Idea,),
         'comment': (models.Idea,),
-        'rate':  (models.Idea,),
+        'rate': (models.Idea,),
     }
 
 

@@ -5,16 +5,16 @@ from apps.contrib import predicates as contrib_predicates
 
 rules.add_perm(
     '{{ cookiecutter.project_app_prefix }}_documents.view_chapter',
-    (module_predicates.is_project_admin |
-     (module_predicates.is_allowed_view_item &
-      contrib_predicates.has_context_started))
+    (module_predicates.is_project_admin
+     | (module_predicates.is_allowed_view_item
+        & contrib_predicates.has_context_started))
 )
 
 rules.add_perm(
     '{{ cookiecutter.project_app_prefix }}_documents.view_paragraph',
-    (module_predicates.is_project_admin |
-     (module_predicates.is_allowed_view_item &
-      contrib_predicates.has_context_started))
+    (module_predicates.is_project_admin
+     | (module_predicates.is_allowed_view_item
+        & contrib_predicates.has_context_started))
 )
 
 rules.add_perm(

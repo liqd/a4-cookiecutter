@@ -105,4 +105,3 @@ class RatingFactory(factory.django.DjangoModelFactory):
 
     value = 1
     creator = factory.SubFactory(UserFactory)
-
