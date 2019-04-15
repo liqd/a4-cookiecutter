@@ -1,37 +1,29 @@
 from ckeditor_uploader import views as ck_views
 from django.conf import settings
-from django.conf.urls import include, url
-from django.views.decorators.cache import never_cache
+from django.conf.urls import include
+from django.conf.urls import url
+from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 from django.views.i18n import javascript_catalog
+from rest_framework import routers
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
-from django.contrib import admin
-
-from rest_framework import routers
 
 from adhocracy4.api import routers as a4routers
+from adhocracy4.comments.api import CommentViewSet
+{% if cookiecutter.add_polls_app == 'y' %}from adhocracy4.polls.api import PollViewSet
+from adhocracy4.polls.api import VoteViewSet
+from adhocracy4.polls.routers import QuestionDefaultRouter{% endif %}
 from adhocracy4.ratings.api import RatingViewSet
 from adhocracy4.reports.api import ReportViewSet
-from adhocracy4.comments.api import CommentViewSet
-{% if cookiecutter.add_polls_app == 'y' %}
-from adhocracy4.polls.api import PollViewSet, VoteViewSet
-from adhocracy4.polls.routers import QuestionDefaultRouter
-{% endif %}
-
-from apps.dashboard import urls as dashboard_urls
-from apps.ideas import urls as ideas_urls
-{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
-from apps.mapideas import urls as map_ideas_urls
-{% endif %}
-from apps.projects import urls as project_urls
-{% if cookiecutter.add_documents_app == 'y' %}
-from apps.documents import urls as documents_urls
-from apps.documents.api import DocumentViewSet
-{% endif %}
-
 from apps.contrib import views as contrib_views
-
+from apps.dashboard import urls as dashboard_urls
+{% if cookiecutter.add_documents_app == 'y' %}from apps.documents import urls as documents_urls
+from apps.documents.api import DocumentViewSet{% endif %}
+from apps.ideas import urls as ideas_urls
+{% if cookiecutter.add_maps_and_mapideas_app == 'y' %}from apps.mapideas import urls as map_ideas_urls{% endif %}
+from apps.projects import urls as project_urls
 
 js_info_dict = {
     'packages': ('adhocracy4.comments',),

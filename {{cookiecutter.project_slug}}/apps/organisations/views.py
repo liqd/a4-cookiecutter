@@ -3,7 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
 from adhocracy4.dashboard import mixins as a4dashboard_mixins
-
 from apps.dashboard import forms
 from apps.organisations import models
 
