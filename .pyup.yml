@@ -4,6 +4,6 @@
 schedule: every week
 
 requirements:
-  - {{cookiecutter.project_slug}}/requirements/base.txt
-  - {{cookiecutter.project_slug}}/requirements/dev.txt
-  - {{cookiecutter.project_slug}}/requirements/prod.txt
+  - \{\{cookiecutter.project_slug\}\}/requirements/base.txt
+  - \{\{cookiecutter.project_slug\}\}/requirements/dev.txt
+  - \{\{cookiecutter.project_slug\}\}/requirements/prod.txt
