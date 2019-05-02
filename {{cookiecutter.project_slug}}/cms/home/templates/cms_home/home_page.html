@@ -1,8 +1,9 @@
 {% raw %}{% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block title %}
-<div class="block__header_img" {% if page.header_image %} style="background-image: url({{ page.header_image.url }});  background-repeat: no-repeat; background-position: center; background-size: cover; " {% endif %}>
+{% image page.header_image max-1920x560 as header_image %}
+<div class="block__header_img" {% if page.header_image %} style="background-image: url({{ header_image.url }});  background-repeat: no-repeat; background-position: center; background-size: cover; " {% endif %}>
     <div class="block__header_img_overlay">
         <div class="container">
             {{ page.title }}

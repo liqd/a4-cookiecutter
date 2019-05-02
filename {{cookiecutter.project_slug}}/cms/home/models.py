@@ -19,7 +19,13 @@ class HomePage(Page):
 
     subtitle = models.CharField(max_length=120, blank=True)
 
-    header_image = models.ImageField(blank=True)
+    header_image = models.ForeignKey(
+                      'wagtailimages.Image',
+                      null=True,
+                      blank=True,
+                      on_delete=models.SET_NULL,
+                      related_name='+'
+                      )
 
     content_panels = [
         edit_handlers.FieldPanel('title'),
