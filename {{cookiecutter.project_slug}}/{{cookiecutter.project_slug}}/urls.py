@@ -5,7 +5,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
-from django.views.i18n import javascript_catalog
+from django.views.i18n import JavaScriptCatalog
 from rest_framework import routers
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -50,7 +50,7 @@ ct_router.register(r'ratings', RatingViewSet, base_name='ratings')
 
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^api/', include(router.urls)),
     url(r'^api/', include(ct_router.urls)),
@@ -65,13 +65,13 @@ urlpatterns = [
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
 {% if cookiecutter.add_documents_app == 'y' %}
-    url(r'^text/', include(documents_urls, '{{ cookiecutter.project_app_prefix }}_documents')),
+    url(r'^text/', include((documents_urls, '{{ cookiecutter.project_app_prefix }}_documents'), '{{ cookiecutter.project_app_prefix }}_documents')),
 {% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}
     url(r'^components/$', contrib_views.ComponentLibraryView.as_view()),
-    url(r'^jsi18n/$', javascript_catalog,
+    url(r'^jsi18n/$', JavaScriptCatalog,
         js_info_dict, name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^upload/',
