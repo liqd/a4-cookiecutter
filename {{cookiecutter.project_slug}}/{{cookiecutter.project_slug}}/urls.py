@@ -30,23 +30,23 @@ js_info_dict = {
 }
 
 router = routers.DefaultRouter()
-router.register(r'reports', ReportViewSet, base_name='reports')
+router.register(r'reports', ReportViewSet, basename='reports')
 {% if cookiecutter.add_polls_app == 'y' %}
-router.register(r'polls', PollViewSet, base_name='polls')
+router.register(r'polls', PollViewSet, basename='polls')
 
 question_router = QuestionDefaultRouter()
-question_router.register(r'vote', VoteViewSet, base_name='vote')
+question_router.register(r'vote', VoteViewSet, basename='vote')
 {% endif %}
 
 module_router = a4routers.ModuleDefaultRouter()
 # FIXME: rename to 'chapters'
 {% if cookiecutter.add_documents_app == 'y' %}
-module_router.register(r'documents', DocumentViewSet, base_name='chapters')
+module_router.register(r'documents', DocumentViewSet, basename='chapters')
 {% endif %}
 
 ct_router = a4routers.ContentTypeDefaultRouter()
-ct_router.register(r'comments', CommentViewSet, base_name='comments')
-ct_router.register(r'ratings', RatingViewSet, base_name='ratings')
+ct_router.register(r'comments', CommentViewSet, basename='comments')
+ct_router.register(r'ratings', RatingViewSet, basename='ratings')
 
 
 urlpatterns = [
