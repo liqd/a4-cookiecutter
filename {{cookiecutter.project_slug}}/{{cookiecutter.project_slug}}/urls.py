@@ -5,7 +5,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
-from django.views.i18n import javascript_catalog
+from django.views.i18n import JavaScriptCatalog
 from rest_framework import routers
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -30,27 +30,27 @@ js_info_dict = {
 }
 
 router = routers.DefaultRouter()
-router.register(r'reports', ReportViewSet, base_name='reports')
+router.register(r'reports', ReportViewSet, basename='reports')
 {% if cookiecutter.add_polls_app == 'y' %}
-router.register(r'polls', PollViewSet, base_name='polls')
+router.register(r'polls', PollViewSet, basename='polls')
 
 question_router = QuestionDefaultRouter()
-question_router.register(r'vote', VoteViewSet, base_name='vote')
+question_router.register(r'vote', VoteViewSet, basename='vote')
 {% endif %}
 
 module_router = a4routers.ModuleDefaultRouter()
 # FIXME: rename to 'chapters'
 {% if cookiecutter.add_documents_app == 'y' %}
-module_router.register(r'documents', DocumentViewSet, base_name='chapters')
+module_router.register(r'documents', DocumentViewSet, basename='chapters')
 {% endif %}
 
 ct_router = a4routers.ContentTypeDefaultRouter()
-ct_router.register(r'comments', CommentViewSet, base_name='comments')
-ct_router.register(r'ratings', RatingViewSet, base_name='ratings')
+ct_router.register(r'comments', CommentViewSet, basename='comments')
+ct_router.register(r'ratings', RatingViewSet, basename='ratings')
 
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^api/', include(router.urls)),
     url(r'^api/', include(ct_router.urls)),
@@ -65,14 +65,13 @@ urlpatterns = [
     url(r'^projects/', include(project_urls)),
     url(r'^ideas/', include(ideas_urls)),
 {% if cookiecutter.add_documents_app == 'y' %}
-    url(r'^text/', include(documents_urls, '{{ cookiecutter.project_app_prefix }}_documents')),
+    url(r'^text/', include((documents_urls, '{{ cookiecutter.project_app_prefix }}_documents'), '{{ cookiecutter.project_app_prefix }}_documents')),
 {% endif %}
 {% if cookiecutter.add_maps_and_mapideas_app == 'y' %}
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}
     url(r'^components/$', contrib_views.ComponentLibraryView.as_view()),
-    url(r'^jsi18n/$', javascript_catalog,
-        js_info_dict, name='javascript-catalog'),
+    url(r'^jsi18n/$', contrib_views.ComponentLibraryView.as_view()),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^upload/',
         login_required(ck_views.upload), name='ckeditor_upload'),

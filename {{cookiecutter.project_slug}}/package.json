@@ -9,7 +9,7 @@
     "@babel/runtime": "7.4.2",
     "@fortawesome/fontawesome-free": "5.7.2",
     "acorn": "6.1.0",
-    "adhocracy4": "liqd/adhocracy4#55b89fa2e7882728efd3cf5f9305eeaa3562e618",
+    "adhocracy4": "liqd/adhocracy4#django2-v1.0",
     "babel-loader": "8.0.5",
     "bootstrap": "4.3.1",
     "copy-webpack-plugin": "5.0.2",

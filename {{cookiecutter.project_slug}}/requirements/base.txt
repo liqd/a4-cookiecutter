@@ -1,32 +1,35 @@
-git+git://github.com/liqd/adhocracy4.git@55b89fa2e7882728efd3cf5f9305eeaa3562e618#egg=adhocracy4
+# A4
+git+git://github.com/liqd/adhocracy4.git@django2-v1.0#egg=adhocracy4
+
+# Additional requirements
 bcrypt==3.1.6
 brotli==1.0.7
 django-capture-tag==1.0
+django-sites==0.10
 django_csp==3.5
-requests==2.21.0
-wagtail==2.3 # pyup: <2.4
+raven==6.10.0
+requests==2.22.0
+wagtail==2.5.1
 whitenoise==4.1.2
-zeep==3.3.1
+zeep==3.4.0
 
 # Inherited a4-core requirements
 bleach==3.1.0
-Django==1.11.20 # pyup: <2.0
+Django==2.2.3 # pyup: <2.3
 django-allauth==0.39.1
 django-autoslug==1.9.4
 django-background-tasks==1.2.0
-django-cachalot==2.1.0
-django-ckeditor==5.6.1
-django-cloudflare-push==0.2.0
-django-multiselectfield==0.1.8
-django-filter==1.1.0
-django-sites==0.10
+django-ckeditor==5.7.1
+django-filter==2.1.0
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.3
+djangorestframework==3.9.4
 easy-thumbnails==2.6
 html5lib==1.0.1
 jsonfield==2.0.2
 python-dateutil==2.8.0
 python-magic==0.4.15
-raven==6.10.0
 rules==2.0.1
-XlsxWriter==1.1.7
+XlsxWriter==1.1.8
+
+# Project is currently unmaintained. Use our own fork in the meantime
+git+git://github.com/liqd/django-multiselectfield.git@v0.1.9#egg=django-multiselectfield==0.1.9
