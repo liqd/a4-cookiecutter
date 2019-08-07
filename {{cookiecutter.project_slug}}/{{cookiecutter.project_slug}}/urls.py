@@ -71,7 +71,7 @@ urlpatterns = [
     url(r'^mapideas/', include(map_ideas_urls)),
 {% endif %}
     url(r'^components/$', contrib_views.ComponentLibraryView.as_view()),
-    url(r'^jsi18n/$', contrib_views.ComponentLibraryView.as_view()),
+    url(r'^jsi18n/$', JavaScriptCatalog.as_view(**js_info_dict), name='javascript-catalog'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^upload/',
         login_required(ck_views.upload), name='ckeditor_upload'),
