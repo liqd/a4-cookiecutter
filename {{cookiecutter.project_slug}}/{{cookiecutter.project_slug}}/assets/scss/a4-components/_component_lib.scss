@@ -1,0 +1,104 @@
+.font-serif {
+    font-family: $font-family-monospace;
+}
+
+.colour-block {
+    padding: 0 $padding;
+    margin-left: $spacer;
+}
+
+.primary.colour-block {
+    background-color: $primary;
+}
+
+.secondary.colour-block {
+    background-color: $secondary;
+}
+
+.sucess.colour-block {
+    background-color: $success;
+}
+
+.info.colour-block {
+    background-color: $info;
+}
+
+.warning.colour-block {
+    background-color: $warning;
+}
+
+.danger.colour-block {
+    background-color: $danger;
+}
+
+.background.colour-block {
+    background-color: $body-bg;
+}
+
+.body-color.colour-block {
+    background-color: $body-color;
+}
+
+.mark-background.colour-block {
+    background-color: $mark-bg;
+}
+
+.text-dark.colour-block {
+    background-color: $yiq-text-dark;
+}
+
+.text-light.colour-block {
+    background-color: $yiq-text-light;
+}
+
+.link-color.colour-block {
+    background-color: $link-color;
+}
+
+.link-hover-color.colour-block {
+    background-color: $link-hover-color;
+}
+
+.border.colour-block {
+    background-color: $border-color;
+}
+
+.input-border.colour-block {
+    background-color: $input-border-color;
+}
+
+.gray-100.colour-block {
+    background-color: $gray-100;
+}
+
+.gray-200.colour-block {
+    background-color: $gray-200;
+}
+
+.gray-300.colour-block {
+    background-color: $gray-300;
+}
+
+.gray-400.colour-block {
+    background-color: $gray-400;
+}
+
+.gray-500.colour-block {
+    background-color: $gray-500;
+}
+
+.gray-600.colour-block {
+    background-color: $gray-600;
+}
+
+.gray-700.colour-block {
+    background-color: $gray-700;
+}
+
+.gray-800.colour-block {
+    background-color: $gray-800;
+}
+
+.gray-900.colour-block {
+    background-color: $gray-900;
+}
